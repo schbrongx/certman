@@ -11,13 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901061842) do
+ActiveRecord::Schema.define(version: 20160901080515) do
+
+  create_table "certificates", force: :cascade do |t|
+    t.integer  "certificatetype_id"
+    t.integer  "key_id"
+    t.integer  "csr_id"
+    t.text     "content"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "certificates", ["certificatetype_id"], name: "index_certificates_on_certificatetype_id"
+  add_index "certificates", ["csr_id"], name: "index_certificates_on_csr_id"
+  add_index "certificates", ["key_id"], name: "index_certificates_on_key_id"
 
   create_table "certificatetypes", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "csrs", force: :cascade do |t|
+    t.integer  "key_id"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "csrs", ["key_id"], name: "index_csrs_on_key_id"
 
   create_table "csrtemplates", force: :cascade do |t|
     t.string   "name"

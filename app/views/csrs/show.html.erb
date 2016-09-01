@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Key:</strong>
+  <%= @csr.key %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @csr.content %>
+</p>
+
+<%= link_to 'Edit', edit_csr_path(@csr) %> |
+<%= link_to 'Back', csrs_path %>

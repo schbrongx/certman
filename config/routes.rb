@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :certificates
+  resources :csrs
   resources :csrtemplates
   resources :certificatetypes
   root 'index#index'
