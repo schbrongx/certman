@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Certificatetypes</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @certificatetypes.each do |certificatetype| %>
+      <tr>
+        <td><%= certificatetype.id %></td>
+        <td><%= certificatetype.name %></td>
+        <td>
+          <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_certificatetype_path(certificatetype), class:"btn btn-default" %>
+          <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, certificatetype, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-default" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<a class="btn btn-default" href="<%=new_certificatetype_path%>" role="button">
+  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+  Add Certificate Type
+</a>

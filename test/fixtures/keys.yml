@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  keytype_id: 
+  content: MyText
+
+two:
+  keytype_id: 
+  content: MyText

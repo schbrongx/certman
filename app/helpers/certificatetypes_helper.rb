@@ -1,0 +1,2 @@
+module CertificatetypesHelper
+end

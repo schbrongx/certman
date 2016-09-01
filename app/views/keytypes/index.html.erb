@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Keytypes</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @keytypes.each do |keytype| %>
+      <tr>
+	<td><%= keytype.id %></td>
+        <td><%= keytype.name %></td>
+        <td>
+          <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_keytype_path(keytype), class:"btn btn-default" %>
+          <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, keytype, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-default" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<a class="btn btn-default" href="<%=new_keytype_path%>" role="button">
+  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+  Add Keytype
+</a>

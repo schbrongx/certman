@@ -1,0 +1,1 @@
+json.partial! "csrtemplates/csrtemplate", csrtemplate: @csrtemplate

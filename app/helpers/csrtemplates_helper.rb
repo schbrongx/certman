@@ -1,0 +1,2 @@
+module CsrtemplatesHelper
+end

@@ -1,0 +1,53 @@
+<%= form_for(@csrtemplate) do |f| %>
+  <% if @csrtemplate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@csrtemplate.errors.count, "error") %> prohibited this csrtemplate from being saved:</h2>
+
+      <ul>
+      <% @csrtemplate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :cn %><br>
+    <%= f.text_field :cn %>
+  </div>
+  <div class="field">
+    <%= f.label :ou %><br>
+    <%= f.text_field :ou %>
+  </div>
+  <div class="field">
+    <%= f.label :o %><br>
+    <%= f.text_field :o %>
+  </div>
+  <div class="field">
+    <%= f.label :l %><br>
+    <%= f.text_field :l %>
+  </div>
+  <div class="field">
+    <%= f.label :s %><br>
+    <%= f.text_field :s %>
+  </div>
+  <div class="field">
+    <%= f.label :c %><br>
+    <%= f.text_field :c %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
