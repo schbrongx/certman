@@ -5,15 +5,21 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# Create default keytypes
 Keytype.create(name: 'Public Key')
 Keytype.create(name: 'Private Key')
 
+# Create default certificate types
 Certificatetype.create(name: 'Root CA Certificate')
 Certificatetype.create(name: 'Intermediate CA Certificate')
 Certificatetype.create(name: 'SSL Certificate')
 Certificatetype.create(name: 'SSL Wildcard Certificate')
 
-Key.create(keytype_id: 1, keypartner_id: 2, content:'-----BEGIN PUBLIC KEY-----
+# Create (empty) default keys and an example keypair
+Key.create(keytype_id: 1, content:'EMPTY PUBLIC KEY')
+Key.create(keytype_id: 2, content:'EMPTY PRIVATE KEY')
+Key.create(keytype_id: 1, content:'-----BEGIN PUBLIC KEY-----
 MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAsW0RW/Y/C1NugD8e9K4E
 qwPnF3P3mb9zMrOF2U7SOdzFma5Zcg8fTx2j5nh3TFphY5/cj4vYWndd2FTBP1Sh
 StGFyOJNFaJ4OfXNrzmW4HPJXzpxOwk8dNLuOQ2GWrqb4bcHT8dN+/vfO/2GK/DJ
@@ -27,7 +33,7 @@ m6UkaPyQuaR3LBdAcr+LltgOVhsVl0G8VpFSOS8dfojGpLMwgMJqnfo8S9sQE3JD
 /d0b5PlMmmJx1X94Fw1/gczGZAMGAwD8LrNjc8ihNn/jd2cDFJJMUVJAnUiuixQb
 MRMq+02cQHBgZMtfOzjpUN8CAwEAAQ==
 -----END PUBLIC KEY-----')
-Key.create(keytype_id: 2, keypartner_id: 1,content:'-----BEGIN PRIVATE KEY-----
+Key.create(keytype_id: 2, content:'-----BEGIN PRIVATE KEY-----
 MIIJQQIBADANBgkqhkiG9w0BAQEFAASCCSswggknAgEAAoICAQCxbRFb9j8LU26A
 Px70rgSrA+cXc/eZv3Mys4XZTtI53MWZrllyDx9PHaPmeHdMWmFjn9yPi9had13Y
 VME/VKFK0YXI4k0Vong59c2vOZbgc8lfOnE7CTx00u45DYZaupvhtwdPx037+987
@@ -80,10 +86,13 @@ bFkBioF5/B8zfP0NzYIWzPRO0OzX7dddmrqK8cgCWaKJcQAkuFTKpgGVz9G511uK
 4kzVRo6OoTu7hBO7XNf//hZXyBTv
 -----END PRIVATE KEY-----')
 
+# Create (empty) default CSR template and an example CSR template
 Csrtemplate.create(name:"-empty template-",description:"-empty template-",cn:"",ou:"",o:"",l:"",s:"",c:"",email:"")
 Csrtemplate.create(name:"Example CSR Template",description:"A dummy template",cn:"www.example.com",ou:"IT",o:"Example Corporation",l:"St. Gallen",s:"SG",c:"CH",email:"admin@example.com")
 
-Csr.create(key_id: 1, content: '-----BEGIN CERTIFICATE REQUEST-----
+# Create (empty) default CSR and an example CSR
+Csr.create(key_id: 1, content: 'EMPTY CSR')
+Csr.create(key_id: 3, content: '-----BEGIN CERTIFICATE REQUEST-----
 MIIEuDCCAqACADB0MQswCQYDVQQGEwJDSDEYMBYGA1UEAxMPd3d3LmV4YW1wbGUu
 Y29tMRMwEQYDVQQHEwpTdC4gR2FsbGVuMRwwGgYDVQQKExNFeGFtcGxlIENvcnBv
 cmF0aW9uMQswCQYDVQQIEwJTRzELMAkGA1UECxMCSVQwggIiMA0GCSqGSIb3DQEB
@@ -112,7 +121,9 @@ X1gp9qEDb9MwO8VLQngYTkCAhmnsBZKGahQVYZWGkrVY0cs7MbkiU8U7odXMnTu8
 eWxBXNv3Szc5xGhy
 -----END CERTIFICATE REQUEST-----')
 
-Certificate.create(certificatetype_id: 3, key_id: 2, csr_id: 1, content: '-----BEGIN CERTIFICATE-----
+# Create (empty) default certificate and an example certificate
+Certificate.create(certificatetype_id: 3, key_id: 2, csr_id: 1, content: 'EMPTY CERTIFICATE')
+Certificate.create(certificatetype_id: 3, key_id: 4, csr_id: 2, content: '-----BEGIN CERTIFICATE-----
 MIIFZDCCA0wCCQDe9n4+A+Sb2jANBgkqhkiG9w0BAQsFADB0MQswCQYDVQQGEwJD
 SDEYMBYGA1UEAxMPd3d3LmV4YW1wbGUuY29tMRMwEQYDVQQHEwpTdC4gR2FsbGVu
 MRwwGgYDVQQKExNFeGFtcGxlIENvcnBvcmF0aW9uMQswCQYDVQQIEwJTRzELMAkG
@@ -143,3 +154,5 @@ DvvXLclePbXOU3qsDSK11H3Tm6iAE0ljpoaPqFTVX+W6ZcsVNsy5nbQLkcFMgglb
 eT9u/Douk42Nm9EqH0OsndfQ3s7JV22CI3JhcPDDuF4XiN5OwXL+MJn3jgFkVfp6
 23OXrzveligdhDKy2ETWmYGXZU1UsZX5Uu/ucD/CC3uEOfxKtytvpg==
 -----END CERTIFICATE-----')
+
+Keystore.create(name: "example.com ssl key", description: "none", publickey_id: 3, privatekey_id: 4, csr_id: 2, certificate_id: 2)

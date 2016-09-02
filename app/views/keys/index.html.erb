@@ -7,7 +7,6 @@
     <tr>
       <th>Id</th>
       <th>Keytype</th>
-      <th>Keypartner</th>
       <th>Content</th>
       <th>Action</th>
     </tr>
@@ -18,7 +17,6 @@
       <tr>
         <td><%= key.id %>
         <td><%= key.keytype.name %></td>
-        <td><%= key.keypartner_id %></td>
         <td><%= truncate(key.content, length: 80) %></td>
         <td>
           <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, key, class:"btn btn-default" %>

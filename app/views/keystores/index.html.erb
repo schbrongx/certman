@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Keystores</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Public Key</th>
+      <th>Private Key</th>
+      <th>CSR</th>
+      <th>Certificate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @keystores.each do |keystore| %>
+      <tr>
+        <td><%= keystore.name %></td>
+        <td><%= keystore.description %></td>
+        <td><%= keystore.publickey.id %></td>
+        <td><%= keystore.privatekey.id %></td>
+        <td><%= keystore.csr.id %></td>
+        <td><%= keystore.certificate.id %></td>
+        <td><%= link_to 'Show', keystore %></td>
+        <td><%= link_to 'Edit', edit_keystore_path(keystore) %></td>
+        <td><%= link_to 'Destroy', keystore, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Keystore', new_keystore_path %>

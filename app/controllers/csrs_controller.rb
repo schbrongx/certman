@@ -15,10 +15,12 @@ class CsrsController < ApplicationController
   # GET /csrs/new
   def new
     @csr = Csr.new
+    @key = Key.all
   end
 
   # GET /csrs/1/edit
   def edit
+    @key = Key.all
   end
 
   # POST /csrs

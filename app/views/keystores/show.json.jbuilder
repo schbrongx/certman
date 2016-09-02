@@ -1,0 +1,1 @@
+json.partial! "keystores/keystore", keystore: @keystore

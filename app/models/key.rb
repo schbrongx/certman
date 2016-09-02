@@ -1,4 +1,6 @@
 class Key < ActiveRecord::Base
   belongs_to :keytype
-  belongs_to :keypartner, class_name: "Key"
+  has_one :keystore
+  has_one :certificate
+  has_one :csr
 end

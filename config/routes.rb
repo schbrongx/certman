@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :keystores
   resources :certificates
   resources :csrs
   resources :csrtemplates

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @keystore.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @keystore.description %>
+</p>
+
+<p>
+  <strong>Public Key:</strong>
+  <%= @keystore.publickey.id %>
+</p>
+
+<p>
+  <strong>Private Key:</strong>
+  <%= @keystore.privatekey.id %>
+</p>
+
+<p>
+  <strong>CSR:</strong>
+  <%= @keystore.csr.id %>
+</p>
+
+<p>
+  <strong>Certificate:</strong>
+  <%= @keystore.certificate.id %>
+</p>
+
+<%= link_to 'Edit', edit_keystore_path(@keystore) %> |
+<%= link_to 'Back', keystores_path %>

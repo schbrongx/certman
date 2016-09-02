@@ -1,0 +1,1 @@
+json.array! @keystores, partial: 'keystores/keystore', as: :keystore

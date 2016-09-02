@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Key:</strong>
-  <%= @csr.key %>
+  <strong>Key:</strong><br>
+  Id: <%= @csr.key.id %><br>
+  Content: <%= truncate(@csr.key.content, length: 80) %>
 </p>
 
 <p>
@@ -10,5 +11,5 @@
   <%= @csr.content %>
 </p>
 
-<%= link_to 'Edit', edit_csr_path(@csr) %> |
-<%= link_to 'Back', csrs_path %>
+<%= link_to 'Edit', edit_csr_path(@csr), class:"btn btn-default" %> 
+<%= link_to 'Back', csrs_path, class:"btn btn-default" %>

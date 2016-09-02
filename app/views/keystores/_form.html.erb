@@ -1,0 +1,73 @@
+<%= form_for(@keystore) do |f| %>
+  <% if @keystore.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@keystore.errors.count, "error") %> prohibited this keystore from being saved:</h2>
+
+      <ul>
+      <% @keystore.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="form-horizontal">
+
+    <div class="form-group">
+      <%= f.label :name, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :name %>
+      </div>
+    </div>
+
+    <div class="form-group">
+    <%= f.label :description, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+    <%= f.text_area :description %>
+      </div>
+  </div>
+
+    <div class="form-group">
+    <%= f.label :publickey_id, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+       <%= f.select "publickey_id", options_from_collection_for_select(@keys, "id", "id", f.object.publickey_id), class:"form-control" %> 
+      </div>
+  </div>
+
+    <div class="form-group">
+    <%= f.label :privatekey_id, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+       <%= f.select "privatekey_id", options_from_collection_for_select(@keys, "id", "id", f.object.privatekey_id) %>
+      </div>
+  </div>
+
+    <div class="form-group">
+    <%= f.label :csr_id, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+       <%= f.select "csr_id", options_from_collection_for_select(@csrs, "id", "id", f.object.csr_id) %>
+      </div>
+  </div>
+
+    <div class="form-group">
+    <%= f.label :certificate_id, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+       <%= f.select "certificate_id", options_from_collection_for_select(@certificates, "id", "id", f.object.certificate_id) %>
+      </div>
+  </div>
+
+
+    <div class="col-sm-offset-2 col-sm-8">
+      <div class="actions">
+        <%= f.button :submit, name: "commit", value: "commit", class:"btn btn-submit" do %>
+          <span class="glyphicon glyphicon-ok"></span> Submit
+        <% end %>
+        <%= link_to '<span class="glyphicon glyphicon-remove"></span> Cancel'.html_safe, keystores_path, class:"btn btn-default" %>
+      </div>
+    </div>
+
+<% end %>
+
+
+
+
