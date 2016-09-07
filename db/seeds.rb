@@ -91,8 +91,8 @@ Csrtemplate.create(name:"-empty template-",description:"-empty template-",cn:"",
 Csrtemplate.create(name:"Example CSR Template",description:"A dummy template",cn:"www.example.com",ou:"IT",o:"Example Corporation",l:"St. Gallen",s:"SG",c:"CH",email:"admin@example.com")
 
 # Create (empty) default CSR and an example CSR
-Csr.create(key_id: 1, content: 'EMPTY CSR')
-Csr.create(key_id: 3, content: '-----BEGIN CERTIFICATE REQUEST-----
+Csr.create(content: 'EMPTY CSR')
+Csr.create(content: '-----BEGIN CERTIFICATE REQUEST-----
 MIIEuDCCAqACADB0MQswCQYDVQQGEwJDSDEYMBYGA1UEAxMPd3d3LmV4YW1wbGUu
 Y29tMRMwEQYDVQQHEwpTdC4gR2FsbGVuMRwwGgYDVQQKExNFeGFtcGxlIENvcnBv
 cmF0aW9uMQswCQYDVQQIEwJTRzELMAkGA1UECxMCSVQwggIiMA0GCSqGSIb3DQEB
@@ -122,8 +122,8 @@ eWxBXNv3Szc5xGhy
 -----END CERTIFICATE REQUEST-----')
 
 # Create (empty) default certificate and an example certificate
-Certificate.create(certificatetype_id: 3, key_id: 2, csr_id: 1, content: 'EMPTY CERTIFICATE')
-Certificate.create(certificatetype_id: 3, key_id: 4, csr_id: 2, content: '-----BEGIN CERTIFICATE-----
+Certificate.create(certificatetype_id: 3, content: 'EMPTY CERTIFICATE')
+Certificate.create(certificatetype_id: 3, content: '-----BEGIN CERTIFICATE-----
 MIIFZDCCA0wCCQDe9n4+A+Sb2jANBgkqhkiG9w0BAQsFADB0MQswCQYDVQQGEwJD
 SDEYMBYGA1UEAxMPd3d3LmV4YW1wbGUuY29tMRMwEQYDVQQHEwpTdC4gR2FsbGVu
 MRwwGgYDVQQKExNFeGFtcGxlIENvcnBvcmF0aW9uMQswCQYDVQQIEwJTRzELMAkG

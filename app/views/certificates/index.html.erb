@@ -6,8 +6,6 @@
   <thead>
     <tr>
       <th>Certificatetype</th>
-      <th>Key</th>
-      <th>Csr</th>
       <th>Content</th>
       <th>Action</th>
     </tr>
@@ -17,8 +15,6 @@
     <% @certificates.each do |certificate| %>
       <tr>
         <td><%= certificate.certificatetype.name %></td>
-        <td><%= certificate.key.id %></td>
-        <td><%= certificate.csr.id %></td>
         <td><%= truncate(certificate.content, length: 80) %></td>
         <td>
           <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, certificate, class:"btn btn-default" %>
