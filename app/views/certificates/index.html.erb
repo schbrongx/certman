@@ -5,7 +5,9 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Certificatetype</th>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Type</th>
       <th>Content</th>
       <th>Action</th>
     </tr>
@@ -14,6 +16,8 @@
   <tbody>
     <% @certificates.each do |certificate| %>
       <tr>
+        <td><%= certificate.id%></td>
+        <td><%= certificate.name %></td>
         <td><%= certificate.certificatetype.name %></td>
         <td><%= truncate(certificate.content, length: 80) %></td>
         <td>

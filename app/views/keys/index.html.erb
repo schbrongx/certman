@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Id</th>
+      <th>Name</th>
       <th>Keytype</th>
       <th>Content</th>
       <th>Action</th>
@@ -15,7 +16,8 @@
   <tbody>
     <% @keys.each do |key| %>
       <tr>
-        <td><%= key.id %>
+        <td><%= key.id %></td>
+        <td><%= key.name %></td>
         <td><%= key.keytype.name %></td>
         <td><%= truncate(key.content, length: 80) %></td>
         <td>

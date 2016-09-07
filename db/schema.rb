@@ -14,17 +14,14 @@
 ActiveRecord::Schema.define(version: 20160902061825) do
 
   create_table "certificates", force: :cascade do |t|
+    t.string   "name"
     t.integer  "certificatetype_id"
-    t.integer  "key_id"
-    t.integer  "csr_id"
     t.text     "content"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
 
   add_index "certificates", ["certificatetype_id"], name: "index_certificates_on_certificatetype_id"
-  add_index "certificates", ["csr_id"], name: "index_certificates_on_csr_id"
-  add_index "certificates", ["key_id"], name: "index_certificates_on_key_id"
 
   create_table "certificatetypes", force: :cascade do |t|
     t.string   "name"
@@ -33,13 +30,11 @@ ActiveRecord::Schema.define(version: 20160902061825) do
   end
 
   create_table "csrs", force: :cascade do |t|
-    t.integer  "key_id"
+    t.string   "name"
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "csrs", ["key_id"], name: "index_csrs_on_key_id"
 
   create_table "csrtemplates", force: :cascade do |t|
     t.string   "name"
@@ -56,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160902061825) do
   end
 
   create_table "keys", force: :cascade do |t|
+    t.string   "name"
     t.integer  "keytype_id"
     t.text     "content"
     t.datetime "created_at", null: false

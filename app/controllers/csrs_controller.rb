@@ -71,6 +71,6 @@ class CsrsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def csr_params
-      params.require(:csr).permit(:key_id, :content)
+      params.require(:csr).permit(:name, :content)
     end
 end

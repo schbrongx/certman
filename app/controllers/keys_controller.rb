@@ -72,6 +72,6 @@ class KeysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def key_params
-      params.require(:key).permit(:keytype_id, :content)
+      params.require(:key).permit(:keytype_id, :name, :content)
     end
 end

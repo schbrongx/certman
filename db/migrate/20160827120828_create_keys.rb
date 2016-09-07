@@ -1,6 +1,7 @@
 class CreateKeys < ActiveRecord::Migration
   def change
     create_table :keys do |t|
+      t.string :name
       t.references :keytype, index: true, foreign_key: true
       t.text :content
 

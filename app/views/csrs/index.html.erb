@@ -5,6 +5,8 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Id</th>
+      <th>Name</th>
       <th>Content</th>
       <th>Action</th>
     </tr>
@@ -13,6 +15,8 @@
   <tbody>
     <% @csrs.each do |csr| %>
       <tr>
+        <td><%= csr.id %></td>
+        <td><%= csr.name %></td>
         <td><%= truncate(csr.content, length: 80) %></td>
         <td>
           <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, csr, class:"btn btn-default" %>

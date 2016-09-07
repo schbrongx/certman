@@ -5,6 +5,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Id</th>
       <th>Name</th>
       <th>Description</th>
       <th>Public Key</th>
@@ -18,6 +19,7 @@
   <tbody>
     <% @keystores.each do |keystore| %>
       <tr>
+        <td><%= keystore.id %></td>
         <td><%= keystore.name %></td>
         <td><%= keystore.description %></td>
         <td><%= keystore.publickey.id %></td>

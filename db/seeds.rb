@@ -17,9 +17,9 @@ Certificatetype.create(name: 'SSL Certificate')
 Certificatetype.create(name: 'SSL Wildcard Certificate')
 
 # Create (empty) default keys and an example keypair
-Key.create(keytype_id: 1, content:'EMPTY PUBLIC KEY')
-Key.create(keytype_id: 2, content:'EMPTY PRIVATE KEY')
-Key.create(keytype_id: 1, content:'-----BEGIN PUBLIC KEY-----
+Key.create(name: 'empty key', keytype_id: 1, content:'EMPTY PUBLIC KEY')
+Key.create(name: 'empty key', keytype_id: 2, content:'EMPTY PRIVATE KEY')
+Key.create(name: 'example.com key', keytype_id: 1, content:'-----BEGIN PUBLIC KEY-----
 MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAsW0RW/Y/C1NugD8e9K4E
 qwPnF3P3mb9zMrOF2U7SOdzFma5Zcg8fTx2j5nh3TFphY5/cj4vYWndd2FTBP1Sh
 StGFyOJNFaJ4OfXNrzmW4HPJXzpxOwk8dNLuOQ2GWrqb4bcHT8dN+/vfO/2GK/DJ
@@ -33,7 +33,7 @@ m6UkaPyQuaR3LBdAcr+LltgOVhsVl0G8VpFSOS8dfojGpLMwgMJqnfo8S9sQE3JD
 /d0b5PlMmmJx1X94Fw1/gczGZAMGAwD8LrNjc8ihNn/jd2cDFJJMUVJAnUiuixQb
 MRMq+02cQHBgZMtfOzjpUN8CAwEAAQ==
 -----END PUBLIC KEY-----')
-Key.create(keytype_id: 2, content:'-----BEGIN PRIVATE KEY-----
+Key.create(name: 'example.com key', keytype_id: 2, content:'-----BEGIN PRIVATE KEY-----
 MIIJQQIBADANBgkqhkiG9w0BAQEFAASCCSswggknAgEAAoICAQCxbRFb9j8LU26A
 Px70rgSrA+cXc/eZv3Mys4XZTtI53MWZrllyDx9PHaPmeHdMWmFjn9yPi9had13Y
 VME/VKFK0YXI4k0Vong59c2vOZbgc8lfOnE7CTx00u45DYZaupvhtwdPx037+987
@@ -91,8 +91,8 @@ Csrtemplate.create(name:"-empty template-",description:"-empty template-",cn:"",
 Csrtemplate.create(name:"Example CSR Template",description:"A dummy template",cn:"www.example.com",ou:"IT",o:"Example Corporation",l:"St. Gallen",s:"SG",c:"CH",email:"admin@example.com")
 
 # Create (empty) default CSR and an example CSR
-Csr.create(content: 'EMPTY CSR')
-Csr.create(content: '-----BEGIN CERTIFICATE REQUEST-----
+Csr.create(name: 'Empty CSR', content: 'EMPTY CSR')
+Csr.create(name: 'Example.com CSR', content: '-----BEGIN CERTIFICATE REQUEST-----
 MIIEuDCCAqACADB0MQswCQYDVQQGEwJDSDEYMBYGA1UEAxMPd3d3LmV4YW1wbGUu
 Y29tMRMwEQYDVQQHEwpTdC4gR2FsbGVuMRwwGgYDVQQKExNFeGFtcGxlIENvcnBv
 cmF0aW9uMQswCQYDVQQIEwJTRzELMAkGA1UECxMCSVQwggIiMA0GCSqGSIb3DQEB
@@ -122,8 +122,8 @@ eWxBXNv3Szc5xGhy
 -----END CERTIFICATE REQUEST-----')
 
 # Create (empty) default certificate and an example certificate
-Certificate.create(certificatetype_id: 3, content: 'EMPTY CERTIFICATE')
-Certificate.create(certificatetype_id: 3, content: '-----BEGIN CERTIFICATE-----
+Certificate.create(name: 'Empty Certificate', certificatetype_id: 3, content: 'EMPTY CERTIFICATE')
+Certificate.create(name: 'Example.com SSL Certificate', certificatetype_id: 3, content: '-----BEGIN CERTIFICATE-----
 MIIFZDCCA0wCCQDe9n4+A+Sb2jANBgkqhkiG9w0BAQsFADB0MQswCQYDVQQGEwJD
 SDEYMBYGA1UEAxMPd3d3LmV4YW1wbGUuY29tMRMwEQYDVQQHEwpTdC4gR2FsbGVu
 MRwwGgYDVQQKExNFeGFtcGxlIENvcnBvcmF0aW9uMQswCQYDVQQIEwJTRzELMAkG
