@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -46,6 +46,7 @@ group :development do
 end
 
 gem 'bootstrap-sass'
+gem 'bootswatch-rails'
 gem 'autoprefixer-rails'
 
 group :development do
