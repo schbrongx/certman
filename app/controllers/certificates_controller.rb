@@ -15,10 +15,12 @@ class CertificatesController < ApplicationController
   # GET /certificates/new
   def new
     @certificate = Certificate.new
+    @certificatetype = Certificatetype.all
   end
 
   # GET /certificates/1/edit
   def edit
+    @certificatetype = Certificatetype.all
   end
 
   # POST /certificates

@@ -11,43 +11,76 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-horizontal">
+    <div class="form-group">
+      <%= f.label :name, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :name, class:"form-control" %>
+      </div>
+	</div>
+	
+    <div class="form-group">
+      <%= f.label :description, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_area :description, rows: 4, class:"form-control" %>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+
+    <div class="form-group">
+      <%= f.label :cn, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :cn, class:"form-control" %>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :cn %><br>
-    <%= f.text_field :cn %>
+
+    <div class="form-group">
+      <%= f.label :ou, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :ou, class:"form-control" %>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :ou %><br>
-    <%= f.text_field :ou %>
+
+    <div class="form-group">
+      <%= f.label :o, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :o, class:"form-control" %>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :o %><br>
-    <%= f.text_field :o %>
+
+    <div class="form-group">
+      <%= f.label :l, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :l, class:"form-control" %>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :l %><br>
-    <%= f.text_field :l %>
+
+    <div class="form-group">
+     <%= f.label :s, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :s, class:"form-control" %>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :s %><br>
-    <%= f.text_field :s %>
+
+    <div class="form-group">
+      <%= f.label :c, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :c, class:"form-control" %>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :c %><br>
-    <%= f.text_field :c %>
+
+    <div class="form-group">
+      <%= f.label :email, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :email, class:"form-control" %>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+	<div class="col-sm-offset-2 col-sm-8">
+      <div class="actions">
+        <%= f.button :submit, name: "commit", value: "commit", class:"btn btn-submit" do %>
+          <span class="glyphicon glyphicon-ok"></span> Submit
+        <% end %>
+        <%= link_to '<span class="glyphicon glyphicon-remove"></span> Cancel'.html_safe, csrtemplates_path, class:"btn btn-default" %>
+      </div>
+    </div>
 <% end %>

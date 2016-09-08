@@ -13,18 +13,17 @@
 
 
   <div class="form-horizontal">
-
     <div class="form-group">
       <%= f.label :name, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-        <%= f.text_field :name %>
+        <%= f.text_field :name, class:"form-control" %>
       </div>
     </div>
 
     <div class="form-group">
-    <%= f.label :description, class:"col-sm-2 control-label" %>
+      <%= f.label :description, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-    <%= f.text_area :description %>
+        <%= f.text_area :description, rows: 4, class:"form-control" %>
       </div>
   </div>
 
@@ -38,21 +37,21 @@
     <div class="form-group">
     <%= f.label :privatekey_id, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-       <%= f.select "privatekey_id", options_from_collection_for_select(@keys, "id", "id", f.object.privatekey_id) %>
+       <%= f.select "privatekey_id", options_from_collection_for_select(@keys, "id", "id", f.object.privatekey_id), class:"form-control" %>
       </div>
   </div>
 
     <div class="form-group">
     <%= f.label :csr_id, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-       <%= f.select "csr_id", options_from_collection_for_select(@csrs, "id", "id", f.object.csr_id) %>
+       <%= f.select "csr_id", options_from_collection_for_select(@csrs, "id", "id", f.object.csr_id), class:"form-control" %>
       </div>
   </div>
 
     <div class="form-group">
     <%= f.label :certificate_id, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-       <%= f.select "certificate_id", options_from_collection_for_select(@certificates, "id", "id", f.object.certificate_id) %>
+       <%= f.select "certificate_id", options_from_collection_for_select(@certificates, "id", "id", f.object.certificate_id), class:"form-control" %>
       </div>
   </div>
 

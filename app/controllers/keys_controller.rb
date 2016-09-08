@@ -5,7 +5,6 @@ class KeysController < ApplicationController
   # GET /keys.json
   def index
     @keys = Key.all
-    @keytypes = Keytype.all
   end
 
   # GET /keys/1

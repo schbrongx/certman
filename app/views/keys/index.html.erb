@@ -19,7 +19,7 @@
         <td><%= key.id %></td>
         <td><%= key.name %></td>
         <td><%= key.keytype.name %></td>
-        <td><%= truncate(key.content, length: 80) %></td>
+        <td><%= truncate(key.content, length: 70) %></td>
         <td>
           <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, key, class:"btn btn-default" %>
           <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_key_path(key), class:"btn btn-default" %>
@@ -34,4 +34,3 @@
   <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
   Add Key
 </a>
-

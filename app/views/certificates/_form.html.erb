@@ -11,19 +11,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name%><br>
-    <%= f.text_field :name%>
-  </div>
-  <div class="field">
-    <%= f.label :certificatetype_id %><br>
-    <%= f.text_field :certificatetype_id %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-horizontal">
+    <div class="form-group">
+      <%= f.label :name, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :name, class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :certificatetype_id, class:"col-sm-2 control-label" %><br>
+      <div class="col-sm-8">
+        <%= f.select "certificatetype_id", options_from_collection_for_select(@certificatetype, "id", "name", f.object.certificatetype_id), class:"form-control" %>
+      </div>
+	</div>
+	
+    <div class="form-group">
+      <%= f.label :content, class:"col-sm-2 control-label" %><br>
+      <div class="col-sm-8">
+        <%= f.text_area :content, class:"form-control", rows: 10, class:"form-control" %>
+      </div>
+	</div>
+
+	<div class="col-sm-offset-2 col-sm-8">
+      <div class="actions">
+        <%= f.button :submit, name: "commit", value: "commit", class:"btn btn-submit" do %>
+          <span class="glyphicon glyphicon-ok"></span> Submit
+        <% end %>
+        <%= link_to '<span class="glyphicon glyphicon-remove"></span> Cancel'.html_safe, certificates_path, class:"btn btn-default" %>
+      </div>
+    </div>
   </div>
 <% end %>

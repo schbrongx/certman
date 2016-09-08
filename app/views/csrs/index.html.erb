@@ -17,7 +17,7 @@
       <tr>
         <td><%= csr.id %></td>
         <td><%= csr.name %></td>
-        <td><%= truncate(csr.content, length: 80) %></td>
+        <td><%= truncate(csr.content, length: 70) %></td>
         <td>
           <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, csr, class:"btn btn-default" %>
           <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_csr_path(csr), class:"btn btn-default" %>
