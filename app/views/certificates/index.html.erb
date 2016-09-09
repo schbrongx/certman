@@ -23,7 +23,7 @@
         <td>
           <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, certificate, class:"btn btn-default" %>
           <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_certificate_path(certificate), class:"btn btn-default" %>
-          <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, certificate, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-default" %>
+          <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, certificate, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
         </td>
       </tr>
     <% end %>
