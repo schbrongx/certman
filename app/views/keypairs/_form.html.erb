@@ -1,0 +1,29 @@
+<%= form_for(@keypair) do |f| %>
+  <% if @keypair.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@keypair.errors.count, "error") %> prohibited this keypair from being saved:</h2>
+
+      <ul>
+      <% @keypair.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :privatekey %><br>
+    <%= f.text_area :privatekey %>
+  </div>
+  <div class="field">
+    <%= f.label :publickey %><br>
+    <%= f.text_area :publickey %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

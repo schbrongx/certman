@@ -1,3 +1,3 @@
 class Certificatetype < ActiveRecord::Base
-  has_many :certificates
+  has_one :certificates
 end

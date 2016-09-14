@@ -2,6 +2,10 @@
 
 one:
   name: MyString
+  privatekey: MyText
+  publickey: MyText
 
 two:
   name: MyString
+  privatekey: MyText
+  publickey: MyText

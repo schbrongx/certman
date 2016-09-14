@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902061825) do
+ActiveRecord::Schema.define(version: 20160914084826) do
 
   create_table "certificates", force: :cascade do |t|
     t.string   "name"
@@ -50,21 +50,18 @@ ActiveRecord::Schema.define(version: 20160902061825) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "keys", force: :cascade do |t|
+  create_table "keypairs", force: :cascade do |t|
     t.string   "name"
-    t.integer  "keytype_id"
-    t.text     "content"
+    t.text     "privatekey"
+    t.text     "publickey"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "keys", ["keytype_id"], name: "index_keys_on_keytype_id"
-
   create_table "keystores", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "publickey_id"
-    t.integer  "privatekey_id"
+    t.integer  "keypair_id"
     t.integer  "csr_id"
     t.integer  "certificate_id"
     t.datetime "created_at",     null: false
@@ -73,13 +70,6 @@ ActiveRecord::Schema.define(version: 20160902061825) do
 
   add_index "keystores", ["certificate_id"], name: "index_keystores_on_certificate_id"
   add_index "keystores", ["csr_id"], name: "index_keystores_on_csr_id"
-  add_index "keystores", ["privatekey_id"], name: "index_keystores_on_privatekey_id"
-  add_index "keystores", ["publickey_id"], name: "index_keystores_on_publickey_id"
-
-  create_table "keytypes", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  add_index "keystores", ["keypair_id"], name: "index_keystores_on_keypair_id"
 
 end

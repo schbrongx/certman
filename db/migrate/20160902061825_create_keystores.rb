@@ -3,8 +3,7 @@ class CreateKeystores < ActiveRecord::Migration
     create_table :keystores do |t|
       t.string :name
       t.text :description
-      t.references :publickey, index: true
-      t.references :privatekey, index: true
+      t.references :keypair, index: true
       t.references :csr, index: true
       t.references :certificate, index: true
 

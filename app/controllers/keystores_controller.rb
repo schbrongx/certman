@@ -15,14 +15,14 @@ class KeystoresController < ApplicationController
   # GET /keystores/new
   def new
     @keystore = Keystore.new
-    @keys = Key.all
+    @keypairs= Keypair.all
     @csrs = Csr.all
     @certificates = Certificate.all
   end
 
   # GET /keystores/1/edit
   def edit
-    @keys = Key.all
+    @keypairs = Keypair.all
     @csrs = Csr.all
     @certificates = Certificate.all
   end
@@ -75,6 +75,6 @@ class KeystoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def keystore_params
-      params.require(:keystore).permit(:name, :description, :publickey_id, :privatekey_id, :csr_id, :certificate_id)
+      params.require(:keystore).permit(:name, :description, :keypair_id, :csr_id, :certificate_id)
     end
 end
