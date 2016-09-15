@@ -12,17 +12,17 @@
 
 <p>
   <strong>Keypair:</strong>
-  <%= @keystore.keypair.id %>
+  <%= @keystore.keypair.name %>
 </p>
 
 <p>
   <strong>CSR:</strong>
-  <%= @keystore.csr.id %>
+  <%= @keystore.csr.name %>
 </p>
 
 <p>
   <strong>Certificate:</strong>
-  <%= @keystore.certificate.id %>
+  <%= @keystore.certificate.name %>
 </p>
 
 <%= link_to 'Edit', edit_keystore_path(@keystore), class:"btn btn-default"  %>

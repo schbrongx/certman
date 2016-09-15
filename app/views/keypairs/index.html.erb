@@ -2,13 +2,13 @@
 
 <h1>Listing Keypairs</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Privatekey</th>
       <th>Publickey</th>
-      <th colspan="3"></th>
+      <th>Action</th>
     </tr>
   </thead>
 
@@ -16,16 +16,19 @@
     <% @keypairs.each do |keypair| %>
       <tr>
         <td><%= keypair.name %></td>
-        <td><%= keypair.privatekey %></td>
-        <td><%= keypair.publickey %></td>
-        <td><%= link_to 'Show', keypair %></td>
-        <td><%= link_to 'Edit', edit_keypair_path(keypair) %></td>
-        <td><%= link_to 'Destroy', keypair, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= truncate(keypair.privatekey, length: 60) %></td>
+        <td><%= truncate(keypair.publickey, length: 60) %></td>
+        <td>
+          <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, keypair, class:"btn btn-default" %>
+          <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_keypair_path(keypair), class:"btn btn-default" %>
+          <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, keypair, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
-
-<%= link_to 'New Keypair', new_keypair_path %>
+<a class="btn btn-default" href="<%=new_keypair_path%>" role="button">
+  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+  Add Keypair
+</a>

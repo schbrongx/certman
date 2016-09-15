@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
 
-  resources :keypairs
-  resources :keystores
-  resources :certificates
-  resources :csrs
-  resources :csrtemplates
-  resources :certificatetypes
   root 'index#index'
+
+  resources :certificatetypes
+  resources :csrtemplates
+  resources :keypairs do
+    collection do 
+      get 'autogenerate'
+    end
+  end
+  resources :csrs
+  resources :certificates
+  resources :keystores
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,19 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Name:</strong><br>
   <%= @keypair.name %>
 </p>
 
 <p>
-  <strong>Privatekey:</strong>
-  <%= @keypair.privatekey %>
+  <strong>Privatekey:</strong><br>
+  <%= simple_format @keypair.privatekey.html_safe %>
 </p>
 
 <p>
-  <strong>Publickey:</strong>
-  <%= @keypair.publickey %>
+  <strong>Publickey:</strong><br>
+  <%= simple_format @keypair.publickey.html_safe %>
 </p>
 
-<%= link_to 'Edit', edit_keypair_path(@keypair) %> |
-<%= link_to 'Back', keypairs_path %>
+<%= link_to 'Edit', edit_keypair_path(@keypair), class:"btn btn-default" %>
+<%= link_to 'Back', keypairs_path, class:"btn btn-default" %>

@@ -11,19 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :privatekey %><br>
-    <%= f.text_area :privatekey %>
-  </div>
-  <div class="field">
-    <%= f.label :publickey %><br>
-    <%= f.text_area :publickey %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-horizontal">
+    <div class="form-group">
+      <%= f.label :name, class:"col-sm-2 control-label" %><br>
+      <div class="col-sm-8">
+        <%= f.text_field :name, class:"form-control", id: "name" %>
+      </div>
+    </div>
+
+	<%# AJAX call for generating a new keypair %>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-8">
+	    <%= link_to 'Generate Keypair', autogenerate_keypairs_path, class:"btn btn-success", remote:true, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :privatekey, class:"col-sm-2 control-label" %><br>
+      <div class="col-sm-8">
+        <%= f.text_area :privatekey, class:"form-control", rows:"10", id: "content_private" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :publickey, class:"col-sm-2 control-label" %><br>
+      <div class="col-sm-8">
+        <%= f.text_area :publickey, class:"form-control", rows:"10", id: "content_public" %>
+      </div>
+    </div>
+
+    <div class="col-sm-offset-2 col-sm-8">
+      <div class="actions">
+        <%= f.button :submit, name: "commit", value: "commit", class:"btn btn-success" do %>
+          <span class="glyphicon glyphicon-ok"></span> Submit
+        <% end %>
+        <%= link_to '<span class="glyphicon glyphicon-remove"></span> Cancel'.html_safe, keypairs_path, class:"btn btn-default" %>
+      </div>
+    </div>
+
   </div>
 <% end %>
