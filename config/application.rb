@@ -24,3 +24,6 @@ module Keys
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
+
+# Require OpenSSL library since we are working with this A LOT!
+require 'openssl'
