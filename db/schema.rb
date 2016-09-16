@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914084826) do
+ActiveRecord::Schema.define(version: 20160916080451) do
 
   create_table "certificates", force: :cascade do |t|
     t.string   "name"
@@ -71,5 +71,13 @@ ActiveRecord::Schema.define(version: 20160914084826) do
   add_index "keystores", ["certificate_id"], name: "index_keystores_on_certificate_id"
   add_index "keystores", ["csr_id"], name: "index_keystores_on_csr_id"
   add_index "keystores", ["keypair_id"], name: "index_keystores_on_keypair_id"
+
+  create_table "settings", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "value"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
 end

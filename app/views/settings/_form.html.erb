@@ -1,0 +1,47 @@
+<%= form_for(@setting) do |f| %>
+  <% if @setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
+
+      <ul>
+      <% @setting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-horizontal">
+    <div class="form-group">
+      <%= f.label :name, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :name, class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_area :description, rows: 4, class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :value, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :value, class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="col-sm-offset-2 col-sm-8">
+      <div class="actions">
+        <%= f.button :submit, name: "commit", value: "commit", class:"btn btn-success" do %>
+          <span class="glyphicon glyphicon-ok"></span> Submit
+        <% end %>
+        <%= link_to '<span class="glyphicon glyphicon-remove"></span> Cancel'.html_safe, settings_path, class:"btn btn-default" %>
+      </div>
+    </div>
+
+  </div>
+  
+  <% end %>
