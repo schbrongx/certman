@@ -10,9 +10,7 @@
   <%= simple_format @csr.content.html_safe %>
 </p>
 
-<p>
-  <strong>Information:</strong><br />
-  <%= (OpenSSL::X509::Request.new @csr.content).subject.to_a.join(", ")  %>
-</p>
 <%= link_to 'Edit', edit_csr_path(@csr), class:"btn btn-default" %> 
 <%= link_to 'Back', csrs_path, class:"btn btn-default" %>
+
+
