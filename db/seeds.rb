@@ -85,8 +85,8 @@ Csrtemplate.create(name:"-none-",description:"-empty template-",cn:"",ou:"",o:""
 Csrtemplate.create(name:"Example CSR Template",description:"A dummy template",cn:"www.example.com",ou:"IT",o:"Example Corporation",l:"St. Gallen",s:"SG",c:"CH",email:"admin@example.com")
 
 # CSRs
-Csr.create(name: '-none-', content: '-none-')
-Csr.create(name: 'Example.com CSR', content: '-----BEGIN CERTIFICATE REQUEST-----
+Csr.create(name: '-none-', keypair_id: 1, csrtemplate_id: 1, content: '-none-',cn:'-none-',ou:"",o:"",l:"",s:"",c:"",email:"")
+Csr.create(name: 'Example.com CSR', keypair_id: 2, csrtemplate_id: 2, content: '-----BEGIN CERTIFICATE REQUEST-----
 MIIEuDCCAqACADB0MQswCQYDVQQGEwJDSDEYMBYGA1UEAxMPd3d3LmV4YW1wbGUu
 Y29tMRMwEQYDVQQHEwpTdC4gR2FsbGVuMRwwGgYDVQQKExNFeGFtcGxlIENvcnBv
 cmF0aW9uMQswCQYDVQQIEwJTRzELMAkGA1UECxMCSVQwggIiMA0GCSqGSIb3DQEB
@@ -113,7 +113,7 @@ AJffZZ6P+Jp/ljiHzjIEYEsnWuynOZvdistX7TekWAZRJM8qMWYeptavwyY22MVq
 7IJwJpf0YndOZBnyyKaTDhwvkmU7Tp5PdklG7wI2cb3wXaNn85UpKl7G/Ey1Ra/K
 X1gp9qEDb9MwO8VLQngYTkCAhmnsBZKGahQVYZWGkrVY0cs7MbkiU8U7odXMnTu8
 eWxBXNv3Szc5xGhy
------END CERTIFICATE REQUEST-----')
+-----END CERTIFICATE REQUEST-----',cn:"www.example.com",ou:"IT",o:"Example Corporation",l:"St. Gallen",s:"SG",c:"CH",email:"admin@example.com")
 
 # Certificates
 Certificate.create(name: '-none-', certificatetype_id: 3, content: '-none-')

@@ -32,9 +32,21 @@ ActiveRecord::Schema.define(version: 20160916080451) do
   create_table "csrs", force: :cascade do |t|
     t.string   "name"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "cn"
+    t.string   "ou"
+    t.string   "o"
+    t.string   "l"
+    t.string   "s"
+    t.string   "c"
+    t.string   "email"
+    t.integer  "keypair_id"
+    t.integer  "csrtemplate_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
+
+  add_index "csrs", ["csrtemplate_id"], name: "index_csrs_on_csrtemplate_id"
+  add_index "csrs", ["keypair_id"], name: "index_csrs_on_keypair_id"
 
   create_table "csrtemplates", force: :cascade do |t|
     t.string   "name"

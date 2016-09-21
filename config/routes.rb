@@ -9,7 +9,11 @@ Rails.application.routes.draw do
       get 'autogenerate'
     end
   end
-  resources :csrs
+  resources :csrs do
+    collection do
+      post 'autogenerate'
+    end
+  end
   resources :certificates
   resources :keystores
   resources :settings, :except => :show

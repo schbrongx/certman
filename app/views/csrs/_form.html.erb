@@ -1,6 +1,6 @@
-<%= form_for(@csr) do |f| %>
   <% if @csr.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger alert-dismissible">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <h2><%= pluralize(@csr.errors.count, "error") %> prohibited this csr from being saved:</h2>
 
       <ul>
@@ -11,17 +11,91 @@
     </div>
   <% end %>
 
+<%= form_for(@csr) do |f| %>
+
   <div class="form-horizontal">
     <div class="form-group">
       <%= f.label :name, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-        <%= f.text_field :name, class:"form-control" %>
+        <%= f.text_field :name, class:"form-control", id:"name" %>
       </div>
     </div>
+
+    <div class="form-group">
+    <%= f.label :keypair_id, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+           <%= f.select "keypair_id", options_from_collection_for_select(@keypairs, "id", "name", f.object.keypair_id), class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+    <%= f.label :csrtemplate_id, class:"col-sm-2 control-label" %>
+      <div class="col-sm-8">
+           <%= f.select "csrtemplate_id", options_from_collection_for_select(@csrtemplates, "id", "name", f.object.csrtemplate_id), class:"form-control" %>
+		   <%# TODO autofill form from csr template with ajax-call %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Common Name (CN)</label>
+      <div class="col-sm-8">
+		<%= f.text_field :cn, class:"form-control", id:"cn", placeholder:"www.example.com" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Organization (O)</label>
+      <div class="col-sm-8">
+		<%= f.text_field :o, class:"form-control", id:"o", placeholder:"Example Corporation" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Organizational Unit (OU)</label>
+      <div class="col-sm-8">
+		<%= f.text_field :ou, class:"form-control", id:"ou", placeholder:"IT" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">City (L)</label>
+      <div class="col-sm-8">
+		<%= f.text_field :l, class:"form-control", id:"l", placeholder:"St Gallen" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">State (S)</label>
+      <div class="col-sm-8">
+		<%= f.text_field :s, class:"form-control", id:"s", placeholder:"SG" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Country (C)</label>
+      <div class="col-sm-8">
+		<%= f.text_field :c, class:"form-control", id:"c", placeholder:"CH" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Email</label>
+      <div class="col-sm-8">
+		<%= f.text_field :email, class:"form-control", id:"email", placeholder:"admin@example.com" %>
+      </div>
+    </div>
+
+	<%# AJAX call for generating a new CSR %>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-8">
+	    <%= link_to 'Generate CSR', autogenerate_csrs_path, class:"btn btn-warning btn-xs btn-block", remote:true, method:"POST", data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+
     <div class="form-group">
       <%= f.label :content, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-        <%= f.text_area :content, class:"form-control", rows:"10" %>
+        <%= f.text_area :content, class:"form-control", rows:"10", id:"content" %>
       </div>
     </div>
 
@@ -33,5 +107,7 @@
         <%= link_to '<span class="glyphicon glyphicon-remove"></span> Cancel'.html_safe, csrs_path, class:"btn btn-default" %>
       </div>
     </div>
+
   </div>
 <% end %>
+
