@@ -1,5 +1,6 @@
 class CsrsController < ApplicationController
   before_action :set_csr, only: [:show, :edit, :update, :destroy]
+  before_action :set_csrtemplate, only: [:templatefiller]
 
   # GET /csrs
   # GET /csrs.json
@@ -19,8 +20,13 @@ class CsrsController < ApplicationController
     @csrtemplates = Csrtemplate.all
   end
 
-  # GET /csrs/autogenerate
+  # POST /csrs/autogenerate
   def autogenerate
+    @keypairs = Keypair.all
+  end
+
+  # POST /csrs/templatefiller
+  def templatefiller
     @keypairs = Keypair.all
   end
   
@@ -77,9 +83,16 @@ class CsrsController < ApplicationController
     def set_csr
       @csr = Csr.find(params[:id])
     end
+    
+    # ajax call for templatefiller posts csr template id, try to find corresponding template
+    #TODO error handling for empty id
+    def set_csrtemplate
+      @csrtemplate = Csrtemplate.find(params[:id])
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def csr_params
       params.require(:csr).permit(:name, :content, :keypair_id, :csrtemplate_id, :cn, :ou, :o, :l, :s, :c, :email)
     end
+    
 end

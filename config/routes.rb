@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :csrs do
     collection do
       post 'autogenerate'
+      post 'templatefiller'
     end
   end
   resources :certificates

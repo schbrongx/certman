@@ -11,7 +11,9 @@
     </div>
   <% end %>
 
-<%= form_for(@csr) do |f| %>
+  
+  
+  <%= form_for(@csr) do |f| %>
 
   <div class="form-horizontal">
     <div class="form-group">
@@ -24,15 +26,39 @@
     <div class="form-group">
     <%= f.label :keypair_id, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-           <%= f.select "keypair_id", options_from_collection_for_select(@keypairs, "id", "name", f.object.keypair_id), class:"form-control" %>
+           <%= f.select "keypair_id", options_from_collection_for_select(@keypairs, "id", "name", f.object.keypair_id), class:"form-control", include_blank: true %>
       </div>
     </div>
 
     <div class="form-group">
     <%= f.label :csrtemplate_id, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-           <%= f.select "csrtemplate_id", options_from_collection_for_select(@csrtemplates, "id", "name", f.object.csrtemplate_id), class:"form-control" %>
-		   <%# TODO autofill form from csr template with ajax-call %>
+           <%= f.select "csrtemplate_id",
+		         options_from_collection_for_select(@csrtemplates, "id", "name", f.object.csrtemplate_id),
+				 class:"form-control",
+				 include_blank: true %>
+		   <%= link_to "Fill CSR with template values",
+		       templatefiller_csrs_path,
+			   method: :post,
+			   remote:true,
+			   id:"templatefiller",
+			   class:"btn btn-warning btn-xs" %>
+
+<%#catch onclick event for above link and submit selected template id to templatefiller.js.erb via AJAX %>
+<script>
+ $("#templatefiller").on("click", function(event) {
+	event.preventDefault();
+	event.stopPropagation();
+    console.log("templatefiller clicked");
+	$.ajax({
+      url: '/csrs/templatefiller',
+      dataType: 'script',
+      data:'id='+jQuery("#csr_csrtemplate_id").val(),
+      type:'post',
+    })
+  });
+</script>
+
       </div>
     </div>
 
