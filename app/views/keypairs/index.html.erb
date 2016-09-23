@@ -5,6 +5,7 @@
 <table class="table">
   <thead>
     <tr>
+	  <th>Id</th>
       <th>Name</th>
       <th>Privatekey</th>
       <th>Publickey</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @keypairs.each do |keypair| %>
       <tr>
+	    <td><%= keypair.id %></td>
         <td><%= keypair.name %></td>
         <td><%= truncate(keypair.privatekey, length: 60) %></td>
         <td><%= truncate(keypair.publickey, length: 60) %></td>
