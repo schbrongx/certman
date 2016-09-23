@@ -25,10 +25,6 @@ gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 gem 'autoprefixer-rails'
 
-# Use prototype for advanced forms with AJAX
-gem 'prototype-rails'
-
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
