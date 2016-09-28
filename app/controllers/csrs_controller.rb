@@ -1,6 +1,7 @@
 class CsrsController < ApplicationController
   before_action :set_csr, only: [:show, :edit, :update, :destroy]
   before_action :set_csrtemplate, only: [:templatefiller]
+#  before_action :set_keypair, only: [:autogenerate]
 
   # GET /csrs
   # GET /csrs.json
@@ -22,7 +23,13 @@ class CsrsController < ApplicationController
 
   # POST /csrs/autogenerate
   def autogenerate
-    @keypairs = Keypair.all
+    respond_to do |format|
+      if set_keypair
+        format.js 
+      else
+        format.js
+      end
+    end
   end
 
   # POST /csrs/templatefiller
@@ -84,15 +91,21 @@ class CsrsController < ApplicationController
       @csr = Csr.find(params[:id])
     end
     
-    # ajax call for templatefiller posts csr template id, try to find corresponding template
-    #TODO error handling for empty id
+    # AJAX call for templatefiller posts csr template id, try to find corresponding template
+    #TODO error handling for empty csrtemplate_id
     def set_csrtemplate
-      @csrtemplate = Csrtemplate.find(params[:id])
+      @csrtemplate = Csrtemplate.find(params[:csrtemplate_id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def csr_params
-      params.require(:csr).permit(:name, :content, :keypair_id, :csrtemplate_id, :cn, :ou, :o, :l, :s, :c, :email)
+    # AJAX call for autogenerate will post "keypair_id", try to find corresponding keypair
+    #TODO error handling for empty keypair_id
+    def set_keypair
+      params.require(:keypair_id)
+      @keypair = Keypair.find(params[:keypair_id])
     end
     
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def csr_params
+      params.require(:csr).permit(:name, :content, :keypair_id, :csrtemplate_id, :cn, :o, :ou, :l, :s, :c, :email)
+    end
 end

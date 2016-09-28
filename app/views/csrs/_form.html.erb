@@ -15,7 +15,7 @@
   
   <%= form_for(@csr) do |f| %>
 
-  <div class="form-horizontal">
+  <div class="form-horizontal" id="form0">
     <div class="form-group">
       <%= f.label :name, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
@@ -29,7 +29,7 @@
            <%= f.select "keypair_id", options_from_collection_for_select(@keypairs, "id", "name", f.object.keypair_id), class:"form-control", include_blank: true %>
       </div>
     </div>
-
+    
     <div class="form-group">
     <%= f.label :csrtemplate_id, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
@@ -41,24 +41,23 @@
 		       templatefiller_csrs_path,
 			   method: :post,
 			   remote:true,
-			   id:"templatefiller",
-			   class:"btn btn-warning btn-xs" %>
-
-<%#catch onclick event for above link and submit selected template id to templatefiller.js.erb via AJAX %>
-<script>
- $("#templatefiller").on("click", function(event) {
-	event.preventDefault();
-	event.stopPropagation();
-    console.log("templatefiller clicked");
-	$.ajax({
-      url: '/csrs/templatefiller',
-      dataType: 'script',
-      data:'id='+jQuery("#csr_csrtemplate_id").val(),
-      type:'post',
-    })
-  });
-</script>
-
+			   id:"templatefiller_button",
+			   class:"btn btn-warning btn-xs"
+		   %>
+               <%#catch onclick event for above link and submit selected template id to templatefiller.js.erb via AJAX %>
+               <script>
+                $("#templatefiller_button").on("click", function(event) {
+               	event.preventDefault();
+               	event.stopPropagation();
+                   console.log("templatefiller_button clicked");
+               	$.ajax({
+                     url: '/csrs/templatefiller',
+                     dataType: 'script',
+                     data:'csrtemplate_id='+jQuery("#csr_csrtemplate_id").val(),
+                     type:'post',
+                   })
+                 });
+               </script>
       </div>
     </div>
 
@@ -114,7 +113,42 @@
 	<%# AJAX call for generating a new CSR %>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-8">
-	    <%= link_to 'Generate CSR', autogenerate_csrs_path, class:"btn btn-warning btn-xs btn-block", remote:true, method:"POST", data: { confirm: 'Are you sure?' } %>
+	    <%= link_to 'Generate CSR',
+		    autogenerate_csrs_path,
+			method:"POST",
+			remote:true,
+			id:"autogenerate_button",
+			data: { confirm: 'Are you sure?' },
+			class:"btn btn-warning btn-xs btn-block"
+		%>
+        <%#catch onclick event for above link and submit selected template id to templatefiller.js.erb via AJAX %>
+        <script>
+         $("#autogenerate_button").on("click", function(event) {
+        	event.preventDefault();
+            event.stopPropagation();
+        	$.ajax({
+              url: '/csrs/autogenerate',
+              dataType: 'script',
+              type:'post',
+			  data: { name: jQuery("#name").val(),
+			          keypair_id: jQuery("#csr_keypair_id").val(),
+					  cn: jQuery("#cn").val(),
+					  o:jQuery("#o").val(),
+					  ou:jQuery("#ou").val(),
+					  l:jQuery("#l").val(),
+					  s:jQuery("#s").val(),
+					  c:jQuery("#c").val(),
+					  email:jQuery("#email").val(),
+			  },
+			  success: function() { 
+			             alert("Successful");
+			  },
+              error: function() {
+			             alert("Unsuccessful");
+			  }
+            })
+          });
+        </script>
       </div>
     </div>
 
