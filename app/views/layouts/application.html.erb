@@ -16,9 +16,6 @@
   <div class="row">
     <div id="main content" class="col-xs-12">
       <%= yield %>
-<% if !cookies[:allow_cookies] %>
-  <%= render 'layouts/cookiebar' %>
-<% end %>
     </div>
   </div>
 </div>
