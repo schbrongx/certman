@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :certificates
   resources :keystores
   resources :settings, :except => :show
+  devise_for :users
   
 
   # The priority is based upon order of creation: first created -> highest priority.
