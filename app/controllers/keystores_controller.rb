@@ -31,6 +31,9 @@ class KeystoresController < ApplicationController
   # POST /keystores.json
   def create
     @keystore = Keystore.new(keystore_params)
+    @keypairs = Keypair.all
+    @csrs = Csr.all
+    @certificates = Certificate.all
 
     respond_to do |format|
       if @keystore.save
