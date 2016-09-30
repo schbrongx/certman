@@ -29,6 +29,8 @@ gem 'autoprefixer-rails'
 
 # Use devise for authentication
 gem 'devise'
+# Make devise invitable
+gem 'devise_invitable'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
