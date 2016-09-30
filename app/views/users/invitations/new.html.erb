@@ -1,12 +1,23 @@
-<h2><%= t "devise.invitations.new.header" %></h2>
-
-<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
+<h1><%= t "devise.invitations.new.header" %></h1>
   <%= devise_error_messages! %>
 
-<% resource.class.invite_key_fields.each do |field| -%>
-  <p><%= f.label field %><br />
-  <%= f.text_field field %></p>
-<% end -%>
+<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
+<div class="form-horizontal">
 
-  <p><%= f.submit t("devise.invitations.new.submit_button") %></p>
-<% end %>
+<% resource.class.invite_key_fields.each do |field| -%>
+  <div class="form-group">
+    <%= f.label field, class:"control-label col-sm-2" %>
+    <div class="col-sm-8">
+      <%= f.text_field field, class:"form-control" %>
+    </div> <!-- col-sm8 -->
+  </div> <!-- form-group -->
+<% end #resource.class.invite_key_fields.each -%>
+
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-8">
+    <%= f.submit t("devise.invitations.new.submit_button"), class:"btn btn-default" %>
+  </div>
+</div> <!-- for-group -->
+
+</div> <!-- form-horizontal -->
+<% end # form_for resource %>
