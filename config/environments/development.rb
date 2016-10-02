@@ -16,6 +16,9 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
   
+  # setting delivery-method for gem 'letter_opener'
+  config.action_mailer.delivery_method = :letter_opener
+  
   # mailer default url goes here
   config.action_mailer.default_url_options = { host: 'certman.schbrongx.com', port: 3000 }
 
