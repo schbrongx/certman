@@ -31,6 +31,9 @@
                 <li><%= link_to 'Preferences', settings_path %> </li>
               </ul>
             </li>
+						<li>
+             <%= link_to '<span class="glyphicon glyphicon-envelope"></span> Open Letter_Opener UI'.html_safe, letter_opener_web_path, target:'_blank' %>
+						</li>
           </ul>
         <% end #user_signed_in? %>
 

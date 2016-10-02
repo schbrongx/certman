@@ -36,7 +36,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug'
   # open mails in browser instead of sending them (only in test and dev)
-  gem "letter_opener"
+  gem 'letter_opener'
+  gem 'letter_opener_web'
 end
 
 group :development do

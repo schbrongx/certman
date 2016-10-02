@@ -3,27 +3,38 @@ Rails.application.routes.draw do
   root 'index#index'
 
   resources :certificatetypes
+
   resources :csrtemplates
+  
   resources :keypairs do
     collection do 
       get 'autogenerate'
     end
   end
+
   resources :csrs do
     collection do
       post 'autogenerate'
       post 'templatefiller'
     end
   end
+
   resources :certificates
+
   resources :keystores
+
   resources :settings, :except => :show
+
   devise_for :users, :skip => [:registrations]                                          
   as :user do
     get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
     put 'users' => 'devise/registrations#update', :as => 'user_registration'            
   end
   resources :users 
+
+  unless Rails.env.production?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
