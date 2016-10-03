@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   resources :settings, :except => :show
 
   devise_for :users, :skip => [:registrations]                                          
-  as :user do
+    as :user do
     get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
     put 'users' => 'devise/registrations#update', :as => 'user_registration'            
   end
@@ -36,6 +36,8 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

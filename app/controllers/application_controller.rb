@@ -19,6 +19,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :create, keys: added_attrs
     devise_parameter_sanitizer.permit :update, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
-    devise_parameter_sanitizer.permit(:accept_invitation, keys: [:added_attrs])
+    devise_parameter_sanitizer.permit :accept_invitation, keys: added_attrs
   end
 end
