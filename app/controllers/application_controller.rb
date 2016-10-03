@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # Force users to log in
+
   before_action :authenticate_user!
   
   # add username parameter to devise

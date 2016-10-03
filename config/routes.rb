@@ -31,12 +31,11 @@ Rails.application.routes.draw do
   end
   resources :users 
 
+  # show letter_opener link in top nav in dev and test
   unless Rails.env.production?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
-  
-  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
