@@ -50,12 +50,19 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+    if @user.id == 1
+      respond_to do |format|
+        format.html { redirect_to users_url, alert: 'User with Id 1 (adminuser) cannot be deleted.' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end  #respond_to
+    else
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+        format.json { head :no_content }
+      end  #respond_to
+    end  # if
+  end  # def
 
   private
     # Use callbacks to share common setup or constraints between actions.
