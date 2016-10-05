@@ -60,10 +60,14 @@ class KeypairsController < ApplicationController
   # DELETE /keypairs/1
   # DELETE /keypairs/1.json
   def destroy
-    @keypair.destroy
     respond_to do |format|
-      format.html { redirect_to keypairs_url, notice: 'Keypair was successfully destroyed.' }
-      format.json { head :no_content }
+      if @keypair.destroy
+        format.html { redirect_to keypairs_url, notice: 'Keypair was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to keypairs_url, alert: 'Unable to delete keypair. ' + @keypair.errors[:base].to_s }
+        format.json { render json: @keypair.errors, status: :unprocessable_entity }
+      end
     end
   end
 
