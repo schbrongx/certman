@@ -23,10 +23,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :accept_invitation, keys: added_attrs
   end
 
-  def after_accept_path_for(resource)
+  def after_invite_path_for(resource)
     users_path
   end
-
-  
 
 end
