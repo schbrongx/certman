@@ -1,33 +1,28 @@
 <h1>Listing Settings</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Value</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @settings.each do |setting| %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= setting.name %></td>
-        <td><%= setting.description %></td>
-        <td><%= setting.value %></td>
-        <td>
-          <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_setting_path(setting), class:"btn btn-default" %>
-          <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, setting, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
-    	</td>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Value</th>
+        <th>Action</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<!--
-<a class="btn btn-default" href="<%=new_setting_path%>" role="button">
-  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-  Add Setting
-</a>
--->
+    </thead>
+  
+    <tbody>
+      <% @settings.each do |setting| %>
+        <tr>
+          <td><%= setting.name %></td>
+          <td><%= setting.description %></td>
+          <td><%= setting.value %></td>
+          <td>
+            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_setting_path(setting), class:"btn btn-default" %>
+            <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, setting, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+      	</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

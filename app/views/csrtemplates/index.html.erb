@@ -1,40 +1,40 @@
 <h1>Listing CSR Templates</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Data</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @csrtemplates.each do |csrtemplate| %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= csrtemplate.id%></td>
-        <td><%= csrtemplate.name %></td>
-        <td><%= csrtemplate.description %></td>
-        <td>CN=<%= csrtemplate.cn %></br>
-            OU=<%= csrtemplate.ou %></br>
-            O=<%= csrtemplate.o %></br>
-            L=<%= csrtemplate.l %></br>
-            S=<%= csrtemplate.s %></br>
-            C=<%= csrtemplate.c %></br>
-            Email=<%= csrtemplate.email %></td>
-        <td>
-          <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, csrtemplate, class:"btn btn-default" %>
-          <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_csrtemplate_path(csrtemplate), class:"btn btn-default" %>
-          <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, csrtemplate, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
-        </td>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Data</th>
+        <th>Action</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+    </thead>
+  
+    <tbody>
+      <% @csrtemplates.each do |csrtemplate| %>
+        <tr>
+          <td><%= csrtemplate.id%></td>
+          <td><%= csrtemplate.name %></td>
+          <td><%= csrtemplate.description %></td>
+          <td>CN=<%= csrtemplate.cn %></br>
+              OU=<%= csrtemplate.ou %></br>
+              O=<%= csrtemplate.o %></br>
+              L=<%= csrtemplate.l %></br>
+              S=<%= csrtemplate.s %></br>
+              C=<%= csrtemplate.c %></br>
+              Email=<%= csrtemplate.email %></td>
+          <td>
+            <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, csrtemplate, class:"btn btn-default" %>
+            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_csrtemplate_path(csrtemplate), class:"btn btn-default" %>
+            <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, csrtemplate, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <a class="btn btn-default" href="<%=new_csrtemplate_path%>" role="button">
   <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>

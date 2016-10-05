@@ -1,30 +1,30 @@
-  <% if user_signed_in? %>
-    <h1>Welcome, <%= current_user.username.capitalize %>!</h1>
-  <% else %>
-    <h1>Welcome!</h1>
-	<p>
-	  Please sign in to use this application.
-	</p>
-	  <%= link_to "Sign in", new_user_session_path, class:"btn btn-success" %>
-  <% end #if user_signed_in?%>
+<% if user_signed_in? %>
+  <h1>Welcome, <%= current_user.username.capitalize %>!</h1>
+<% else %>
+  <h1>Welcome!</h1>
+  <p>
+    Please sign in to use this application.
+  </p>
+  <%= link_to "Sign in", new_user_session_path, class:"btn btn-success" %>
+<% end #if user_signed_in?%>
 
 <hr> <!-- ----- ----- ----- ----- -----  -->
 
-	<h2>Latest news</h2>
-	<ul>
-	  <li><h3 class="text-uppercase">October 2016</h3></li>
-	  <ul>
-	    <li>
-		  10/03 - Preventing deletion of adminuser (Id=1), bootstrapped devise invitable,
-		  added letter_opener for dev and test
-		</li>
-	  </ul>
-	  <li><h3 class="text-uppercase">September 2016</h3></li>
-	  <ul>
-	    <li>
-		  Scaffolding and bootstrapping of application, added devise for authentication,
-		  added functionality to keypairs and csrs. Added devise invitable.
-		</li>
-	  </ul>
-	</ul>
+<h2>Latest news</h2>
+<ul>
+  <li><h3 class="text-uppercase">October 2016</h3></li>
+  <ul>
+    <li>
+	  10/03 - Preventing deletion of adminuser (Id=1), bootstrapped devise invitable,
+	  added letter_opener for dev and test
+	</li>
+  </ul>
+  <li><h3 class="text-uppercase">September 2016</h3></li>
+  <ul>
+    <li>
+	  Scaffolding and bootstrapping of application, added devise for authentication,
+	  added functionality to keypairs and csrs. Added devise invitable.
+	</li>
+  </ul>
+</ul>
 
