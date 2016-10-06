@@ -1,159 +1,36 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Certificatetype.create!([
+  {name: "Root CA Certificate"},
+  {name: "Intermediate CA Certificate"},
+  {name: "SSL Certificate"},
+  {name: "SSL Wildcard Certificate"}
+])
 
-# Default certificate-types
-Certificatetype.create(name: 'Root CA Certificate')
-Certificatetype.create(name: 'Intermediate CA Certificate')
-Certificatetype.create(name: 'SSL Certificate')
-Certificatetype.create(name: 'SSL Wildcard Certificate')
+Csr.create!([
+  {name: "CSR for *.example.com", content: "-----BEGIN CERTIFICATE REQUEST-----\r\nMIIE3jCCAsYCAQAwgZgxFjAUBgNVBAMMDSouZXhhbXBsZS5jb20xFjAUBgNVBAoM\r\nDUV4YW1wbGUgQ29ycC4xFjAUBgNVBAsMDUlUIERlcGFydG1lbnQxEjAQBgNVBAcT\r\nCVN0IEdhbGxlbjELMAkGA1UECBMCU0cxCzAJBgNVBAYTAkNIMSAwHgYJKoZIhvcN\r\nAQkBDBFhZG1pbkBleGFtcGxlLmNvbTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCC\r\nAgoCggIBAMKk9ZCnGhD62+dXOpWMXsdfz3oWw5REuFkuPFO0XOgo73qjV99meoA7\r\nTMGq/Aos7174hqWCCjNLsMlhKJy9e6hfRFbAL5E/WgZS5FGHKMhPVJwqH67FNPyL\r\nxKFno0dzhuYRXYc/G7aKemz46+25O6Lq8f61Zf9g8XULe6Yl6XtjPBwZtHS3Tl/2\r\nK8VFBKfoGfW5Q1bOTylBslb4XjaLKoo/4UZuDNUU2lvVb5cTn2chgVRo8jWhDLNL\r\n+MgzBspyVTvPujCh6prUUEK3J+pb/BMKZnN9JLfGC37csYS2euu0mVvj4t6fjBeX\r\nM2cdoDlpr0X+FVw8ZXSzIboc9TB6UtiF3cI8OoAlwiouOlsUb8t1OeNKe7wPFzDO\r\n6AMAD5TGPqgiBtXg5YtgkmBPkdZCfES3WK1mq1ia+q5KWHTGEAIeo1S0RnVbuGpz\r\nYqCGC9uOCYOJ7kvoUTQxFmnQxf6dokcXcvsHaUEBuIAkzUHVK8UdbgIhixq225nX\r\ntSy80c1WlK2tbvCfJGSwM6hvqMDHeGVgZEcSciCLtlD5fY5e3zx5yPpCkgNaEebm\r\n8C+1mmglUmrsTEuZ9CgV0N+E/cV/9gnniRRvu3K1VnlYc+uEbZbWg1Z1/8xvOduF\r\nHOIePnaKFnePzM5Mi50l9PyW+IDD2PGTpNn7a8nStufmyG8m9XAnAgMBAAGgADAN\r\nBgkqhkiG9w0BAQUFAAOCAgEAvX/dl8uednnFITxf7J539Ax0amqzrf2yMvdXBqW5\r\nkq0496Db9VGgUobuoDsHAo/XZdWV9XMghSp0uysAeGb0+HQkFYVN4CO9JUBImcrv\r\nz3U8fIfHovHzEbvMi3KM5tmqhSAMfprSWbNbMcSg43R1PuTX4FxrhB+MQVm/Hhb9\r\naJ5t1F/APK3kkiJLr2DMcXBHcMHHkJxH3dk24vqTYn7z1Q/8vll5c9Faf69aWKGL\r\nWGtRhb3Hus7+Odf5Xox8bqVqDwcFkduSVL+QimQofRr7K379ZAqxsQjxc+pzixTM\r\nYPp/hm2XWefF/qgEk25f8SFqjkWUOWvwc5U78yFQKXigoX9RBAsg8TrhqXmALpOH\r\nCqXrgLVxb5D446ueYqggxME7kP07pAz5y0PrpsdyeKyaJR53VoEM2zavh2E9b6HR\r\nckYAXoMFf/TkDmrtDP3nsZnBi9yJn/o6a/AEEPTnkrknkzt4P8tpH4c9ydD0JBK0\r\nvLKn2dS8A0fMKbzc3mnWwc1j+D4w1uZByKszef7ov5llel2EdG597wl641DyXYqp\r\nb8ip4Cbc/cDHmKjDg6fK0kiiilWrML+XsurLE/EV3R1l7sRxLrN1L9eHVuPR00cs\r\nk2+97wyG8rfjGDeEpYcCMfbd0FJBrDc60KXz0sskemSdYaOuFBtvyEWb/DWe19t2\r\nKzw=\r\n-----END CERTIFICATE REQUEST-----\r\n", cn: "*.example.com", ou: "IT Department", o: "Example Corp.", l: "St Gallen", s: "SG", c: "CH", email: "admin@example.com", keypair_id: 1, csrtemplate_id: 1},
+  {name: "CSR for www.example.com", content: "-----BEGIN CERTIFICATE REQUEST-----\r\nMIIE4DCCAsgCAQAwgZoxGDAWBgNVBAMMD3d3dy5leGFtcGxlLmNvbTEWMBQGA1UE\r\nCgwNRXhhbXBsZSBDb3JwLjEWMBQGA1UECwwNSVQgRGVwYXJ0bWVudDESMBAGA1UE\r\nBxMJU3QgR2FsbGVuMQswCQYDVQQIEwJTRzELMAkGA1UEBhMCQ0gxIDAeBgkqhkiG\r\n9w0BCQEMEWFkbWluQGV4YW1wbGUuY29tMIICIjANBgkqhkiG9w0BAQEFAAOCAg8A\r\nMIICCgKCAgEArjZ9rn0RBwa4rjb7vSjeubuVPPqt+Mct6zGzpIGkX0X1KOdnuc3x\r\nAnnxyGP90h24el4wwbIo/rfrjJCkwFymmWEEumJT7uJdyhCtD2hGTJdhxhDqQ0tG\r\n5ckzw3JldMBih0q93Lj5euZUXRMxE1BdQzNcoE+8yN8OrW4zrmGq3GD2WGEFUGzT\r\n5VQW7qy6EmZuTxhVR1lnYoRp0U7WvmOjJeEABnnFtN1mdov2f8K5HobtfMWRLoKC\r\nionf1ZUGNa8OWl/6+lhxbZKuHJXtVeuKkN2DRwTkn2zhRaBMCaEmz+T5z6UEWRlw\r\ndTwXNvLgelifmEbeiso7GBrxVoJZkmndiejcRGC4LWoWE2AAPC3zTCtW8uYUrU8V\r\nkzgz1ffCraxKBpBIR7653SnBvcx3OJqClcToUqrX+duIGbQNzcfsTSQUcFGrXGTk\r\nuGzUqvifBaY0OmxgTEZVrGYDNGAe9io5tehindYr5nhKfJ7ZZOK9OS1TqAmbcbjI\r\nDP84rY9CFjSem8tq2Q7L5NvWDYcy8xvadG3oFADZItEc4idsETL+H7NYcfzicXX4\r\nhU8evl2uOEXY2yD9Flnq4BFAo36l/xoKi6z9+3cOoW1OK/lbb5ISWmuyfwkoneVg\r\n7NZCrIDZ7UFYeDQfjHWJDfNhi91S1ynUGD/aw+tejEme98kJsdiFrg8CAwEAAaAA\r\nMA0GCSqGSIb3DQEBBQUAA4ICAQB4rtFm6k2QYAQd7vGvY8xlKHaDmgjHJ8eB3p7D\r\nOvUmvwzLmcIGWUqqEN4qgbFCKXYD/DkW64a46Kpbd3LSTKReNqSNxezaHGSpyuJy\r\ngQiiUoCBj0F9nWTC21UNzQb13PD4ZC+Z6UP5b4STYfNdt4higSAf1e1Yme9IsI62\r\nOKNBbFRjNrtjsysZeIVaOcoG/jXrpTnT2KAU9ZMLp6n6PXOTyXOfH9so6QWO0qVc\r\nL8qodFoCDUw2SPjANP/yhdkJSUFzthdqAqtcWj54tDs5NZZfxf08m3iQ7Jgm4k9P\r\nawTnS9u12P6xXBJ86dq2djlkRGh5kqh2r1ycRIys0WKcP4faEu0ana1K2DxvIoGc\r\nPVbi4b6gfK8CQvKn1+YTmxSTquaWi0qx70ig4gaCdE2AjS6Ogl1XRR7oiQ7PSVFp\r\nbkZaZgFtD7HJ3KnvPcowWBsmsL8ttben31K8gjJnNru20gLGssxQQaLwuXdThLQy\r\naT38T1gluvQMbACSgpPl+JFtx5r234L7O50Xm7sCzfcHOlCxMXkkRNrVNNiR7bSR\r\nDoZzwBOLlBQRjxaYCRdYbE5Lpgr3mIGZdhuqA8rdcGfa0xszf33ODcBCPkb8WnUq\r\n3C8Y0Ct1yiBUJmDdspj3DbPmna/ue6NfbWLiKjXkBmOLI+dEIcRI9PvkoppZqqOe\r\nPPX3Ng==\r\n-----END CERTIFICATE REQUEST-----\r\n", cn: "www.example.com", ou: "IT Department", o: "Example Corp.", l: "St Gallen", s: "SG", c: "CH", email: "admin@example.com", keypair_id: 2, csrtemplate_id: 1}
+])
 
-# Keypairs
-Keypair.create(name: 'www.example.com key (4096)', publickey:'-----BEGIN PUBLIC KEY-----
-MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAsW0RW/Y/C1NugD8e9K4E
-qwPnF3P3mb9zMrOF2U7SOdzFma5Zcg8fTx2j5nh3TFphY5/cj4vYWndd2FTBP1Sh
-StGFyOJNFaJ4OfXNrzmW4HPJXzpxOwk8dNLuOQ2GWrqb4bcHT8dN+/vfO/2GK/DJ
-yrCve0ZCVEZwSUBmnnSOUb5aqb3Tlu3kdn2yDQbN4d5UkfsKC4DVzQD7N6rXpLZl
-Q9z/Z33voI5fP+yqXixmhfh7W1r4QDlp5iATuBEwYnjaPpnrMMs/O/UTbkzJh9qr
-yE6wqn0/iJm+YOJQ8mYGQi/YQzcPrgVseLUivqWKOLZB6ogOWIlY81/Y+N/dF7pK
-1kcSdMxdD4r6j5iaVHwnTces0xBb0h9OvlNuAT5v0EAqI4dUebB3iU4UqKqJxbHI
-W72r7yKjDZqO56DE654p8Ca2QZeWVI+X/gvYrIpIQzxkQErb8qiNJJfGat9Ckc3C
-NKQhGOrFjxXwSkjBAb6Ns7dCLXQdZvY0Bz1StAQUURHI2M2BpXBt78JmAvxVWuJa
-m6UkaPyQuaR3LBdAcr+LltgOVhsVl0G8VpFSOS8dfojGpLMwgMJqnfo8S9sQE3JD
-/d0b5PlMmmJx1X94Fw1/gczGZAMGAwD8LrNjc8ihNn/jd2cDFJJMUVJAnUiuixQb
-MRMq+02cQHBgZMtfOzjpUN8CAwEAAQ==
------END PUBLIC KEY-----', privatekey:'-----BEGIN PRIVATE KEY-----
-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
-4kzVRo6OoTu7hBO7XNf//hZXyBTv
------END PRIVATE KEY-----')
+Csrtemplate.create!([
+  {name: "CSR Template for example.com", description: "Replace <SUBDOMAIN> with a custom value, i.e.: www.example.com", cn: "<SUBDOMAIN>.example.com", ou: "IT Department", o: "Example Corp.", l: "St Gallen", s: "SG", c: "CH", email: "admin@example.com"}
+])
 
-# CSR templates
-Csrtemplate.create(name:"Example CSR Template",description:"A dummy template",cn:"www.example.com",ou:"IT",o:"Example Corporation",l:"St Gallen",s:"SG",c:"CH",email:"admin@example.com")
+Keypair.create!([
+  {name: "Keypair for *.example.com", privatekey: "-----BEGIN RSA PRIVATE KEY-----\r\n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\r\n-----END RSA PRIVATE KEY-----\r\n", publickey: "-----BEGIN PUBLIC KEY-----\r\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAwqT1kKcaEPrb51c6lYxe\r\nx1/PehbDlES4WS48U7Rc6CjveqNX32Z6gDtMwar8CizvXviGpYIKM0uwyWEonL17\r\nqF9EVsAvkT9aBlLkUYcoyE9UnCofrsU0/IvEoWejR3OG5hFdhz8btop6bPjr7bk7\r\nourx/rVl/2DxdQt7piXpe2M8HBm0dLdOX/YrxUUEp+gZ9blDVs5PKUGyVvheNosq\r\nij/hRm4M1RTaW9VvlxOfZyGBVGjyNaEMs0v4yDMGynJVO8+6MKHqmtRQQrcn6lv8\r\nEwpmc30kt8YLftyxhLZ667SZW+Pi3p+MF5czZx2gOWmvRf4VXDxldLMhuhz1MHpS\r\n2IXdwjw6gCXCKi46WxRvy3U540p7vA8XMM7oAwAPlMY+qCIG1eDli2CSYE+R1kJ8\r\nRLdYrWarWJr6rkpYdMYQAh6jVLRGdVu4anNioIYL244Jg4nuS+hRNDEWadDF/p2i\r\nRxdy+wdpQQG4gCTNQdUrxR1uAiGLGrbbmde1LLzRzVaUra1u8J8kZLAzqG+owMd4\r\nZWBkRxJyIIu2UPl9jl7fPHnI+kKSA1oR5ubwL7WaaCVSauxMS5n0KBXQ34T9xX/2\r\nCeeJFG+7crVWeVhz64RtltaDVnX/zG8524Uc4h4+dooWd4/MzkyLnSX0/Jb4gMPY\r\n8ZOk2ftrydK25+bIbyb1cCcCAwEAAQ==\r\n-----END PUBLIC KEY-----\r\n"},
+  {name: "Keypair for www.example.com", privatekey: "-----BEGIN RSA PRIVATE KEY-----\r\n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\r\n-----END RSA PRIVATE KEY-----\r\n", publickey: "-----BEGIN PUBLIC KEY-----\r\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEArjZ9rn0RBwa4rjb7vSje\r\nubuVPPqt+Mct6zGzpIGkX0X1KOdnuc3xAnnxyGP90h24el4wwbIo/rfrjJCkwFym\r\nmWEEumJT7uJdyhCtD2hGTJdhxhDqQ0tG5ckzw3JldMBih0q93Lj5euZUXRMxE1Bd\r\nQzNcoE+8yN8OrW4zrmGq3GD2WGEFUGzT5VQW7qy6EmZuTxhVR1lnYoRp0U7WvmOj\r\nJeEABnnFtN1mdov2f8K5HobtfMWRLoKCionf1ZUGNa8OWl/6+lhxbZKuHJXtVeuK\r\nkN2DRwTkn2zhRaBMCaEmz+T5z6UEWRlwdTwXNvLgelifmEbeiso7GBrxVoJZkmnd\r\niejcRGC4LWoWE2AAPC3zTCtW8uYUrU8Vkzgz1ffCraxKBpBIR7653SnBvcx3OJqC\r\nlcToUqrX+duIGbQNzcfsTSQUcFGrXGTkuGzUqvifBaY0OmxgTEZVrGYDNGAe9io5\r\ntehindYr5nhKfJ7ZZOK9OS1TqAmbcbjIDP84rY9CFjSem8tq2Q7L5NvWDYcy8xva\r\ndG3oFADZItEc4idsETL+H7NYcfzicXX4hU8evl2uOEXY2yD9Flnq4BFAo36l/xoK\r\ni6z9+3cOoW1OK/lbb5ISWmuyfwkoneVg7NZCrIDZ7UFYeDQfjHWJDfNhi91S1ynU\r\nGD/aw+tejEme98kJsdiFrg8CAwEAAQ==\r\n-----END PUBLIC KEY-----\r\n"}
+])
 
-# CSRs
-Csr.create(name: 'www.example.com CSR', keypair_id: 1, csrtemplate_id: 1, content: '-----BEGIN CERTIFICATE REQUEST-----
-MIIEuDCCAqACADB0MQswCQYDVQQGEwJDSDEYMBYGA1UEAxMPd3d3LmV4YW1wbGUu
-Y29tMRMwEQYDVQQHEwpTdC4gR2FsbGVuMRwwGgYDVQQKExNFeGFtcGxlIENvcnBv
-cmF0aW9uMQswCQYDVQQIEwJTRzELMAkGA1UECxMCSVQwggIiMA0GCSqGSIb3DQEB
-AQUAA4ICDwAwggIKAoICAQCxbRFb9j8LU26APx70rgSrA+cXc/eZv3Mys4XZTtI5
-3MWZrllyDx9PHaPmeHdMWmFjn9yPi9had13YVME/VKFK0YXI4k0Vong59c2vOZbg
-c8lfOnE7CTx00u45DYZaupvhtwdPx037+987/YYr8MnKsK97RkJURnBJQGaedI5R
-vlqpvdOW7eR2fbINBs3h3lSR+woLgNXNAPs3qtektmVD3P9nfe+gjl8/7KpeLGaF
-+HtbWvhAOWnmIBO4ETBieNo+meswyz879RNuTMmH2qvITrCqfT+Imb5g4lDyZgZC
-L9hDNw+uBWx4tSK+pYo4tkHqiA5YiVjzX9j4390XukrWRxJ0zF0PivqPmJpUfCdN
-x6zTEFvSH06+U24BPm/QQCojh1R5sHeJThSoqonFschbvavvIqMNmo7noMTrninw
-JrZBl5ZUj5f+C9isikhDPGRAStvyqI0kl8Zq30KRzcI0pCEY6sWPFfBKSMEBvo2z
-t0ItdB1m9jQHPVK0BBRREcjYzYGlcG3vwmYC/FVa4lqbpSRo/JC5pHcsF0Byv4uW
-2A5WGxWXQbxWkVI5Lx1+iMakszCAwmqd+jxL2xATckP93Rvk+UyaYnHVf3gXDX+B
-zMZkAwYDAPwus2NzyKE2f+N3ZwMUkkxRUkCdSK6LFBsxEyr7TZxAcGBky187OOlQ
-3wIDAQABoAAwDQYJKoZIhvcNAQELBQADggIBAHgJC9uV1TFV6x3JDqUiz5Utw7Mg
-FkQaDPAXFlLoKd7qoJtToq9PZ/bhmKZ8DXj5FHED3napI5W/kOvrpOU/LLrCPIr5
-fx7C9S2Wj/uASwVGggLF8oWyzsohxVg7Ercg8yKOk07hRoj0dHRpeePS7M86psSz
-bbMD/H/gL/UiaEirI6y+waNKelR4XLFacY4KXYHcNrBvbKvhP9mbjy7IQdzb5/pI
-EiTobXMAjtOqacMrMEVChtgsyb57Uaueypv+lZJNziTiNl5ly6uMc+n5wU4pE7pv
-82aNtfFnNaK/OXQ+YR5an48Ow/sfBIgV9fyaPKe4TKs3BCUh3YJkAoGxArRpF6lY
-rRKJW5q4VcUPYGVl/7ztj4z/GNj74Kj6XcxQKPBhbTZIupWgFmEoCnOVxsVCU3eD
-gLiA+ARH5kjVOdHLWWAH4IWf6bTBhwyGqdeYIafjPoNlltx//+MbKKoG0qF2yWOB
-AJffZZ6P+Jp/ljiHzjIEYEsnWuynOZvdistX7TekWAZRJM8qMWYeptavwyY22MVq
-7IJwJpf0YndOZBnyyKaTDhwvkmU7Tp5PdklG7wI2cb3wXaNn85UpKl7G/Ey1Ra/K
-X1gp9qEDb9MwO8VLQngYTkCAhmnsBZKGahQVYZWGkrVY0cs7MbkiU8U7odXMnTu8
-eWxBXNv3Szc5xGhy
------END CERTIFICATE REQUEST-----',cn:"www.example.com",ou:"IT",o:"Example Corporation",l:"St Gallen",s:"SG",c:"CH",email:"admin@example.com")
+Setting.create!([
+  {name: "autogenerated_keysize", description: "Size of autogenerated openssl keys. Use 1024, 2048 or 4096", value: "4096"}
+])
 
-# Certificates
-Certificate.create(name: 'www.example.com SSL Certificate', certificatetype_id: 3, content: '-----BEGIN CERTIFICATE-----
-MIIFZDCCA0wCCQDe9n4+A+Sb2jANBgkqhkiG9w0BAQsFADB0MQswCQYDVQQGEwJD
-SDEYMBYGA1UEAxMPd3d3LmV4YW1wbGUuY29tMRMwEQYDVQQHEwpTdC4gR2FsbGVu
-MRwwGgYDVQQKExNFeGFtcGxlIENvcnBvcmF0aW9uMQswCQYDVQQIEwJTRzELMAkG
-A1UECxMCSVQwHhcNMTYwOTAxMDgwMzM5WhcNMTkwOTAxMDgwMzM5WjB0MQswCQYD
-VQQGEwJDSDEYMBYGA1UEAxMPd3d3LmV4YW1wbGUuY29tMRMwEQYDVQQHEwpTdC4g
-R2FsbGVuMRwwGgYDVQQKExNFeGFtcGxlIENvcnBvcmF0aW9uMQswCQYDVQQIEwJT
-RzELMAkGA1UECxMCSVQwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQCx
-bRFb9j8LU26APx70rgSrA+cXc/eZv3Mys4XZTtI53MWZrllyDx9PHaPmeHdMWmFj
-n9yPi9had13YVME/VKFK0YXI4k0Vong59c2vOZbgc8lfOnE7CTx00u45DYZaupvh
-twdPx037+987/YYr8MnKsK97RkJURnBJQGaedI5RvlqpvdOW7eR2fbINBs3h3lSR
-+woLgNXNAPs3qtektmVD3P9nfe+gjl8/7KpeLGaF+HtbWvhAOWnmIBO4ETBieNo+
-meswyz879RNuTMmH2qvITrCqfT+Imb5g4lDyZgZCL9hDNw+uBWx4tSK+pYo4tkHq
-iA5YiVjzX9j4390XukrWRxJ0zF0PivqPmJpUfCdNx6zTEFvSH06+U24BPm/QQCoj
-h1R5sHeJThSoqonFschbvavvIqMNmo7noMTrninwJrZBl5ZUj5f+C9isikhDPGRA
-StvyqI0kl8Zq30KRzcI0pCEY6sWPFfBKSMEBvo2zt0ItdB1m9jQHPVK0BBRREcjY
-zYGlcG3vwmYC/FVa4lqbpSRo/JC5pHcsF0Byv4uW2A5WGxWXQbxWkVI5Lx1+iMak
-szCAwmqd+jxL2xATckP93Rvk+UyaYnHVf3gXDX+BzMZkAwYDAPwus2NzyKE2f+N3
-ZwMUkkxRUkCdSK6LFBsxEyr7TZxAcGBky187OOlQ3wIDAQABMA0GCSqGSIb3DQEB
-CwUAA4ICAQBrIW89pEpqpVkPZ2UbhXBjzNsoEdbFLWBXQTwNoWIjgEskCV/m4Qyq
-AtMgPVLK1S4lClHU/90iq3GAKVmuNHyR+00T64SkPEkRhNv2PSqgyTejVmOoBWs9
-qNc4ctwSCRJ6tIwRntkpowrPvPrEp/adtEIrWSlMgQcfzSZQJvRrBiuzLIIwLaDB
-JiXnDR6rqyaEME4hFBDqhH1ZP5g3kC8lI2V6UgmdmNSARo5mMWq7oVE4b61w9tHe
-9BfDzsJURmWmqq9leJhT4MJiSHgcFmWd11kLwW+ATkymUwPoKB2S1RdDXwicDen7
-wgZcXdaIf5uhn+ICBgQO4Ghr60hTUUnRzTAt0jaTJx9uT2A9P/+mfOaZ3L8e0jI2
-o9xuCH8lIOWxIXNlOZFrr4dx0rUu1cPKU6GG47/j2kgQkUCBl5jmGwurkVtoBVMm
-gai3oCP/PUYohNgc+yNHBq552BbsIxTclsPiGuUwV2JbEBK0uvCU9mQYkVrcRXpw
-DvvXLclePbXOU3qsDSK11H3Tm6iAE0ljpoaPqFTVX+W6ZcsVNsy5nbQLkcFMgglb
-eT9u/Douk42Nm9EqH0OsndfQ3s7JV22CI3JhcPDDuF4XiN5OwXL+MJn3jgFkVfp6
-23OXrzveligdhDKy2ETWmYGXZU1UsZX5Uu/ucD/CC3uEOfxKtytvpg==
------END CERTIFICATE-----')
-
-# Keystores
-Keystore.create(name: "www.example.com SSL-keystore", description: "none", keypair_id: 1, csr_id: 1, certificate_id: 1)
-
-# Settings
-Setting.create(name: "autogenerated_keysize", description: "Size of autogenerated openssl keys. Use 1024, 2048 or 4096", value: "4096")
 
 # Seed default user "admin"
-User.create(username: 'admin', email: 'admin@certman.com', password: 'default', password_confirmation: 'default')
+User.create!([
+  {username: 'admin', email: 'admin@certman.com', password: 'default', password_confirmation: 'default'}
+])
+
 # force the initial encrypted password to match our original encrypted version so we are able to compare it in the code
   u = User.find(1)
   u.encrypted_password = '$2a$11$Ji4Lq2OqksrOX51Om6y3UOOUF63mcsXcXSs0y7JG88KFf0SKzjcRO'
   u.save!
+
