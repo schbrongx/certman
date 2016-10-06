@@ -1,5 +1,5 @@
 class Csr < ActiveRecord::Base
-  has_one :keystore
+  has_one :keystore, :dependent => :restrict_with_error
   belongs_to :keypair
   belongs_to :csrtemplate
   

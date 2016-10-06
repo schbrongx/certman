@@ -78,10 +78,14 @@ class CsrsController < ApplicationController
   # DELETE /csrs/1.json
   # FIXME Destroy relation: keystore (with alert)
   def destroy
-    @csr.destroy
     respond_to do |format|
-      format.html { redirect_to csrs_url, notice: 'Csr was successfully destroyed.' }
-      format.json { head :no_content }
+      if @csr.destroy
+        format.html { redirect_to keypairs_url, notice: 'CSR was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to keypairs_url, alert: 'Unable to delete CSR. ' + @csr.errors[:base].to_s }
+        format.json { render json: @csr.errors, status: :unprocessable_entity }
+      end
     end
   end
 

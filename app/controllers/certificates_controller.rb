@@ -62,6 +62,17 @@ class CertificatesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def destroy
+    respond_to do |format|
+      if @certificate.destroy
+        format.html { redirect_to keypairs_url, notice: 'Certificate was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to keypairs_url, alert: 'Unable to delete certificate. ' + @certificate.errors[:base].to_s }
+        format.json { render json: @certificate.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
