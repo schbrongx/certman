@@ -80,10 +80,10 @@ class CsrsController < ApplicationController
   def destroy
     respond_to do |format|
       if @csr.destroy
-        format.html { redirect_to keypairs_url, notice: 'CSR was successfully destroyed.' }
+        format.html { redirect_to csrs_url, notice: 'CSR was successfully destroyed.' }
         format.json { head :no_content }
       else
-        format.html { redirect_to keypairs_url, alert: 'Unable to delete CSR. ' + @csr.errors[:base].to_s }
+        format.html { redirect_to csrs_url, alert: 'Unable to delete CSR. ' + @csr.errors[:base].to_s }
         format.json { render json: @csr.errors, status: :unprocessable_entity }
       end
     end
