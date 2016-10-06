@@ -62,53 +62,53 @@
     </div>
 
     <div class="form-group">
-      <label class="col-sm-2 control-label">Common Name (CN)</label>
+      <%= f.label :cn, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-		<%= f.text_field :cn, class:"form-control", id:"cn", placeholder:"www.example.com" %>
+        <%= f.text_field :cn, class:"form-control", placeholder:"Common name, i.e.: www.example.com", id:"cn" %>
       </div>
-    </div>
+  </div>
 
     <div class="form-group">
-      <label class="col-sm-2 control-label">Organization (O)</label>
+      <%= f.label :o, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-		<%= f.text_field :o, class:"form-control", id:"o", placeholder:"Example Corporation" %>
+        <%= f.text_field :o, class:"form-control", placeholder:"Organization, i.e.: Example Corp.", id:"o" %>
       </div>
-    </div>
+  </div>
 
     <div class="form-group">
-      <label class="col-sm-2 control-label">Organizational Unit (OU)</label>
+      <%= f.label :ou, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-		<%= f.text_field :ou, class:"form-control", id:"ou", placeholder:"IT" %>
+        <%= f.text_field :ou, class:"form-control", placeholder:"Organizational unit, i.e.: IT Department", id:"ou" %>
       </div>
-    </div>
+  </div>
 
     <div class="form-group">
-      <label class="col-sm-2 control-label">City (L)</label>
+      <%= f.label :l, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-		<%= f.text_field :l, class:"form-control", id:"l", placeholder:"St Gallen" %>
+        <%= f.text_field :l, class:"form-control", placeholder:"Location (City), i.e.: St Gallen", id:"l" %>
       </div>
-    </div>
+  </div>
 
     <div class="form-group">
-      <label class="col-sm-2 control-label">State (S)</label>
+     <%= f.label :s, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-		<%= f.text_field :s, class:"form-control", id:"s", placeholder:"SG" %>
+        <%= f.text_field :s, class:"form-control", placeholder:"State, i.e.: SG", id:"s" %>
       </div>
-    </div>
+  </div>
 
     <div class="form-group">
-      <label class="col-sm-2 control-label">Country (C)</label>
+      <%= f.label :c, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-		<%= f.text_field :c, class:"form-control", id:"c", placeholder:"CH" %>
+        <%= f.text_field :c, class:"form-control", placeholder:"Country, i.e.: CH", id:"c" %>
       </div>
-    </div>
+  </div>
 
     <div class="form-group">
-      <label class="col-sm-2 control-label">Email</label>
+      <%= f.label :email, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-		<%= f.text_field :email, class:"form-control", id:"email", placeholder:"admin@example.com" %>
+        <%= f.text_field :email, class:"form-control", placeholder:"Email, i.e.: admin@example.com", id:"email" %>
       </div>
-    </div>
+  </div>
 
 	<%# AJAX call for generating a new CSR %>
     <div class="form-group">
@@ -140,12 +140,6 @@
 					  c:jQuery("#c").val(),
 					  email:jQuery("#email").val(),
 			  },
-			  success: function() { 
-			             alert("Successful");
-			  },
-              error: function() {
-			             alert("Unsuccessful");
-			  }
             })
           });
         </script>
