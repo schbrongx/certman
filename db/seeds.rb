@@ -34,3 +34,5 @@ User.create!([
   u.encrypted_password = '$2a$11$Ji4Lq2OqksrOX51Om6y3UOOUF63mcsXcXSs0y7JG88KFf0SKzjcRO'
   u.save!
 
+# TODO - Create seeds for certificates and keystores
+  

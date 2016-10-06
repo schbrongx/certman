@@ -76,7 +76,6 @@ class CsrsController < ApplicationController
 
   # DELETE /csrs/1
   # DELETE /csrs/1.json
-  # FIXME Destroy relation: keystore (with alert)
   def destroy
     respond_to do |format|
       if @csr.destroy
