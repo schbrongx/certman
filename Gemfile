@@ -54,6 +54,9 @@ group :development do
   
   # suppress logging of asset pipeline in DEV
   gem 'quiet_assets'
+
+  # enable dumping of db into a seed file
+  gem 'seed_dump'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
