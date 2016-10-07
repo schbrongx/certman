@@ -30,26 +30,24 @@
     <div class="form-group">
       <%= f.label :password, class:"col-sm-2 control-label" %>
       <div class="col-sm-6">
-        <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
-        <i>(leave blank if you don't want to change it)</i>
+        <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder:"Leave blank if you don't want to change it" %>
         <% if @minimum_password_length %>
-          <br /><em>(<%= @minimum_password_length %> characters minimum)</em>
+          <small>(<%= @minimum_password_length %> characters minimum)</small>
         <% end %>
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group has-feedback">
       <%= f.label :password_confirmation, class:"col-sm-2 control-label" %>
       <div class="col-sm-6">
-        <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control", placeholder:"Re-type your new password" %>
       </div>
     </div>
 
     <div class="form-group">
       <%= f.label :current_password, class:"col-sm-2 control-label" %>
       <div class="col-sm-6">
-        <%= f.password_field :current_password, autocomplete: "off", class:"form-control" %>
-		<i>(we need your current password to confirm your changes)</i>
+        <%= f.password_field :current_password, autocomplete: "off", class:"form-control", placeholder:"We need your current password to confirm your changes" %>
       </div>
     </div>
 
