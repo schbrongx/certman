@@ -2,20 +2,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>Certmanager</title>
+  <meta name="description" content="Manage SSL certificates efficiently with Certman. Create keystores containing keypairs, CSRs and certificates.">
+  <title>Certman</title>
   <%= favicon_link_tag 'icon_certman_256x256.png', type:'image/png' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+
+<body itemscope itemtype="http://schema.org/OrganizeAction">
 
 <%= render 'layouts/navigation' %>
 
-<div id="main container" class="container">
+<div id="main_container" class="container">
   <div class="row">
-    <div id="main content" class="col-sm-12">
+    <div id="main_content" class="col-sm-12">
       <%= render 'layouts/warnings' %>
 	  <%= yield %>
     </div>
