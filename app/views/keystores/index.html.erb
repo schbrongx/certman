@@ -24,9 +24,9 @@
         <td><%= keystore.csr.name %></td>
         <td><%= keystore.certificate.name %></td>
         <td>
-    	  <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, keystore, class:"btn btn-default" %>
-          <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_keystore_path(keystore), class:"btn btn-default" %>
-          <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, keystore, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+    	  <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, keystore, class:"btn btn-sm btn-default" %>
+          <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_keystore_path(keystore), class:"btn btn-sm btn-default" %>
+          <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, keystore, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger" %>
     	</td>
         </tr>
       <% end %>
@@ -35,7 +35,7 @@
   </div>
 <% end %>
 
-<a class="btn btn-default" href="<%=new_keystore_path%>" role="button">
+<a class="btn btn-sm btn-default" href="<%=new_keystore_path%>" role="button">
   <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
   Add Keystore
 </a>
