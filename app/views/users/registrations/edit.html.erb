@@ -8,14 +8,14 @@
     <div class="form-group">
       <%= f.label :username, class:"col-sm-2 control-label" %>
       <div class="col-sm-6">
-        <%= f.text_field :username, autofocus: true, class:"form-control" %>
+        <%= f.text_field :username, class:"form-control" %>
       </div>
     </div>
 
     <div class="form-group">
       <%= f.label :email, class:"col-sm-2 control-label" %>
       <div class="col-sm-6">
-        <%= f.email_field :email, autofocus: true, class:"form-control" %>
+        <%= f.email_field :email, class:"form-control" %>
       </div>
     </div>
 
@@ -59,10 +59,3 @@
     </div>
 
 <% end %>
-
-      <h2>Cancel my account</h2>
-      <p>
-        <%= button_to "Cancel my account", destroy_user_session_path, data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger" %>
-      </p>
-
-
