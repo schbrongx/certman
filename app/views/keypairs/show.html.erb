@@ -14,4 +14,4 @@
 </p>
 
 <%= link_to 'Edit', edit_keypair_path(@keypair), class:"btn btn-sm btn-default" %>
-<%= link_to 'Back', keypairs_path, class:"btn btn-sm btn-default" %>
+<%= link_to 'Back', request.referer, class:"btn btn-sm btn-default" %>
