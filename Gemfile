@@ -35,6 +35,9 @@ gem 'devise_invitable'
 # Display a cookie-consent bar
 gem 'cookies_eu'
 
+# js library clipboard.js integration via gem
+gem 'clipboard-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug'

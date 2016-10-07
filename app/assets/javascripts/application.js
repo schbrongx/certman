@@ -14,6 +14,7 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require cookies_eu
+//= require clipboard
 //= require turbolinks
 //= require_tree .
 

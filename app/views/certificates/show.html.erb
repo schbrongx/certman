@@ -10,7 +10,8 @@
 
 <p>
   <strong>Content:</strong>
-  <%= simple_format @certificate.content.html_safe %>
+  <br /><button class="btn btn-default btn-xs btn-copy-clipboard" data-clipboard-target="#certificate_content"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
+  <br /><%= simple_format @certificate.content.html_safe, id:"certificate_content" %>
 </p>
 
 <%= link_to 'Edit', edit_certificate_path(@certificate), class:"btn btn-sm btn-default"  %>

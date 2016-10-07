@@ -4,8 +4,9 @@
 </p>
 
 <p>
-  <strong>Content:</strong><br />
-  <%= simple_format @csr.content.html_safe %>
+  <strong>Content:</strong>
+  <br /><button class="btn btn-default btn-xs btn-copy-clipboard" data-clipboard-target="#csr_content"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
+  <br /><%= simple_format @csr.content.html_safe, id:"csr_content" %>
 </p>
 
 <%= link_to 'Edit', edit_csr_path(@csr), class:"btn btn-sm btn-default" %> 
