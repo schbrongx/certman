@@ -37,8 +37,8 @@ class KeystoresController < ApplicationController
 
     respond_to do |format|
       if @keystore.save
-        format.html { redirect_to @keystore, notice: 'Keystore was successfully created.' }
-        format.json { render :show, status: :created, location: @keystore }
+        format.html { redirect_to keystores_url, notice: 'Keystore was successfully created.' }
+        format.json { render :index, status: :created, location: @keystore }
       else
         format.html { render :new }
         format.json { render json: @keystore.errors, status: :unprocessable_entity }
@@ -51,8 +51,8 @@ class KeystoresController < ApplicationController
   def update
     respond_to do |format|
       if @keystore.update(keystore_params)
-        format.html { redirect_to @keystore, notice: 'Keystore was successfully updated.' }
-        format.json { render :show, status: :ok, location: @keystore }
+        format.html { redirect_to keystores_url, notice: 'Keystore was successfully updated.' }
+        format.json { render :index, status: :ok, location: @keystore }
       else
         format.html { render :edit }
         format.json { render json: @keystore.errors, status: :unprocessable_entity }

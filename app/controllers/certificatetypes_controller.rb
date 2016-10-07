@@ -28,7 +28,7 @@ class CertificatetypesController < ApplicationController
 
     respond_to do |format|
       if @certificatetype.save
-        format.html { redirect_to @certificatetype, notice: 'Certificatetype was successfully created.' }
+        format.html { redirect_to certificatetypes_url, notice: 'Certificatetype was successfully created.' }
         format.json { render :show, status: :created, location: @certificatetype }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CertificatetypesController < ApplicationController
   def update
     respond_to do |format|
       if @certificatetype.update(certificatetype_params)
-        format.html { redirect_to @certificatetype, notice: 'Certificatetype was successfully updated.' }
+        format.html { redirect_to certificatetypes_url, notice: 'Certificatetype was successfully updated.' }
         format.json { render :show, status: :ok, location: @certificatetype }
       else
         format.html { render :edit }

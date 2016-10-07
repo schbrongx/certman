@@ -65,7 +65,7 @@ class CsrsController < ApplicationController
   def update
     respond_to do |format|
       if @csr.update(csr_params)
-        format.html { redirect_to @csr, notice: 'CSR was successfully updated.' }
+        format.html { redirect_to csrs_url, notice: 'CSR was successfully updated.' }
         format.json { render :show, status: :ok, location: @csr }
       else
         format.html { render :edit }

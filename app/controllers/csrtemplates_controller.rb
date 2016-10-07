@@ -28,7 +28,7 @@ class CsrtemplatesController < ApplicationController
 
     respond_to do |format|
       if @csrtemplate.save
-        format.html { redirect_to @csrtemplate, notice: 'Csrtemplate was successfully created.' }
+        format.html { redirect_to csrtemplates_url, notice: 'Csrtemplate was successfully created.' }
         format.json { render :show, status: :created, location: @csrtemplate }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CsrtemplatesController < ApplicationController
   def update
     respond_to do |format|
       if @csrtemplate.update(csrtemplate_params)
-        format.html { redirect_to @csrtemplate, notice: 'Csrtemplate was successfully updated.' }
+        format.html { redirect_to csrtemplates_url, notice: 'Csrtemplate was successfully updated.' }
         format.json { render :show, status: :ok, location: @csrtemplate }
       else
         format.html { render :edit }

@@ -34,7 +34,7 @@ class KeypairsController < ApplicationController
 
     respond_to do |format|
       if @keypair.save
-        format.html { redirect_to @keypair, notice: 'Keypair was successfully created.' }
+        format.html { redirect_to keypairs_url, notice: 'Keypair was successfully created.' }
         format.json { render :show, status: :created, location: @keypair }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class KeypairsController < ApplicationController
   def update
     respond_to do |format|
       if @keypair.update(keypair_params)
-        format.html { redirect_to @keypair, notice: 'Keypair was successfully updated.' }
+        format.html { redirect_to keypairs_url, notice: 'Keypair was successfully updated.' }
         format.json { render :show, status: :ok, location: @keypair }
       else
         format.html { render :edit }
