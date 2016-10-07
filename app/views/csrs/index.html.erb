@@ -19,7 +19,7 @@
             <td><%= truncate(csr.content, length: 70) %></td>
             <td rowspan="2">
               <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, csr, class:"btn btn-sm btn-default" %>
-              <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_csr_path(csr), class:"btn btn-sm btn-default" %>
+              <%= link_to '<span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_csr_path(csr), class:"btn btn-sm btn-default" %>
               <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, csr, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger" %>
              </td>
           </tr>

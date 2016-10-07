@@ -27,7 +27,7 @@
                 Email=<%= csrtemplate.email %></td>
             <td>
               <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, csrtemplate, class:"btn btn-sm btn-default" %>
-              <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_csrtemplate_path(csrtemplate), class:"btn btn-sm btn-default" %>
+              <%= link_to '<span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_csrtemplate_path(csrtemplate), class:"btn btn-sm btn-default" %>
               <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, csrtemplate, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger" %>
             </td>
           </tr>

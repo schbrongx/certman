@@ -18,7 +18,7 @@
           <td><%= user.username %></td>
           <td><%= user.email%></td>
           <td>
-            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_user_path(user), class:"btn btn-sm btn-default" %>
+            <%= link_to '<span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_user_path(user), class:"btn btn-sm btn-default" %>
             <% unless user.id == 1  # dont display the delete-button for the adminuser (id=1) %>
               <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, user, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger" %>
             <% end  # unless %>
