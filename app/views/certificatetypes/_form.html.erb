@@ -25,7 +25,7 @@
           <%= f.button :submit, name: "commit", value: "commit", class:"btn btn-sm btn-success" do %>
             <span class="glyphicon glyphicon-ok"></span> Submit
           <% end %>
-          <%= link_to '<span class="glyphicon glyphicon-remove"></span> Cancel'.html_safe, certificatetypes_path, class:"btn btn-sm btn-default" %>
+          <%= link_to '<span class="glyphicon glyphicon-remove"></span> Cancel'.html_safe, request.referer, class:"btn btn-sm btn-default" %>
         </div>
       </div>
     </div>

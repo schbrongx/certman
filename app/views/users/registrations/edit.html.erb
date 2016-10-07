@@ -54,7 +54,7 @@
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
         <%= f.submit "Update", class:"btn btn-sm btn-success" %>
-        <%= link_to "Cancel", :back, class:"btn btn-sm btn-default" %>
+        <%= link_to "Cancel", request.referer, class:"btn btn-sm btn-default" %>
       </div>
     </div>
 

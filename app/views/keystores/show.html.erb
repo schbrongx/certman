@@ -24,4 +24,4 @@
 </p>
 
 <%= link_to 'Edit', edit_keystore_path(@keystore), class:"btn btn-sm btn-default"  %>
-<%= link_to 'Back', keystores_path, class:"btn btn-sm btn-default"  %>
+<%= link_to 'Back', request.referer, class:"btn btn-sm btn-default"  %>
