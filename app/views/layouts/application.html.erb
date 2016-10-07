@@ -6,6 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Manage SSL certificates efficiently with Certman. Create keystores containing keypairs, CSRs and certificates.">
+  <!-- twittercard (summary) -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@schbrongx" />
+    <meta name="twitter:title" content="Certman, the SSL keystore management tool" />
+    <meta name="twitter:description" content="Manage SSL certificates efficiently with Certman. Create keystores containing keypairs, CSRs and certificates." />
+    <meta name="twitter:image" content="http://certman.schbrongx.com/assets/icon_certman_64x64.png" />
+    <meta name="twitter:image:alt" content="Logo" />
+  <!-- twittercard end -->
   <title>Certman</title>
   <%= favicon_link_tag 'icon_certman_256x256.png', type:'image/png' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -21,7 +29,13 @@
   <div class="row">
     <div id="main_content" class="col-sm-12">
       <%= render 'layouts/warnings' %>
-	  <%= yield %>
+
+<!-- yield -->
+
+	    <%= yield %>
+
+<!-- end yield -->
+
     </div>
   </div>
 </div>
