@@ -3,7 +3,7 @@
 <html>
 <head>
 <%= render 'layouts/meta' %>
-  <title>Certman</title>
+  <title><%= @application_name.to_s%></title>
   <%= favicon_link_tag 'icon_certman_256x256.png', type:'image/png' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

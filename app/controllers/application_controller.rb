@@ -3,8 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  # Force users to log in
+  # load setting application_name site-wide
+  before_action :load_application_name
+  def load_application_name
+    @application_name = (Setting.find_by name: "application_name").value.to_s
+  end
 
+  # Force users to log in
   before_action :authenticate_user!
   
   # add username parameter to devise
