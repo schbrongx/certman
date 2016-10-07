@@ -9,7 +9,8 @@ module Rails
   class Server
     alias :default_options_bk :default_options
     def default_options
-      default_options_bk.merge!(Host: '0.0.0.0')
+      # TODO Add Host and Port options to Readme on github
+      default_options_bk.merge!(Host: '0.0.0.0', Port: 3000)
     end
   end
 end

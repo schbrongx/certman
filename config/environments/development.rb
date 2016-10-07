@@ -20,7 +20,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :letter_opener
   
   # mailer default url goes here
-  config.action_mailer.default_url_options = { host: 'certman.schbrongx.com', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'certman.schbrongx.com', port: 80 }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -47,5 +47,5 @@ Rails.application.configure do
   
 
   # whitelist 0.0.0.0 for webconsole on dev
-  config.web_console.whitelisted_ips = "46.14.155.150"
+  config.web_console.whitelisted_ips = "46.14.155.150"  # bionstrasse 1, st. gallen
 end
