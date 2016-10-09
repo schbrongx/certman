@@ -30,9 +30,21 @@
                 <li><%= link_to 'Preferences', settings_path %> </li>
               </ul>
             </li>
-            <li>
-             <%= link_to '<span class="glyphicon glyphicon-envelope"></span> Letter_Opener UI'.html_safe, letter_opener_web_path, target:'_blank' %>
-            </li>
+            <% if Rails.env.development?  # only display letter_opener_ui menuitem in development %>
+              <li>
+                <%= link_to '<span class="glyphicon glyphicon-envelope"></span>'.html_safe, letter_opener_web_path, target:'_blank' %>
+              </li>
+            <% end  # if development %> 
+            <% if Rails.env.development?  # only display git info menuitem in development %>
+              <li>
+                <%= link_to '<span class="glyphicon glyphicon-info-sign"></span>'.html_safe, "#", data: {toggle:"popover", trigger:"hover", placement:"auto", content:"gitcommit ##{GIT_COMMIT}" } %>
+                <script> <!-- manually initialiue popover for bootstrap -->
+                  $(function () {
+                    $('[data-toggle="popover"]').popover()
+                  })
+              </script>
+              </li>
+            <% end  # if development %> 
           </ul>
 	  <hr class="hidden-sm hidden-md hidden-lg" />
         <% end #user_signed_in? %>
