@@ -1,6 +1,5 @@
-<!-- _application -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <%= render 'layouts/meta' %>
   <title><%= @application_name.to_s%></title>
@@ -11,10 +10,10 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/OrganizeAction">
-
+<!-- _application -->
 <%= render 'layouts/navigation' %>
 
-<div id="main_container" class="container">
+<div id="main_container" class="container-fluid">
   <div class="row">
     <div id="main_content" class="col-sm-12">
       <%= render 'layouts/warnings' %>
@@ -32,10 +31,6 @@
 
 <%= render 'layouts/footer' %>
 
-</body>
-</html>
-<!-- end _application -->
-
 <!-- load these javascripts as late aspossible -->
 <script>
   $(document).ready(function(){  
@@ -44,3 +39,7 @@
     
   });
 </script>
+<!-- end _application -->
+</body>
+</html>
+
