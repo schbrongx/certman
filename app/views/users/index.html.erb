@@ -18,8 +18,10 @@
           <td><%= user.username %></td>
           <td><%= user.email%></td>
           <td>
-            <%= link_to '<span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_user_path(user), class:"btn btn-sm btn-default" %>
-            <% unless user.id == 1  # dont display the delete-button for the adminuser (id=1) %>
+            <% if (current_user.id == 1) || !(user.id == 1)  # display edit button if: current_user is admin -> always, or on every row except admins row for rest of users %>
+              <%= link_to '<span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_user_path(user), class:"btn btn-sm btn-default" %>
+            <% end  #if %>
+            <% unless user.id == 1  # dont display the delete-button on the adminuser's row (id=1) %>
               <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, user, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger" %>
             <% end  # unless %>
       	</td>
