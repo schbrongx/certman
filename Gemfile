@@ -63,6 +63,8 @@ group :development do
 
   # enable dumping of db into a seed file
   gem 'seed_dump'
+  
+  gem 'ruby_dep', '1.5.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
