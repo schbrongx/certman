@@ -18,11 +18,11 @@
           <tr>
             <td rowspan="2"><%= csr.id %></td>
             <td rowspan="2"><%= csr.name %></td>
-            <td rowspan="2"><%= link_to csr.keypair.name, csr.keypair, style:"text-decoration: none" %></td>
+            <td rowspan="2"><%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + csr.keypair.name, keypair_path(csr.keypair), class: 'btn btn-xs btn-default btn-show-modal', remote: true %></td>
             <td rowspan="2"><%= link_to csr.csrtemplate.name, csr.csrtemplate, style:"text-decoration: none" %></td>
             <td><%= truncate(csr.content, length: 70) %></td>
             <td rowspan="2">
-              <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, csr, class:"btn btn-sm btn-default" %>
+              <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, csr_path(csr), class: 'btn btn-sm btn-default btn-show-modal', remote: true %>
               <%= link_to '<span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_csr_path(csr), class:"btn btn-sm btn-default" %>
               <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, csr, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger" %>
              </td>
@@ -33,6 +33,30 @@
         <% end %>
       </tbody>
     </table>
+      <!-- Modal modal_show , bootstrap modal container for #show view -->
+      <div class="modal fade" id="modal_show" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body" id="modal_show_body">
+              Loading ...
+            </div>
+      	  <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <script>
+        $(document).ready(function() {
+          var click_modal_show = function(){
+            $('body').on('click', '.btn-show-modal', function(){
+              $('#modal_show').modal('show');
+            });
+          }
+          click_modal_show();
+        });
+      </script>
   </div>
 <% end %>
 

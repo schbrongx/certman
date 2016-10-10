@@ -1,14 +1,5 @@
-<p>
-  <strong>Name:</strong><br />
-  <%= @csr.name %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <br /><button class="btn btn-default btn-xs btn-copy-clipboard" data-clipboard-target="#csr_content"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
-  <br /><%= simple_format @csr.content.html_safe, id:"csr_content" %>
-</p>
-
+<%# render view as partial, so it's accessable for bootstrap modals %>
+<%= render 'show' %>
 <%= link_to 'Edit', edit_csr_path(@csr), class:"btn btn-sm btn-default" %> 
 <%= link_to 'Back', request.referer, class:"btn btn-sm btn-default" %>
 
