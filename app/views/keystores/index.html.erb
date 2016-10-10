@@ -20,7 +20,8 @@
         <td><%= keystore.id %></td>
         <td><%= keystore.name %></td>
         <td><%= keystore.description %></td>
-        <td><%= link_to keystore.keypair.name, keystore.keypair, style:"text-decoration: none" %></td>
+        <!-- <td><%= link_to keystore.keypair.name, keystore.keypair, style:"text-decoration: none" %></td> -->
+		<td><%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + keystore.keypair.name, keypair_path(keystore.keypair), class: 'btn btn-xs btn-default btn-show-modal', remote: true %></td>
         <td><%= link_to keystore.csr.name, keystore.csr, style:"text-decoration: none" %></td>
         <td><%= link_to keystore.certificate.name, keystore.certificate, style:"text-decoration: none" %></td>
         <td>
@@ -31,6 +32,30 @@
       <% end %>
       </tbody>
     </table>
+    <!-- Modal modal_show , bootstrap modal container for #show view -->
+    <div class="modal fade" id="modal_show" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body" id="modal_show_body">
+            Loading ...
+          </div>
+    	  <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      $(document).ready(function() {
+        var click_modal_show = function(){
+          $('body').on('click', '.btn-show-modal', function(){
+            $('#modal_show').modal('show');
+          });
+        }
+        click_modal_show();
+      });
+    </script>
   </div>
 <% end %>
 

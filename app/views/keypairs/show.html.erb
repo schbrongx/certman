@@ -1,19 +1,4 @@
-<p>
-  <strong>Name:</strong><br>
-  <%= @keypair.name %>
-</p>
-
-<p>
-  <strong>Privatekey:</strong>
-  <br /><button class="btn btn-default btn-xs btn-copy-clipboard" data-clipboard-target="#privatekey_content"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
-  <br /><%= simple_format @keypair.privatekey.html_safe, id:"privatekey_content" %>
-</p>
-
-<p>
-  <strong>Publickey:</strong>
-  <br /><button class="btn btn-default btn-xs btn-copy-clipboard" data-clipboard-target="#publickey_content"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
-  <br /><%= simple_format @keypair.publickey.html_safe, id:"publickey_content" %>
-</p>
-
+<%# render view as partial, so it's accessable for bootstrap modals %>
+<%= render 'show' %>
 <%= link_to 'Edit', edit_keypair_path(@keypair), class:"btn btn-sm btn-default" %>
 <%= link_to 'Back', request.referer, class:"btn btn-sm btn-default" %>
