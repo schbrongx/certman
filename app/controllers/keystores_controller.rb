@@ -7,11 +7,6 @@ class KeystoresController < ApplicationController
     @keystores = Keystore.all
   end
 
-  # GET /keystores/1
-  # GET /keystores/1.json
-  def show
-  end
-
   # GET /keystores/new
   def new
     @keystore = Keystore.new
