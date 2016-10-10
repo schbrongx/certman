@@ -1,0 +1,15 @@
+<p>
+  <strong>Name:</strong>
+  <%= @certificate.name %>
+</p>
+
+<p>
+  <strong>Certificate Type:</strong>
+  <%= @certificate.certificatetype.name %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <br /><button class="btn btn-default btn-xs btn-copy-clipboard" data-clipboard-target="#certificate_content"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
+  <br /><%= simple_format @certificate.content.html_safe, id:"certificate_content" %>
+</p>

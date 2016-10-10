@@ -1,47 +1,4 @@
-<p>
-  <strong>Name:</strong>
-  <%= @csrtemplate.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @csrtemplate.description %>
-</p>
-
-<p>
-  <strong>Cn:</strong>
-  <%= @csrtemplate.cn %>
-</p>
-
-<p>
-  <strong>Ou:</strong>
-  <%= @csrtemplate.ou %>
-</p>
-
-<p>
-  <strong>O:</strong>
-  <%= @csrtemplate.o %>
-</p>
-
-<p>
-  <strong>L:</strong>
-  <%= @csrtemplate.l %>
-</p>
-
-<p>
-  <strong>S:</strong>
-  <%= @csrtemplate.s %>
-</p>
-
-<p>
-  <strong>C:</strong>
-  <%= @csrtemplate.c %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @csrtemplate.email %>
-</p>
-
+<%# render view as partial, so it's accessable for bootstrap modals %>
+<%= render 'show' %>
 <%= link_to 'Edit', edit_csrtemplate_path(@csrtemplate) , class:"btn btn-sm btn-default"%>
 <%= link_to 'Back', request.referer , class:"btn btn-sm btn-default"%>

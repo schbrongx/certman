@@ -18,8 +18,8 @@
           <tr>
             <td rowspan="2"><%= csr.id %></td>
             <td rowspan="2"><%= csr.name %></td>
-            <td rowspan="2"><%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + csr.keypair.name, keypair_path(csr.keypair), class: 'btn btn-xs btn-default btn-show-modal', remote: true %></td>
-            <td rowspan="2"><%= link_to csr.csrtemplate.name, csr.csrtemplate, style:"text-decoration: none" %></td>
+            <td rowspan="2"><%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + truncate(csr.keypair.name, length: 10) , keypair_path(csr.keypair), class: 'btn btn-xs btn-default btn-show-modal', remote: true %></td>
+            <td rowspan="2"><%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + truncate(csr.csrtemplate.name, length: 10), csrtemplate_path(csr.csrtemplate), class: 'btn btn-xs btn-default btn-show-modal', remote: true %></td>
             <td><%= truncate(csr.content, length: 70) %></td>
             <td rowspan="2">
               <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, csr_path(csr), class: 'btn btn-sm btn-default btn-show-modal', remote: true %>
