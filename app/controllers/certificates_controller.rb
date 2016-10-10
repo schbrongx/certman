@@ -56,23 +56,18 @@ class CertificatesController < ApplicationController
   # DELETE /certificates/1
   # DELETE /certificates/1.json
   def destroy
-    @certificate.destroy
-    respond_to do |format|
-      format.html { redirect_to certificates_url, notice: 'Certificate was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-  def destroy
-    respond_to do |format|
-      if @certificate.destroy
+    if @certificate.destroy
+      respond_to do |format|
         format.html { redirect_to certificates_url, notice: 'Certificate was successfully destroyed.' }
         format.json { head :no_content }
-      else
+      end  # respond_to
+    else
+      respond_to do |format|
         format.html { redirect_to certificates_url, alert: 'Unable to delete certificate. ' + @certificate.errors[:base].to_s }
         format.json { render json: @certificate.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+      end  # respond_to
+    end  # if .destroy
+  end  # def destroy
 
   private
     # Use callbacks to share common setup or constraints between actions.

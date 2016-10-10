@@ -54,12 +54,16 @@ class CsrtemplatesController < ApplicationController
   # DELETE /csrtemplates/1
   # DELETE /csrtemplates/1.json
   def destroy
-    @csrtemplate.destroy
-    respond_to do |format|
-      format.html { redirect_to csrtemplates_url, notice: 'Csrtemplate was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+    if @csrtemplate.destroy
+      respond_to do |format|
+        format.html { redirect_to csrtemplates_url, notice: 'Csrtemplate was successfully destroyed.' }
+      end  # respond_to
+    else
+      respond_to do |format|
+        format.html { redirect_to csrtemplates_url, alert: 'Unable to delete CSR-template . ' + @csrtemplate.errors[:base].to_s }
+      end  # respond_to
+    end  # if .destroy
+  end  # def destroy
 
   private
     # Use callbacks to share common setup or constraints between actions.
