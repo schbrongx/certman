@@ -6,5 +6,5 @@
 <p>
   <strong>Content:</strong>
   <br /><button class="btn btn-default btn-xs btn-copy-clipboard" data-clipboard-target="#csr_content"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
-  <br /><small><%= simple_format @csr.content.html_safe, id:"csr_content" %></small>
+  <br /><small><%= simple_format @csr.content.html_safe, id:"csr_content", class:"long-paragraph" %></small>
 </p>
