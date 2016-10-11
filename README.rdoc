@@ -1,28 +1,17 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Certman is an SSL-keystore management software. You can manage and generate: keypairs, CSRs and certificates and bundle them together in a keystore.
 
-Things you may want to cover:
+* Ruby version: 5.0.0.1
 
-* Ruby version
+* Installation
+  * Create a local directory: 'mkdir certman'
+  * Download certman's code from git: 'git clone https://github.com/schbrongx/certman.git'
+  * Alter config/environments/YOUR_ENVIRONMENT.rb to your needs, specifically the following settings:
+    * config.action_mailer.default_url_options
+    * config.web_console.whitelisted_ips
+  * Alter config/boot.rb: set Host-IP and port at default_options_bk.merge
+  * Run bundle install
+  * Run db:migrate db:seed (seeding is mandatory, the application's default settings are stored in the DB)
+  * Run the server with rails s (remember, host and port are already set in boot.rb)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
