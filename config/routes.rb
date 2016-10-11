@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     collection do 
       get 'autogenerate'
     end
+    member do
+      get 'export_private'
+      get 'export_public'
+    end
   end
 
   resources :csrs do
@@ -17,9 +21,16 @@ Rails.application.routes.draw do
       post 'autogenerate'
       post 'templatefiller'
     end
+    member do
+      get 'export'
+    end
   end
 
-  resources :certificates
+  resources :certificates do
+    member do
+      get 'export'
+    end
+  end
 
   resources :keystores
 

@@ -1,5 +1,5 @@
 class KeypairsController < ApplicationController
-  before_action :set_keypair, only: [:show, :edit, :update, :destroy]
+  before_action :set_keypair, only: [:show, :edit, :update, :destroy, :export_private, :export_public]
 
   # GET /keypairs
   # GET /keypairs.json
@@ -69,6 +69,16 @@ class KeypairsController < ApplicationController
         format.json { render json: @keypair.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # GET /keypairs/1/export_private
+  def export_private
+    send_data @keypair.privatekey, filename: 'privatekey.txt', type:'text/plain', disposition:'attachment'
+  end
+
+  # GET /keypairs/1/export_pubic
+  def export_public
+    send_data @keypair.publickey, filename: 'publickey.txt', type:'text/plain', disposition:'attachment'
   end
 
   private

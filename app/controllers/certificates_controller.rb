@@ -1,5 +1,5 @@
 class CertificatesController < ApplicationController
-  before_action :set_certificate, only: [:show, :edit, :update, :destroy]
+  before_action :set_certificate, only: [:show, :edit, :update, :destroy, :export]
 
   # GET /certificates
   # GET /certificates.json
@@ -68,6 +68,11 @@ class CertificatesController < ApplicationController
       end  # respond_to
     end  # if .destroy
   end  # def destroy
+
+  # GET /certificates/1/export
+  def export
+    send_data @certificate.content, filename: 'certificate.txt', type:'text/plain', disposition:'attachment'
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

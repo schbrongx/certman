@@ -5,12 +5,14 @@
 
 <p>
   <strong>Privatekey:</strong>
-  <br /><button class="btn btn-default btn-xs btn-copy-clipboard" data-clipboard-target="#privatekey_content"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
+  <br /><button class="btn btn-default btn-xs btn-copy-clipboard" data-clipboard-target="#privatekey_content"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span> Copy</button>
+  <%= link_to '<span class="glyphicon glyphicon-export" aria-hidden="true"></span> Export'.html_safe, export_private_keypair_path, target:'_blank', data: { no_turbolink: true }, class:'btn btn-xs btn-default' %>
   <br /><small><pre id="privatekey_content", class="long-paragraph"><%= @keypair.privatekey.html_safe %></pre></small>
 </p>
 
 <p>
   <strong>Publickey:</strong>
-  <br /><button class="btn btn-default btn-xs btn-copy-clipboard" data-clipboard-target="#publickey_content"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
+  <br /><button class="btn btn-default btn-xs btn-copy-clipboard" data-clipboard-target="#publickey_content"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span> Copy</button>
+  <%= link_to '<span class="glyphicon glyphicon-export" aria-hidden="true"></span> Export'.html_safe, export_public_keypair_path, target:'_blank', data: { no_turbolink: true }, class:'btn btn-xs btn-default' %>
   <br /><small><pre id="publickey_content", class="long-paragraph"><%= @keypair.publickey.html_safe %></pre></small>
 </p>

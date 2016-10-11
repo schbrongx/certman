@@ -5,6 +5,7 @@
 
 <p>
   <strong>Content:</strong>
-  <br /><button class="btn btn-default btn-xs btn-copy-clipboard" data-clipboard-target="#csr_content"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
+  <br /><button class="btn btn-default btn-xs btn-copy-clipboard" data-clipboard-target="#csr_content"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span> Copy</button>
+  <%= link_to '<span class="glyphicon glyphicon-export" aria-hidden="true"></span> Export'.html_safe, export_csr_path, target:'_blank', data: { no_turbolink: true }, class:'btn btn-xs btn-default' %>
   <br /><small><pre id="csr_content", class="long-paragraph"><%= @csr.content.html_safe %></pre></small>
 </p>

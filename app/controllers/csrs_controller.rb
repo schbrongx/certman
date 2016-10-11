@@ -1,5 +1,5 @@
 class CsrsController < ApplicationController
-  before_action :set_csr, only: [:show, :edit, :update, :destroy]
+  before_action :set_csr, only: [:show, :edit, :update, :destroy, :export]
   before_action :set_csrtemplate, only: [:templatefiller]
 #  before_action :set_keypair, only: [:autogenerate]
 
@@ -86,6 +86,11 @@ class CsrsController < ApplicationController
         format.json { render json: @csr.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # GET /csrs/1/export
+  def export
+    send_data @csr.content, filename: 'csr.txt', type:'text/plain', disposition:'attachment'
   end
 
   private
