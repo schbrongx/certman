@@ -26,7 +26,7 @@
     <div class="form-group">
     <%= f.label :keypair_id, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-           <%= f.select "keypair_id", options_from_collection_for_select(@keypairs, "id", "name", f.object.keypair_id), class:"form-control", include_blank: true %>
+           <%= f.select "keypair_id", options_from_collection_for_select(@keypairs, "id", "name", f.object.keypair_id), class:"form-control", include_blank: "Select a keypair" %>
       </div>
     </div>
     
@@ -36,7 +36,7 @@
            <%= f.select "csrtemplate_id",
 		         options_from_collection_for_select(@csrtemplates, "id", "name", f.object.csrtemplate_id),
 				 class:"form-control",
-				 include_blank: true %>
+				 include_blank: "Select a CSR template" %>
 		   <%= link_to "Fill CSR with template values",
 		       templatefiller_csrs_path,
 			   method: :post,
