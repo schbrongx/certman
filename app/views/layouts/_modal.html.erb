@@ -8,7 +8,6 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <%# TODO clear text of modal on.close %>
           </div>
         </div>
       </div>
@@ -23,6 +22,10 @@
         }
         click_modal_show();
       });
+
+      // empty modal content when it's closed
+      $('#modal_show').on('hidden.bs.modal', function () {
+        $('#modal_show_body').html("Loading ...");
+      });
     </script>
 <!-- end _modal -->
-
