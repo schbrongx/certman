@@ -1,7 +1,7 @@
 class CsrsController < ApplicationController
   before_action :set_csr, only: [:show, :edit, :update, :destroy, :export]
   before_action :set_csrtemplate, only: [:templatefiller]
-#  before_action :set_keypair, only: [:autogenerate]
+  before_action :set_keypair, only: [:autogenerate]
 
   # GET /csrs
   def index
@@ -22,13 +22,6 @@ class CsrsController < ApplicationController
 
   # POST /csrs/autogenerate
   def autogenerate
-    respond_to do |format|
-      if set_keypair
-        format.js 
-      else
-        format.js
-      end
-    end
   end
 
   # POST /csrs/templatefiller
