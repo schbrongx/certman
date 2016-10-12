@@ -1,1 +1,0 @@
-json.partial! "csrs/csr", csr: @csr

@@ -20,7 +20,8 @@ class CertificatesController < ApplicationController
 
   # GET /certificates/1/edit
   def edit
-    @certificatetype = Certificatetype.all
+    @certificatetypes = Certificatetype.all
+    @csrs = Csr.all
   end
 
   # POST /certificates
@@ -82,6 +83,6 @@ class CertificatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def certificate_params
-      params.require(:certificate).permit(:name, :certificatetype_id, :content)
+      params.require(:certificate).permit(:name, :certificatetype_id, :csr_id, :content)
     end
 end

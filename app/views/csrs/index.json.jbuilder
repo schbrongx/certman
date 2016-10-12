@@ -1,1 +1,0 @@
-json.array! @csrs, partial: 'csrs/csr', as: :csr

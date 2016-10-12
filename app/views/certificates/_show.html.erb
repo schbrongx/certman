@@ -9,6 +9,15 @@
 </p>
 
 <p>
+  <strong>CSR:</strong>
+  <% if @certificate.csr_id.present? %>
+    <%= @certificate.csr.name %>
+  <% else %>
+	No CSR
+  <% end %>
+</p>
+
+<p>
   <strong>Content:</strong>
   <br /><button class="btn btn-default btn-xs btn-copy-clipboard" data-clipboard-target="#certificate_content"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span> Copy</button>
   <%= link_to '<span class="glyphicon glyphicon-export" aria-hidden="true"></span> Export'.html_safe, export_certificate_path, target:'_blank', data: { no_turbolink: true }, class:'btn btn-xs btn-default' %>

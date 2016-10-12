@@ -7,6 +7,7 @@
           <th>Id</th>
           <th>Name</th>
           <th>Type</th>
+		  <th>CSR</th>
           <th>Content</th>
           <th>Action</th>
         </tr>
@@ -18,6 +19,11 @@
             <td><%= certificate.id%></td>
             <td><%= certificate.name %></td>
             <td><%= certificate.certificatetype.name %></td>
+			<% if certificate.csr.nil? %>
+              <td>No CSR</td>
+			<% else %>
+              <td><%= certificate.csr.name %></td>
+			<% end  # if %>
             <td><%= truncate(certificate.content, length: 70) %></td>
             <td>
               <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, certificate_path(certificate), class: 'btn btn-sm btn-default btn-show-modal', remote: true %>
