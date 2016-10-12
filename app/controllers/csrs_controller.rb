@@ -4,7 +4,6 @@ class CsrsController < ApplicationController
 #  before_action :set_keypair, only: [:autogenerate]
 
   # GET /csrs
-  # GET /csrs.json
   def index
     @csrs = Csr.all
   end
@@ -66,10 +65,8 @@ class CsrsController < ApplicationController
     respond_to do |format|
       if @csr.update(csr_params)
         format.html { redirect_to csrs_url, notice: 'CSR was successfully updated.' }
-        format.json { render :show, status: :ok, location: @csr }
       else
         format.html { render :edit }
-        format.json { render json: @csr.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -80,10 +77,8 @@ class CsrsController < ApplicationController
     respond_to do |format|
       if @csr.destroy
         format.html { redirect_to csrs_url, notice: 'CSR was successfully destroyed.' }
-        format.json { head :no_content }
       else
         format.html { redirect_to csrs_url, alert: 'Unable to delete CSR. ' + @csr.errors[:base].to_s }
-        format.json { render json: @csr.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -92,7 +87,7 @@ class CsrsController < ApplicationController
   def export
     send_data @csr.content, filename: 'csr.txt', type:'text/plain', disposition:'attachment'
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_csr
