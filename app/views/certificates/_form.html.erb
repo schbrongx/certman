@@ -30,6 +30,7 @@
       <%= f.label :csr_id, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
         <%= f.select "csr_id", options_from_collection_for_select(@csrs, "id", "name", f.object.csr_id), include_blank:'Select CSR to sign', id:'csr_id', class:"form-control" %>
+		<%# TODO - use keystore (as CA) instead of just a keypair %>
         <%= f.select "keypair_id", options_from_collection_for_select(@keypairs, "id", "name", f.object.keypair_id), include_blank:'Select keypair to use', id:'keypair_id', class:"form-control" %>
 		<%= link_to "Sign CSR and create certificate content",
 		       sign_certificates_path,
