@@ -46,19 +46,15 @@
               </li>
             <% end  # if development %> 
           </ul>
-	  <hr class="hidden-sm hidden-md hidden-lg" />
-        <% end #user_signed_in? %>
+	        <hr class="hidden-sm hidden-md hidden-lg" />
 
 		
         <!-- Devise sign-up and login links -->
         <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-            <li><%= link_to 'Edit profile "' + current_user.username.capitalize + '"', edit_user_registration_path %></li>
-            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to "Sign in", new_user_session_path %></li>
-          <% end #user_signed_in? %>
-        </ul>	  
+          <li><%= link_to 'Edit profile "' + current_user.username.capitalize + '"', edit_user_registration_path %></li>
+          <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+        </ul>
+        <% end  # if user signed in %>
       </div>
 	</div>
   </div>
