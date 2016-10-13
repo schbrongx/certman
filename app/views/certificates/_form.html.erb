@@ -15,7 +15,7 @@
     <div class="form-group">
       <%= f.label :name, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-        <%= f.text_field :name, class:"form-control" %>
+        <%= f.text_field :name, class:"form-control", id:'name' %>
       </div>
     </div>
 
@@ -29,14 +29,36 @@
     <div class="form-group">
       <%= f.label :csr_id, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-        <%= f.select "csr_id", options_from_collection_for_select(@csrs, "id", "name", f.object.csr_id), include_blank:'Select CSR', class:"form-control" %>
+        <%= f.select "csr_id", options_from_collection_for_select(@csrs, "id", "name", f.object.csr_id), include_blank:'Select CSR to sign', id:'csr_id', class:"form-control" %>
+        <%= f.select "keypair_id", options_from_collection_for_select(@keypairs, "id", "name", f.object.keypair_id), include_blank:'Select keypair to use', id:'keypair_id', class:"form-control" %>
+		<%= link_to "Sign CSR and create certificate content",
+		       sign_certificates_path,
+			   method: :post,
+			   remote:true,
+			   id:"sign_button",
+			   class:"btn btn-warning btn-xs"
+		   %>
+               <%# catch onclick event for above link and submit selected template id to sign.js.erb via AJAX %>
+               <script>
+                $("#sign_button").on("click", function(event) {
+               	event.preventDefault();
+               	event.stopPropagation();
+                   console.log("sign_button clicked");
+               	$.ajax({
+                     url: '/certificates/sign',
+                     dataType: 'script',
+                     data: { csr_id: $("#certificate_csr_id").val(), keypair_id: $("#certificate_keypair_id").val() },
+                     type:'post',
+                   })
+                 });
+               </script>
       </div>
 	</div>
 	
     <div class="form-group">
       <%= f.label :content, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-        <%= f.text_area :content, class:"form-control", rows: 10, class:"form-control" %>
+        <%= f.text_area :content, class:"form-control", rows: 10, class:"form-control", id:'content' %>
       </div>
 	</div>
 

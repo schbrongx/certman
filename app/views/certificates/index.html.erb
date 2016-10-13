@@ -8,6 +8,7 @@
           <th>Name</th>
           <th>Type</th>
 		  <th>CSR</th>
+		  <th>Keypair</th>
           <th>Content</th>
           <th>Action</th>
         </tr>
@@ -23,6 +24,11 @@
               <td>No CSR</td>
 			<% else %>
               <td><%= certificate.csr.name %></td>
+			<% end  # if %>
+			<% if certificate.keypair.nil? %>
+              <td>No keypair</td>
+			<% else %>
+              <td><%= certificate.keypair.name %></td>
 			<% end  # if %>
             <td><%= truncate(certificate.content, length: 70) %></td>
             <td>

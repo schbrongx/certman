@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   end
 
   resources :certificates do
+    collection do
+      post 'sign'
+    end
     member do
       get 'export'
     end

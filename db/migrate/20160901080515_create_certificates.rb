@@ -5,6 +5,7 @@ class CreateCertificates < ActiveRecord::Migration
       t.text :content
       t.references :certificatetype, index: true, foreign_key: true
       t.references :csr, index: true, foreign_key: true
+      t.references :keypair, index: true, foreign_key: true
 
       t.timestamps null: false
     end
