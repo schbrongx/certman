@@ -62,6 +62,14 @@ group :development do
   gem 'quiet_assets'
 
   # enable dumping of db into a seed file
+  #   run 'rake db:seed:dump' to dump seed.db
+  #   Append to db/seeds.rb instead of overwriting it:
+  #     rake db:seed:dump APPEND=true
+  #   Use another output file instead of db/seeds.rb:
+  #     rake db:seed:dump FILE=db/seed_dump.rb
+  #   Exclude settings and users
+  #     rake db:seed:dump MODELS_EXCLUDE=setting,user
+  # Example: 'rake db:seed:dump FILE=db/seed_dump.rb MODELS_EXCLUDE=setting,user'
   gem 'seed_dump'
   
   gem 'ruby_dep', '1.5.0'
