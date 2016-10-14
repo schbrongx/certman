@@ -4,7 +4,6 @@
     <table class="table">
       <thead>
       <tr>
-        <th>Id</th>
         <th>Name</th>
         <th>Description</th>
         <th>Keypair</th>
@@ -17,7 +16,6 @@
       <tbody>
       <% @keystores.each do |keystore| %>
         <tr>
-        <td class="col-xs-1"><%= keystore.id %></td>
         <td class="col-xs-1"><%= truncate(keystore.name) %></td>
         <td class="col-xs-2"><%= truncate(keystore.description) %></td>
 		<td class="col-xs-1">

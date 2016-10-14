@@ -4,7 +4,6 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Id</th>
           <th>Name</th>
           <th>Description</th>
           <th>Data</th>
@@ -15,7 +14,6 @@
       <tbody>
         <% @csrtemplates.each do |csrtemplate| %>
           <tr>
-            <td><%= csrtemplate.id%></td>
             <td><%= csrtemplate.name %></td>
             <td><%= csrtemplate.description %></td>
             <td>CN=<%= csrtemplate.cn %></br>

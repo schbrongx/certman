@@ -4,7 +4,6 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Id</th>
           <th>Name</th>
           <th>Keypair</th>
           <th>CSR Template</th>
@@ -16,7 +15,6 @@
       <tbody>
         <% @csrs.each do |csr| %>
           <tr>
-            <td rowspan="2"><%= csr.id %></td>
             <td rowspan="2"><%= csr.name %></td>
             <td rowspan="2"><%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + truncate(csr.keypair.name, length: 12) , keypair_path(csr.keypair), class: 'btn btn-xs btn-default btn-show-modal', remote: true %></td>
             <td rowspan="2"><%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + truncate(csr.csrtemplate.name, length: 12), csrtemplate_path(csr.csrtemplate), class: 'btn btn-xs btn-default btn-show-modal', remote: true %></td>
