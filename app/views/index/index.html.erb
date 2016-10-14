@@ -12,10 +12,10 @@
 
 <hr> <!-- ----- ----- ----- ----- -----  -->
 <% if Rails.env.development? %>
-  <h2>Development environment info</h2>
+  <h4>Git-commit</h4>
   <p>
-    <strong>Git-commit</strong> <%= GIT_COMMIT %><br />
-    <strong>Git-timestamp:</strong> <%= GIT_COMMIT_TIMESTAMP %> 
+    <%= GIT_COMMIT %><br />
+    (<%= GIT_COMMIT_TIMESTAMP %>)
   </p>
 <% end  # if Rails.env.development? %>
 <!-- end index#index -->
