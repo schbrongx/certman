@@ -4,7 +4,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-body" id="modal_show_body">
-            Loading ...
+            <%= image_tag("spinner", size: "64") %>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -25,7 +25,7 @@
 
       // empty modal content when it's closed
       $('#modal_show').on('hidden.bs.modal', function () {
-        $('#modal_show_body').html("Loading ...");
+        $('#modal_show_body').html('<%= image_tag("spinner", size: "64") %>');
       });
     </script>
 <!-- end _modal.html.erb -->
