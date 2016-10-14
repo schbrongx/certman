@@ -1,16 +1,15 @@
 
-<!-- _navigation -->
+<!-- _navigation.html.erb -->
+<% if user_signed_in? %>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed glyphicon glyphicon-menu-hamburger" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
       </button>
-      <a class="navbar-brand" style="padding:0px;" href="/"><%= image_tag ("icon_certman_32x32"), style:"padding: 15px;height: 100%;width: auto;"%></a>
+      <a class="navbar-brand" style="padding:0px;" href="/"><%= image_tag ("icon_certman_512x512.png"), style:"padding: 15px;height: 100%;width: auto;"%></a>
     </div>
       <div class="collapse navbar-collapse" id="navbar-collapse-1">
-
-        <% if user_signed_in? %>
           <ul class="nav navbar-nav">
             <li><%= link_to 'Keystores', keystores_path %> </li>
             <li class="dropdown">
@@ -30,19 +29,9 @@
                 <li><%= link_to 'Preferences', settings_path %> </li>
               </ul>
             </li>
-            <% if Rails.env.development?  # only display letter_opener_ui menuitem in development %>
+            <% if Rails.env.development?  # only display these in development %>
               <li>
                 <%= link_to '<span class="glyphicon glyphicon-envelope"></span>'.html_safe, letter_opener_web_path, target:'_blank' %>
-              </li>
-            <% end  # if development %> 
-            <% if Rails.env.development?  # only display git info menuitem in development %>
-              <li>
-                <%= link_to '<span class="glyphicon glyphicon-info-sign"></span>'.html_safe, "#", data: {toggle:"popover", trigger:"hover", placement:"auto", content:"gitcommit ##{GIT_COMMIT}" } %>
-                <script> <!-- manually initialiue popover for bootstrap -->
-                  $(function () {
-                    $('[data-toggle="popover"]').popover()
-                  })
-              </script>
               </li>
             <% end  # if development %> 
           </ul>
@@ -54,9 +43,9 @@
           <li><%= link_to 'Edit profile "' + current_user.username.capitalize + '"', edit_user_registration_path %></li>
           <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
         </ul>
-        <% end  # if user signed in %>
       </div>
 	</div>
   </div>
 </nav>
-<!-- end _navigation -->
+<% end  # if user signed in %>
+<!-- end _navigation.html.erb -->
