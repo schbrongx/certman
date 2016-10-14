@@ -1,5 +1,5 @@
 
-<!-- _warnings -->
+<!-- _warnings.html.erb -->
 <% # show alert or notice messages as dismissable bootstrapped alertbox %>
 <% if (alert) || (notice) 
   if notice
@@ -20,7 +20,6 @@
     setTimeout("$('.alert-success').fadeOut('fast')", 3000)
   </script>
 <% end  # if alert || notice%>
-
 <% # try to prevent users from sticking to the default password by displaying an alert %>
 <% unless current_user.nil? %>
   <% if current_user.username == 'admin' %>
@@ -32,4 +31,4 @@
     <% end %>
   <% end %>
 <% end %>
-<!-- end _warnings -->
+<!-- end _warnings.html.erb -->

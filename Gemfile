@@ -73,6 +73,10 @@ group :development do
   gem 'seed_dump'
   
   gem 'ruby_dep', '1.5.0'
+
+  # edit favicon settings in config/favicon.json
+  # autogenerate favicons with 'rails generate favicon'
+  gem 'rails_real_favicon'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

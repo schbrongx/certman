@@ -1,16 +1,16 @@
+<!-- _application.html.erb -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<title><%= @application_name.to_s%></title>
 <%= render 'layouts/meta' %>
-  <title><%= @application_name.to_s%></title>
-  <%= favicon_link_tag 'icon_certman_256x256.png', type:'image/png' %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+<%= render 'layouts/favicon' %>
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= csrf_meta_tags %>
 </head>
 
 <body itemscope itemtype="http://schema.org/OrganizeAction">
-<!-- _application -->
 <%= render 'layouts/navigation' %>
 
 <div id="main_container" class="container-fluid">
@@ -19,27 +19,21 @@
       <%= render 'layouts/warnings' %>
 
 <!-- yield -->
-
 	    <%= yield %>
-
 <!-- end yield -->
 
     </div>
   </div>
 </div>
 
-
 <%= render 'layouts/footer' %>
 
 <!-- load these javascripts as late aspossible -->
 <script>
   $(document).ready(function(){  
-  
     var clip = new Clipboard('.btn-copy-clipboard');
-    
   });
 </script>
-<!-- end _application -->
 </body>
 </html>
-
+<!-- end _application.html.erb -->
