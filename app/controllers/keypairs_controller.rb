@@ -2,13 +2,11 @@ class KeypairsController < ApplicationController
   before_action :set_keypair, only: [:show, :edit, :update, :destroy, :export_private, :export_public]
 
   # GET /keypairs
-  # GET /keypairs.json
   def index
     @keypairs = Keypair.all
   end
 
   # GET /keypairs/1
-  # GET /keypairs/1.json
   def show
   end
 
@@ -28,47 +26,31 @@ class KeypairsController < ApplicationController
   end
 
   # POST /keypairs
-  # POST /keypairs.json
   def create
     @keypair = Keypair.new(keypair_params)
-
-    respond_to do |format|
-      if @keypair.save
-        format.html { redirect_to keypairs_url, notice: 'Keypair was successfully created.' }
-        format.json { render :show, status: :created, location: @keypair }
-      else
-        format.html { render :new }
-        format.json { render json: @keypair.errors, status: :unprocessable_entity }
-      end
+    if @keypair.save
+      redirect_to keypairs_url, notice: 'Keypair was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /keypairs/1
-  # PATCH/PUT /keypairs/1.json
   def update
-    respond_to do |format|
-      if @keypair.update(keypair_params)
-        format.html { redirect_to keypairs_url, notice: 'Keypair was successfully updated.' }
-        format.json { render :show, status: :ok, location: @keypair }
-      else
-        format.html { render :edit }
-        format.json { render json: @keypair.errors, status: :unprocessable_entity }
-      end
+    if @keypair.update(keypair_params)
+      redirect_to keypairs_url, notice: 'Keypair was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /keypairs/1
-  # DELETE /keypairs/1.json
   def destroy
-    respond_to do |format|
       if @keypair.destroy
-        format.html { redirect_to keypairs_url, notice: 'Keypair was successfully destroyed.' }
-        format.json { head :no_content }
+        redirect_to keypairs_url, notice: 'Keypair was successfully destroyed.'
       else
-        format.html { redirect_to keypairs_url, alert: 'Unable to delete keypair. ' + @keypair.errors[:base].to_s }
-        format.json { render json: @keypair.errors, status: :unprocessable_entity }
+        redirect_to keypairs_url, alert: 'Unable to delete keypair. ' + @keypair.errors[:base].to_s
       end
-    end
   end
 
   # GET /keypairs/1/export_private

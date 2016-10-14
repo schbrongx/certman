@@ -2,7 +2,6 @@ class KeystoresController < ApplicationController
   before_action :set_keystore, only: [:show, :edit, :update, :destroy]
 
   # GET /keystores
-  # GET /keystores.json
   def index
     @keystores = Keystore.all
   end
@@ -23,46 +22,31 @@ class KeystoresController < ApplicationController
   end
 
   # POST /keystores
-  # POST /keystores.json
   def create
     @keystore = Keystore.new(keystore_params)
     @keypairs = Keypair.all
     @csrs = Csr.all
     @certificates = Certificate.all
-
-    respond_to do |format|
-      if @keystore.save
-        format.html { redirect_to keystores_url, notice: 'Keystore was successfully created.' }
-        format.json { render :index, status: :created, location: @keystore }
-      else
-        format.html { render :new }
-        format.json { render json: @keystore.errors, status: :unprocessable_entity }
-      end
+    if @keystore.save
+      redirect_to keystores_url, notice: 'Keystore was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /keystores/1
-  # PATCH/PUT /keystores/1.json
   def update
-    respond_to do |format|
-      if @keystore.update(keystore_params)
-        format.html { redirect_to keystores_url, notice: 'Keystore was successfully updated.' }
-        format.json { render :index, status: :ok, location: @keystore }
-      else
-        format.html { render :edit }
-        format.json { render json: @keystore.errors, status: :unprocessable_entity }
-      end
+    if @keystore.update(keystore_params)
+      redirect_to keystores_url, notice: 'Keystore was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /keystores/1
-  # DELETE /keystores/1.json
   def destroy
     @keystore.destroy
-    respond_to do |format|
-      format.html { redirect_to keystores_url, notice: 'Keystore was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      redirect_to keystores_url, notice: 'Keystore was successfully destroyed.'
   end
 
   private

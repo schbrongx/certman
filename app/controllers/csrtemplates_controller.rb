@@ -2,13 +2,11 @@ class CsrtemplatesController < ApplicationController
   before_action :set_csrtemplate, only: [:show, :edit, :update, :destroy]
 
   # GET /csrtemplates
-  # GET /csrtemplates.json
   def index
     @csrtemplates = Csrtemplate.all
   end
 
   # GET /csrtemplates/1
-  # GET /csrtemplates/1.json
   def show
   end
 
@@ -22,46 +20,30 @@ class CsrtemplatesController < ApplicationController
   end
 
   # POST /csrtemplates
-  # POST /csrtemplates.json
   def create
     @csrtemplate = Csrtemplate.new(csrtemplate_params)
-
-    respond_to do |format|
-      if @csrtemplate.save
-        format.html { redirect_to csrtemplates_url, notice: 'Csrtemplate was successfully created.' }
-        format.json { render :show, status: :created, location: @csrtemplate }
-      else
-        format.html { render :new }
-        format.json { render json: @csrtemplate.errors, status: :unprocessable_entity }
-      end
+    if @csrtemplate.save
+      redirect_to csrtemplates_url, notice: 'Csrtemplate was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /csrtemplates/1
-  # PATCH/PUT /csrtemplates/1.json
   def update
-    respond_to do |format|
-      if @csrtemplate.update(csrtemplate_params)
-        format.html { redirect_to csrtemplates_url, notice: 'Csrtemplate was successfully updated.' }
-        format.json { render :show, status: :ok, location: @csrtemplate }
-      else
-        format.html { render :edit }
-        format.json { render json: @csrtemplate.errors, status: :unprocessable_entity }
-      end
+    if @csrtemplate.update(csrtemplate_params)
+      redirect_to csrtemplates_url, notice: 'Csrtemplate was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /csrtemplates/1
-  # DELETE /csrtemplates/1.json
   def destroy
     if @csrtemplate.destroy
-      respond_to do |format|
-        format.html { redirect_to csrtemplates_url, notice: 'Csrtemplate was successfully destroyed.' }
-      end  # respond_to
+        redirect_to csrtemplates_url, notice: 'Csrtemplate was successfully destroyed.'
     else
-      respond_to do |format|
-        format.html { redirect_to csrtemplates_url, alert: 'Unable to delete CSR-template . ' + @csrtemplate.errors[:base].to_s }
-      end  # respond_to
+        redirect_to csrtemplates_url, alert: 'Unable to delete CSR-template . ' + @csrtemplate.errors[:base].to_s
     end  # if .destroy
   end  # def destroy
 

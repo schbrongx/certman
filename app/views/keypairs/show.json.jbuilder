@@ -1,1 +1,0 @@
-json.partial! "keypairs/keypair", keypair: @keypair

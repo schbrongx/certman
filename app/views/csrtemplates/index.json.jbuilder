@@ -1,1 +1,0 @@
-json.array! @csrtemplates, partial: 'csrtemplates/csrtemplate', as: :csrtemplate

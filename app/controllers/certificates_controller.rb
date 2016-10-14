@@ -4,13 +4,11 @@ class CertificatesController < ApplicationController
   before_action :set_keypair, only: [:sign]
 
   # GET /certificates
-  # GET /certificates.json
   def index
     @certificates = Certificate.all
   end
 
   # GET /certificates/1
-  # GET /certificates/1.json
   def show
   end
 
@@ -19,59 +17,41 @@ class CertificatesController < ApplicationController
     @certificate = Certificate.new
     @certificatetypes = Certificatetype.all
     @csrs = Csr.all
-    @keypairs     = Keypair.all
+    @keypairs = Keypair.all
   end
 
   # GET /certificates/1/edit
   def edit
     @certificatetypes = Certificatetype.all
     @csrs = Csr.all
-    @keypairs     = Keypair.all
+    @keypairs = Keypair.all
   end
 
   # POST /certificates
-  # POST /certificates.json
   def create
     @certificate = Certificate.new(certificate_params)
-
-    respond_to do |format|
-      if @certificate.save
-        format.html { redirect_to certificates_url, notice: 'Certificate was successfully created.' }
-        format.json { render :show, status: :created, location: @certificate }
-      else
-        format.html { render :new }
-        format.json { render json: @certificate.errors, status: :unprocessable_entity }
-      end
+    if @certificate.save
+      redirect_to certificates_url, notice: 'Certificate was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /certificates/1
-  # PATCH/PUT /certificates/1.json
   def update
-    respond_to do |format|
-      if @certificate.update(certificate_params)
-        format.html { redirect_to certificates_url, notice: 'Certificate was successfully updated.' }
-        format.json { render :show, status: :ok, location: @certificate }
-      else
-        format.html { render :edit }
-        format.json { render json: @certificate.errors, status: :unprocessable_entity }
-      end
+    if @certificate.update(certificate_params)
+      redirect_to certificates_url, notice: 'Certificate was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /certificates/1
-  # DELETE /certificates/1.json
   def destroy
     if @certificate.destroy
-      respond_to do |format|
-        format.html { redirect_to certificates_url, notice: 'Certificate was successfully destroyed.' }
-        format.json { head :no_content }
-      end  # respond_to
+      redirect_to certificates_url, notice: 'Certificate was successfully destroyed.'
     else
-      respond_to do |format|
-        format.html { redirect_to certificates_url, alert: 'Unable to delete certificate. ' + @certificate.errors[:base].to_s }
-        format.json { render json: @certificate.errors, status: :unprocessable_entity }
-      end  # respond_to
+      redirect_to certificates_url, alert: 'Unable to delete certificate. ' + @certificate.errors[:base].to_s
     end  # if .destroy
   end  # def destroy
 

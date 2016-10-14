@@ -9,7 +9,6 @@ class CsrsController < ApplicationController
   end
 
   # GET /csrs/1
-  # GET /csrs/1.json
   def show
   end
 
@@ -36,43 +35,32 @@ class CsrsController < ApplicationController
   end
 
   # POST /csrs
-  # POST /csrs.json
   def create
     @csr          = Csr.new(csr_params)
     @keypairs     = Keypair.all
     @csrtemplates = Csrtemplate.all
-    respond_to do |format|
-      if @csr.save
-        format.html { redirect_to csrs_url, notice: 'CSR was successfully created.' }
-        format.json { render :show, status: :created, location: @csr }
-      else
-        format.html { render :new }
-        format.json { render json: @csr.errors, status: :unprocessable_entity }
-      end
+    if @csr.save
+      redirect_to csrs_url, notice: 'CSR was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /csrs/1
-  # PATCH/PUT /csrs/1.json
   def update
-    respond_to do |format|
-      if @csr.update(csr_params)
-        format.html { redirect_to csrs_url, notice: 'CSR was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @csr.update(csr_params)
+      redirect_to csrs_url, notice: 'CSR was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /csrs/1
-  # DELETE /csrs/1.json
   def destroy
-    respond_to do |format|
-      if @csr.destroy
-        format.html { redirect_to csrs_url, notice: 'CSR was successfully destroyed.' }
-      else
-        format.html { redirect_to csrs_url, alert: 'Unable to delete CSR. ' + @csr.errors[:base].to_s }
-      end
+    if @csr.destroy
+      redirect_to csrs_url, notice: 'CSR was successfully destroyed.'
+    else
+      redirect_to csrs_url, alert: 'Unable to delete CSR. ' + @csr.errors[:base].to_s
     end
   end
 
