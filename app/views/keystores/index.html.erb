@@ -6,9 +6,9 @@
       <tr>
         <th>Name</th>
         <th>Description</th>
-        <th>Keypair</th>
-        <th>CSR</th>
-        <th>Certificate</th>
+        <th class="col-xs-1">Keypair</th>
+        <th class="col-xs-1">CSR</th>
+        <th class="col-xs-1">Certificate</th>
         <th>Action</th>
       </tr>
       </thead>
@@ -16,33 +16,33 @@
       <tbody>
       <% @keystores.each do |keystore| %>
         <tr>
-        <td class="col-xs-1"><%= truncate(keystore.name) %></td>
-        <td class="col-xs-2"><%= truncate(keystore.description) %></td>
-		<td class="col-xs-1">
-		  <% unless keystore.keypair.nil? %>
+        <td><%= truncate(keystore.name) %></td>
+        <td><%= truncate(keystore.description) %></td>
+        <td>
+		      <% unless keystore.keypair.nil? %>
             <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + truncate(keystore.keypair.name, length: 12), keypair_path(keystore.keypair), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
-		  <% else %>
-		    No keypair assigned.
-		  <% end  # unless %>
+		      <% else %>
+		        No keypair assigned.
+		      <% end  # unless %>
         </td>
-		<td class="col-xs-1">
-		<% unless keystore.csr.nil? %>
-          <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + truncate(keystore.csr.name, length: 12), csr_path(keystore.csr), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
-		  <% else %>
-		    No CSR assigned.
-		<% end  # unless %>
+		    <td>
+		      <% unless keystore.csr.nil? %>
+            <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + truncate(keystore.csr.name, length: 12), csr_path(keystore.csr), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
+		      <% else %>
+		        No CSR assigned.
+		      <% end  # unless %>
         </td>
-		<td class="col-xs-1">
-		<% unless keystore.certificate.nil? %>
-          <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + truncate(keystore.certificate.name, length: 12), certificate_path(keystore.certificate), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
-        <% else %>
-          No certificate assigned.
-		<% end  # unless %>
+		    <td>
+		      <% unless keystore.certificate.nil? %>
+            <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + truncate(keystore.certificate.name, length: 12), certificate_path(keystore.certificate), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
+          <% else %>
+            No certificate assigned.
+		      <% end  # unless %>
         </td>
-        <td class="col-xs-1">
+        <td>
           <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_keystore_path(keystore), class:"btn btn-sm btn-default" %>
           <%= link_to '<span class="glyphicon glyphicon-trash"></span> Delete'.html_safe, keystore, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger" %>
-    	</td>
+    	  </td>
         </tr>
       <% end %>
       </tbody>
