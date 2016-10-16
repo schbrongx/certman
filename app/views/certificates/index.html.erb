@@ -17,16 +17,20 @@
           <tr>
             <td><%= certificate.name %></td>
             <td><%= certificate.certificatetype.name %></td>
-			<% if certificate.csr.nil? %>
-              <td>No CSR</td>
-			<% else %>
-              <td><%= certificate.csr.name %></td>
-			<% end  # if %>
-			<% if certificate.keypair.nil? %>
-              <td>No keypair</td>
-			<% else %>
-              <td><%= certificate.keypair.name %></td>
-			<% end  # if %>
+        <td>
+          <% unless certificate.csr.nil? %>
+            <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + truncate(certificate.csr.name, length: 12), csr_path(certificate.csr), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
+          <% else %>
+            No CSR assigned.
+          <% end  # unless %>
+        </td>
+        <td>
+          <% unless certificate.keypair.nil? %>
+            <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + truncate(certificate.keypair.name, length: 12), keypair_path(certificate.keypair), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
+          <% else %>
+            No keypair assigned.
+          <% end  # unless %>
+        </td>
             <td>
               <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span> View'.html_safe, certificate_path(certificate), class: 'btn btn-sm btn-default btn-show-modal', remote: true %>
               <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_certificate_path(certificate), class:"btn btn-sm btn-default" %>
