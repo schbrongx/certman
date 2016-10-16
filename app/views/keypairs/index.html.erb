@@ -5,8 +5,6 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th>Privatekey</th>
-          <th>Publickey</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -14,12 +12,10 @@
         <% @keypairs.each do |keypair| %>
           <tr>
             <td><%= keypair.name %></td>
-            <td><%= truncate(keypair.privatekey, length: 60) %></td>
-            <td><%= truncate(keypair.publickey, length: 60) %></td>
             <td>
-              <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, keypair_path(keypair), class: 'btn btn-sm btn-default btn-show-modal', remote: true %>
-              <%= link_to '<span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_keypair_path(keypair), class:"btn btn-sm btn-default" %>
-              <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, keypair, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger" %>
+              <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span> View'.html_safe, keypair_path(keypair), class: 'btn btn-sm btn-default btn-show-modal', remote: true %>
+              <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_keypair_path(keypair), class:"btn btn-sm btn-default" %>
+              <%= link_to '<span class="glyphicon glyphicon-trash"></span> Delete'.html_safe, keypair, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger" %>
              </td>
           </tr>
         <% end %>

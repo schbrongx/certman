@@ -8,7 +8,6 @@
           <th>Type</th>
 		  <th>CSR</th>
 		  <th>Keypair</th>
-          <th>Content</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -28,11 +27,10 @@
 			<% else %>
               <td><%= certificate.keypair.name %></td>
 			<% end  # if %>
-            <td><%= truncate(certificate.content, length: 70) %></td>
             <td>
-              <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe, certificate_path(certificate), class: 'btn btn-sm btn-default btn-show-modal', remote: true %>
-              <%= link_to '<span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_certificate_path(certificate), class:"btn btn-sm btn-default" %>
-              <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, certificate, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger" %>
+              <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span> View'.html_safe, certificate_path(certificate), class: 'btn btn-sm btn-default btn-show-modal', remote: true %>
+              <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_certificate_path(certificate), class:"btn btn-sm btn-default" %>
+              <%= link_to '<span class="glyphicon glyphicon-trash"></span> Delet'.html_safe, certificate, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger" %>
             </td>
           </tr>
         <% end %>

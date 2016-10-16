@@ -14,8 +14,8 @@
         <tr>
           <td><%= certificatetype.name %></td>
           <td>
-            <%= link_to '<span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_certificatetype_path(certificatetype), class:"btn btn-sm btn-default" %>
-            <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, certificatetype, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger" %>
+            <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_certificatetype_path(certificatetype), class:"btn btn-sm btn-default" %>
+            <%= link_to '<span class="glyphicon glyphicon-trash"></span> Delete'.html_safe, certificatetype, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger" %>
           </td>
         </tr>
       <% end %>
