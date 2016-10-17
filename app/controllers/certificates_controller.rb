@@ -1,11 +1,12 @@
 class CertificatesController < ApplicationController
   before_action :set_certificate, only: [:show, :edit, :update, :destroy, :export]
   before_action :set_csr, only: [:sign]
-  before_action :set_keypair, only: [:sign]
+  before_action :set_keystore, only: [:sign]
 
   # GET /certificates
   def index
     @certificates = Certificate.all
+    @keystores = Keystore.all
   end
 
   # GET /certificates/1
@@ -17,14 +18,14 @@ class CertificatesController < ApplicationController
     @certificate = Certificate.new
     @certificatetypes = Certificatetype.all
     @csrs = Csr.all
-    @keypairs = Keypair.all
+    @keystores = Keystore.all
   end
 
   # GET /certificates/1/edit
   def edit
     @certificatetypes = Certificatetype.all
     @csrs = Csr.all
-    @keypairs = Keypair.all
+    @keystores = Keystore.all
   end
 
   # POST /certificates
@@ -70,19 +71,19 @@ class CertificatesController < ApplicationController
       @certificate = Certificate.find(params[:id])
     end
 
-    # AJAX call for autogenerate will post "csr_id" and "keypair_id".
+    # AJAX call for autogenerate will post "csr_id" and "keystore_id".
     # Trying to find corresponding items in db
     def set_csr
       params.require(:csr_id)
       @csr = Csr.find(params[:csr_id])
     end
-    def set_keypair
-      params.require(:keypair_id)
-      @keypair = Keypair.find(params[:csr_id])
+    def set_keystore
+      params.require(:keystore_id)
+      @keystore = Keystore.find(params[:keystore_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def certificate_params
-      params.require(:certificate).permit(:name, :certificatetype_id, :csr_id, :content)
+      params.require(:certificate).permit(:name, :certificatetype_id, :csr_id, :keystore_id, :content)
     end
 end

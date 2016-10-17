@@ -36,10 +36,9 @@
 	</div>
 
     <div class="form-group">
-      <%= f.label "Certificate authority to use", class:"col-sm-2 control-label" %>
+      <%= f.label "Issuer (CA)", class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-		<%# TODO - use keystore (as CA) instead of just a keypair %>
-        <%= f.select "keypair_id", options_from_collection_for_select(@keypairs, "id", "name", f.object.keypair_id), include_blank:'Select keypair to use', id:'keypair_id', class:"form-control" %>
+        <%= f.select "keystore_id", options_from_collection_for_select(@keystores, "id", "name", f.object.keystore_id), include_blank:'Select issuers keystore', id:'keystore_id', class:"form-control" %>
       </div>
 	</div>
 
@@ -56,7 +55,7 @@
         	$.ajax({
               url: '/certificates/sign',
               dataType: 'script',
-              data: { csr_id: $("#certificate_csr_id").val(), keypair_id: $("#certificate_keypair_id").val() },
+              data: { csr_id: $("#certificate_csr_id").val(), keystore_id: $("#certificate_keystore_id").val() },
               type:'post',
             })
           });

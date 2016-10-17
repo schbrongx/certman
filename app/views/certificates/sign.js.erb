@@ -1,6 +1,6 @@
 <%
   # use privatekey from _form.html.erb 
-  key = OpenSSL::PKey::RSA.new @keypair.privatekey
+  key = OpenSSL::PKey::RSA.new @keystore.keypair.privatekey
 
   options = { 
     :commonname       => @csr.cn,
@@ -35,8 +35,9 @@
   csr_cert.public_key = request.public_key
 # TODO - replace issuer subject with subject from CA certificate
 #      - if no CA certificate present -> use requests subject (=selfsigning) 
-#  csr_cert.issuer = ca_cert.subject
-  csr_cert.issuer = request.subject
+  #csr_cert.issuer = request.subject
+  puts @keystore.certificate.to_s
+  csr_cert.issuer = (OpenSSL::X509::Certificate.new @keystore.certificate.methods).subject
   
   extension_factory = OpenSSL::X509::ExtensionFactory.new
   extension_factory.subject_certificate = csr_cert

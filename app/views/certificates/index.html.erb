@@ -7,7 +7,7 @@
           <th>Name</th>
           <th>Type</th>
 		  <th>CSR</th>
-		  <th>Keypair</th>
+		  <th>Issuer (CA)</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -25,10 +25,10 @@
           <% end  # unless %>
         </td>
         <td>
-          <% unless certificate.keypair.nil? %>
-            <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + truncate(certificate.keypair.name, length: 12), keypair_path(certificate.keypair), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
+          <% unless certificate.keystore.nil? %>
+            <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + truncate(certificate.keystore.name, length: 12), keystore_path(certificate.keystore), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
           <% else %>
-            No keypair assigned.
+            No keystore assigned.
           <% end  # unless %>
         </td>
             <td>

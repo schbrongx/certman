@@ -20,6 +20,10 @@ class KeystoresController < ApplicationController
     @csrs = Csr.all
     @certificates = Certificate.all
   end
+  
+  # GET /keystore/1
+  def show
+  end
 
   # POST /keystores
   def create
