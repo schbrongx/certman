@@ -18,14 +18,14 @@ ActiveRecord::Schema.define(version: 20160930124800) do
     t.text     "content"
     t.integer  "certificatetype_id"
     t.integer  "csr_id"
-    t.integer  "keypair_id"
+    t.integer  "keystore_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
 
   add_index "certificates", ["certificatetype_id"], name: "index_certificates_on_certificatetype_id"
   add_index "certificates", ["csr_id"], name: "index_certificates_on_csr_id"
-  add_index "certificates", ["keypair_id"], name: "index_certificates_on_keypair_id"
+  add_index "certificates", ["keystore_id"], name: "index_certificates_on_keystore_id"
 
   create_table "certificatetypes", force: :cascade do |t|
     t.string   "name"
