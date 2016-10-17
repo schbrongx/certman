@@ -37,7 +37,7 @@ Rails.application.routes.draw do
 
   resources :keystores
 
-  resources :settings, :except => :show
+  resources :settings
   devise_for :users, :skip => [:registrations]
     as :user do
     get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
