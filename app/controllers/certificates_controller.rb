@@ -1,7 +1,6 @@
 class CertificatesController < ApplicationController
   before_action :set_certificate, only: [:show, :edit, :update, :destroy, :export]
   before_action :set_csr, only: [:sign]
-  before_action :set_keystore, only: [:sign]
 
   # GET /certificates
   def index
@@ -75,10 +74,6 @@ class CertificatesController < ApplicationController
     def set_csr
       params.require(:csr_id)
       @csr = Csr.find(params[:csr_id])
-    end
-    def set_keystore
-      params.require(:keystore_id)
-      @keystore = Keystore.find(params[:keystore_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
