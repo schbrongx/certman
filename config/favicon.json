@@ -1,39 +1,38 @@
+
 {
     "master_picture": "app/assets/images/icon_certman_512x512.png",
     "favicon_design": {
         "ios": {
             "picture_aspect": "background_and_margin",
             "background_color": "#ffffff",
-            "margin": "18%",
+            "margin": "14%",
             "assets": {
                 "ios6_and_prior_icons": false,
                 "ios7_and_later_icons": false,
                 "precomposed_icons": false,
-                "declare_only_default_icon": false
+                "declare_only_default_icon": true
             }
         },
         "desktop_browser": [
 
         ],
         "windows": {
-            "picture_aspect": "white_silhouette",
+            "picture_aspect": "no_change",
             "background_color": "#2b5797",
             "on_conflict": "override",
             "assets": {
-                "windows_80_ie_10_tile": true,
+                "windows_80_ie_10_tile": false,
                 "windows_10_ie_11_edge_tiles": {
-                    "small": true,
+                    "small": false,
                     "medium": true,
-                    "big": true,
-                    "rectangle": true
+                    "big": false,
+                    "rectangle": false
                 }
             }
         },
         "android_chrome": {
-            "picture_aspect": "background_and_margin",
-            "margin": "10%",
-            "background_color": "#ffffff",
-            "theme_color": "#ffffff",
+            "picture_aspect": "no_change",
+            "theme_color": "#000000",
             "manifest": {
                 "name": "Certman",
                 "display": "standalone",
@@ -42,18 +41,20 @@
                 "declared": true
             },
             "assets": {
-                "legacy_icon": false,
+                "legacy_icon": true,
                 "low_resolution_icons": false
             }
         },
         "safari_pinned_tab": {
-            "picture_aspect": "silhouette",
-            "theme_color": "#000000"
+            "picture_aspect": "black_and_white",
+            "threshold": 20,
+            "theme_color": "#333333"
         }
     },
     "settings": {
         "compression": 5,
-        "scaling_algorithm": "Bilinear",
+        "scaling_algorithm": "Mitchell",
         "error_on_image_too_small": false
     }
 }
+
