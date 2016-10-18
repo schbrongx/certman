@@ -23,3 +23,12 @@
   <%= link_to '<span class="glyphicon glyphicon-export" aria-hidden="true"></span> Export'.html_safe, export_certificate_path, target:'_blank', data: { no_turbolink: true }, class:'btn btn-xs btn-default' %>
   <br /><small><pre id="certificate_content", class="long-paragraph"><%= @certificate.content.html_safe %></pre></small>
 </p>
+<p>
+  <button class="btn btn-xs btn-default" type="button" data-toggle="collapse" data-target="#collapseDecoded" aria-expanded="false" aria-controls="collapseExample">
+    Show decoded certificate
+  </button>
+  <div class="collapse" id="collapseDecoded">
+    <br />
+    <small><pre><%= (OpenSSL::X509::Certificate.new @certificate.content).to_text %></pre></small>
+  </div>
+</p>

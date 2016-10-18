@@ -20,8 +20,13 @@
   <%= link_to '<span class="glyphicon glyphicon-export" aria-hidden="true"></span> Export'.html_safe, export_csr_path, target:'_blank', data: { no_turbolink: true }, class:'btn btn-xs btn-default' %>
   <br /><small><pre id="csr_content", class="long-paragraph"><%= @csr.content.html_safe %></pre></small>
 </p>
+
 <p>
-  <strong>Decoded CSR:</strong><br />
-  <% request = OpenSSL::X509::Request.new @csr.content %>
-  <small><pre><%= request.to_text %></pre></small>
+  <button class="btn btn-xs btn-default" type="button" data-toggle="collapse" data-target="#collapseDecoded" aria-expanded="false" aria-controls="collapseExample">
+    Show decoded CSR
+  </button>
+  <div class="collapse" id="collapseDecoded">
+    <br />
+  <small><pre><%= (OpenSSL::X509::Request.new @csr.content).to_text %></pre></small>
+  </div>
 </p>
