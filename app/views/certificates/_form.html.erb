@@ -35,13 +35,6 @@
       </div>
 	</div>
 
-    <div class="form-group">
-      <%= f.label "Issuer (CA)", class:"col-sm-2 control-label" %>
-      <div class="col-sm-8">
-        <%= f.select "keystore_id", options_from_collection_for_select(@keystores, "id", "name", f.object.keystore_id), include_blank:'Select issuers keystore', id:'keystore_id', class:"form-control" %>
-      </div>
-	</div>
-
 	<%# AJAX call for generating a certificate %>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-8">

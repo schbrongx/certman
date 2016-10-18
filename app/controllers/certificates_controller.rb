@@ -6,7 +6,6 @@ class CertificatesController < ApplicationController
   # GET /certificates
   def index
     @certificates = Certificate.all
-    @keystores = Keystore.all
   end
 
   # GET /certificates/1
@@ -84,6 +83,6 @@ class CertificatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def certificate_params
-      params.require(:certificate).permit(:name, :certificatetype_id, :csr_id, :keystore_id, :content)
+      params.require(:certificate).permit(:name, :certificatetype_id, :csr_id, :content)
     end
 end

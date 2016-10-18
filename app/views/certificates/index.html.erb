@@ -1,5 +1,5 @@
 <h1>Listing Certificates</h1>
-<% if Certificate.all.any? %>
+<% if @certificates.any? %>
   <div class="table-responsive">
     <table class="table">
       <thead>
@@ -7,11 +7,9 @@
           <th>Name</th>
           <th>Type</th>
 		  <th>CSR</th>
-		  <th>Issuer (CA)</th>
           <th>Action</th>
         </tr>
       </thead>
-    
       <tbody>
         <% @certificates.each do |certificate| %>
           <tr>
@@ -22,13 +20,6 @@
             <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + truncate(certificate.csr.name, length: 12), csr_path(certificate.csr), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
           <% else %>
             No CSR assigned.
-          <% end  # unless %>
-        </td>
-        <td>
-          <% unless certificate.keystore.nil? %>
-            <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + truncate(certificate.keystore.name, length: 12), keystore_path(certificate.keystore), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
-          <% else %>
-            No keystore assigned.
           <% end  # unless %>
         </td>
             <td>
