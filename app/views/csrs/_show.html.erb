@@ -4,8 +4,24 @@
 </p>
 
 <p>
+  <strong>CSR Data:</strong><br />
+  CN=<%= @csr.cn %>, 
+  O=<%= @csr.o %>, 
+  OU=<%= @csr.ou %>, 
+  L=<%= @csr.l %>, 
+  S=<%= @csr.s %>, 
+  C=<%= @csr.c %>, 
+  Email=<%= @csr.email %>
+</p>
+
+<p>
   <strong>Content:</strong>
   <br /><button class="btn btn-default btn-xs btn-copy-clipboard" data-clipboard-target="#csr_content"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span> Copy</button>
   <%= link_to '<span class="glyphicon glyphicon-export" aria-hidden="true"></span> Export'.html_safe, export_csr_path, target:'_blank', data: { no_turbolink: true }, class:'btn btn-xs btn-default' %>
   <br /><small><pre id="csr_content", class="long-paragraph"><%= @csr.content.html_safe %></pre></small>
+</p>
+<p>
+  <strong>Decoded CSR:</strong><br />
+  <% request = OpenSSL::X509::Request.new @csr.content %>
+  <small><pre><%= request.to_text %></pre></small>
 </p>
