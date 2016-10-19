@@ -5,25 +5,31 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>Action</th>
-      </tr>
+		<% if current_user.id == 1  # only user with id=1 can edit/delete %>
+          <th>Action</th>
+        <% end  # if %>
+		</tr>
     </thead>
   
     <tbody>
       <% @certificatetypes.each do |certificatetype| %>
         <tr>
           <td><%= certificatetype.name %></td>
+		<% if current_user.id == 1  # only user with id=1 can edit/delete %>
           <td>
             <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_certificatetype_path(certificatetype), class:"btn btn-sm btn-default" %>
             <%= link_to '<span class="glyphicon glyphicon-trash"></span> Delete'.html_safe, certificatetype, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger" %>
           </td>
+        <% end  # if %>
         </tr>
-      <% end %>
+      <% end  # each %>
     </tbody>
   </table>
 </div>
 
-<a class="btn btn-sm btn-default" href="<%=new_certificatetype_path%>" role="button">
-  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-  Add Certificate Type
-</a>
+<% if current_user.id == 1  # only user with id=1 can add %>
+  <a class="btn btn-sm btn-default" href="<%=new_certificatetype_path%>" role="button">
+    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+    Add Certificate Type
+  </a>
+<% end  # if %>
