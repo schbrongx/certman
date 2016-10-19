@@ -16,14 +16,17 @@ class CertificatesController < ApplicationController
     @certificate = Certificate.new
     @certificatetypes = Certificatetype.all
     @csrs = Csr.all
-    @keystores = Keystore.all
+    @keystores = Keystore.find(Certificate.find(Certificatetype.find([ 1, 2])))
   end
 
   # GET /certificates/1/edit
   def edit
     @certificatetypes = Certificatetype.all
     @csrs = Csr.all
-    @keystores = Keystore.all
+    @keystores = Keystore.find(Certificate.find(Certificatetype.find([ 1, 2])))
+    logger.info ('===============================================================')
+    logger.info (Certificatetype.where("id = ?", [1, 2]))
+    logger.info ('===============================================================')
   end
 
   # POST /certificates

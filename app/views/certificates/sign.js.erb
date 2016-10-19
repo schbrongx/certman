@@ -10,7 +10,7 @@ else
   csr_cert.version = 2
   csr_cert.not_before = Time.now
   csr_cert.not_after = Time.now + (60 * 60 * 24 * 365 * 2)  # 2 years
-  
+
   csr_cert.subject = request.subject
   csr_cert.public_key = request.public_key
   csr_cert.issuer = request.subject  # TODO use CA from form, csr_cert.issuer = ca_cert.subject
