@@ -77,6 +77,9 @@ group :development do
   # edit favicon settings in config/favicon.json
   # autogenerate favicons with 'rails generate favicon'
   gem 'rails_real_favicon'
+
+  # colorize logger output in development
+  gem 'colorize'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

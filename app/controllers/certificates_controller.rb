@@ -1,6 +1,7 @@
 class CertificatesController < ApplicationController
   before_action :set_certificate, only: [:show, :edit, :update, :destroy, :export]
   before_action :set_csr, only: [:sign]
+  before_action :set_ca, only: [:sign]
 
   # GET /certificates
   def index
@@ -16,17 +17,16 @@ class CertificatesController < ApplicationController
     @certificate = Certificate.new
     @certificatetypes = Certificatetype.all
     @csrs = Csr.all
-    @keystores = Keystore.find(Certificate.find(Certificatetype.find([ 1, 2])))
+    @ca_certificates = Certificate.where(certificatetype_id: [1,2])
+    @ca_keypairs = Keypair.all
   end
 
   # GET /certificates/1/edit
   def edit
     @certificatetypes = Certificatetype.all
     @csrs = Csr.all
-    @keystores = Keystore.find(Certificate.find(Certificatetype.find([ 1, 2])))
-    logger.info ('===============================================================')
-    logger.info (Certificatetype.where("id = ?", [1, 2]))
-    logger.info ('===============================================================')
+    @ca_certificates = Certificate.where(certificatetype_id: [1,2])
+    @ca_keypairs = Keypair.all
   end
 
   # POST /certificates
@@ -72,15 +72,26 @@ class CertificatesController < ApplicationController
       @certificate = Certificate.find(params[:id])
     end
 
-    # AJAX call for autogenerate will post "csr_id" and "keystore_id".
+    # AJAX call for autogenerate will post "csr_id" and "ca_certificate_id" and "ca_keypair_id"
     # Trying to find corresponding items in db
     def set_csr
       params.require(:csr_id)
       @csr = Csr.find(params[:csr_id])
-    end
+    end  # set_csr
+    def set_ca
+      if (params[:ca_certificate_id].present? && params[:ca_keypair_id].present? )
+        @ca_certificate = Certificate.find(params[:ca_certificate_id])
+        @ca_keypair = Keypair.find(params[:ca_keypair_id])
+        @selfsign = false
+      else
+        @selfsign = true
+      end  # if
+      logger.info("CertificatesController#sign: @selfsign = #{@selfsign.to_s}".green)
+    end  # set_ca
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def certificate_params
-      params.require(:certificate).permit(:name, :certificatetype_id, :csr_id, :content)
+      params.require(:certificate).permit(:name, :certificatetype_id, :ca_certificate_id, :ca_keypair_id, :csr_id, :content)
     end
 end
