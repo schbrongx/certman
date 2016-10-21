@@ -10,7 +10,7 @@ else
   if @selfsign
     csr_cert.issuer = request.subject
     extension_factory.issuer_certificate = csr_cert
-    ca_key = key = OpenSSL::PKey::RSA.new 4096
+    ca_key = key = OpenSSL::PKey::RSA.new @keysize.value.to_i
   else
     ca_cert = OpenSSL::X509::Certificate.new @ca_certificate.content
     csr_cert.issuer = ca_cert.subject
