@@ -1,5 +1,5 @@
 class KeystoresController < ApplicationController
-  before_action :set_keystore, only: [:show, :edit, :update, :destroy]
+  before_action :set_keystore, only: [:show, :edit, :update, :destroy, :export]
 
   # GET /keystores
   def index
@@ -21,8 +21,8 @@ class KeystoresController < ApplicationController
     @certificates = Certificate.all
   end
   
-  # GET /keystore/1
-  def show
+  # GET /keystore/1/export
+  def export
   end
 
   # POST /keystores

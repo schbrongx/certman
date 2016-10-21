@@ -35,7 +35,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :keystores
+  resources :keystores, except: :show do
+    member do
+      get 'export'
+    end
+  end
 
   resources :settings
   devise_for :users, :skip => [:registrations]
