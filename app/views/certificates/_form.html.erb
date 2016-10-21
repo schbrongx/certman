@@ -53,7 +53,7 @@
       <div class="form-group">
         <div class="checkbox col-sm-offset-3 col-sm-5">
           <label>
-            <input type="checkbox" value="">
+            <input type="checkbox" value="" id="add_cacert_extensions">
               Mark this to make this certificate a CA
           </label>
         </div>
@@ -77,7 +77,8 @@
                 data: {
                   csr_id: $("#csr_id").val(),
                   ca_certificate_id: $("#ca_certificate_id").val(),
-                  ca_keypair_id: $("#ca_keypair_id").val()
+                  ca_keypair_id: $("#ca_keypair_id").val(),
+                  add_cacert_extensions: $("#add_cacert_extensions").prop('checked'),
                 },
                 success: function(msg){
                   $("#sign_button").text("Sign CSR and create certificate content");
