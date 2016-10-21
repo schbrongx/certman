@@ -4,8 +4,12 @@ Certman is an SSL-keystore management software. You can manage and generate: key
 
 * Ruby version: 5.0.0.1
 
+* Prerequesites:
+  * Needs curl, libcurl3, libcurl3-gnutls and libcurl4-openssl-dev installed on the server
+
 * Installation
   * Create a local directory: 'mkdir certman'
+  * Change into the new directore: 'cd certman'
   * Download certman's code from git: 'git clone https://github.com/schbrongx/certman.git'
   * Alter config/environments/YOUR_ENVIRONMENT.rb to your needs, specifically the following settings:
     * config.action_mailer.default_url_options
