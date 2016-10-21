@@ -93,12 +93,10 @@ class CertificatesController < ApplicationController
       else
         @selfsign = true
       end  # if
-      logger.info("  CertificatesController#sign: @selfsign = #{@selfsign.to_s}".green)
     end  # set_ca
     def set_add_cacert_extensions
       params.require(:add_cacert_extensions)
       @add_cacert_extensions = params[:add_cacert_extensions]
-      logger.info(("  CertificatesController#sign: @add_cacert_extensions = " + @add_cacert_extensions).red)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

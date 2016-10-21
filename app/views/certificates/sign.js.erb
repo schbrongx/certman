@@ -8,20 +8,24 @@ else
   extension_factory = OpenSSL::X509::ExtensionFactory.new
 
   if @selfsign
+    logger.info ("  Selfsigning certificate".green)
     csr_cert.issuer = request.subject
     extension_factory.issuer_certificate = csr_cert
     ca_key = key = OpenSSL::PKey::RSA.new @keysize.value.to_i
   else
+    logger.info ("  NOT selfsigning certificate, using certificate '#{@ca_certificate.name}' and keypair '#{@ca_keypair.name}'".green)
     ca_cert = OpenSSL::X509::Certificate.new @ca_certificate.content
     csr_cert.issuer = ca_cert.subject
     extension_factory.issuer_certificate = ca_cert
     ca_key = key = OpenSSL::PKey::RSA.new @ca_keypair.privatekey
   end
   
-  if @add_cacert_extensions == true
+  if @add_cacert_extensions == 'true'
+    logger.info ("  Adding extensions for CAs".green)
     csr_cert.add_extension    extension_factory.create_extension('basicConstraints', 'CA:TRUE', true)
     csr_cert.add_extension    extension_factory.create_extension('keyUsage', 'cRLSign,keyCertSign', true)
   else
+    logger.info ("  Adding extensions for SSL keys".green)
     csr_cert.add_extension    extension_factory.create_extension('basicConstraints', 'CA:FALSE')
     csr_cert.add_extension    extension_factory.create_extension('keyUsage', 'keyEncipherment,dataEncipherment,digitalSignature')
   end
