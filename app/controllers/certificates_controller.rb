@@ -31,6 +31,10 @@ class CertificatesController < ApplicationController
 
   # POST /certificates
   def create
+    @certificatetypes = Certificatetype.all
+    @csrs = Csr.all
+    @ca_certificates = Certificate.where(certificatetype_id: [1,2])
+    @ca_keypairs = Keypair.all
     @certificate = Certificate.new(certificate_params)
     if @certificate.save
       redirect_to certificates_url, notice: 'Certificate was successfully created.'
@@ -92,6 +96,6 @@ class CertificatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def certificate_params
-      params.require(:certificate).permit(:name, :certificatetype_id, :ca_certificate_id, :ca_keypair_id, :csr_id, :content)
+      params.require(:certificate).permit(:name, :certificatetype_id, :ca_certificate_id, :ca_keypair_id, :csr_id, :content, :add_cacert_extensions)
     end
 end
