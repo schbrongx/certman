@@ -58,5 +58,5 @@ Keypair.create!([
 Keystore.create!([
   {name: "Certman Root CA Keystore", description: "This keystore creates everything you need to create other CAs (i.e. intermediate CAs)", keypair_id: 1, csr_id: 1, certificate_id: 1},
   {name: "Certman Intermediate CA 1 Keystore", description: "Keypair, CSR & certificate valid until 2018-10-21", keypair_id: 2, csr_id: 2, certificate_id: 2},
-  {name: "www.example.com keystore", description: "Example Keystore with implicit keychain:\r\nRoot CA => Intermediate Root CA 1 => www.example.com", keypair_id: 3, csr_id: 3, certificate_id: 3}
+  {name: "www.example.com Keystore", description: "Example Keystore with implicit keychain:\r\nRoot CA => Intermediate Root CA 1 => www.example.com", keypair_id: 3, csr_id: 3, certificate_id: 3}
 ])
