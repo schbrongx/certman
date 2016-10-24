@@ -77,6 +77,10 @@ group :development do
 
   # colorize logger output in development
   gem 'colorize'
+  
+  # https://github.com/flyerhzm/bullet
+  # analyze queries
+  gem 'bullet'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

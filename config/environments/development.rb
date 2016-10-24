@@ -48,4 +48,14 @@ Rails.application.configure do
 
   # whitelist 0.0.0.0 for webconsole on dev
   config.web_console.whitelisted_ips = "46.14.155.150"  # bionstrasse 1, st. gallen
+
+  # config for gem 'bullet'
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+    Bullet.add_footer = true
+  end
+  
 end
