@@ -3,7 +3,7 @@ class KeystoresController < ApplicationController
 
   # GET /keystores
   def index
-    @keystores = Keystore.all
+    @keystores = Keystore.includes(:keypair, :csr, :certificate)
   end
 
   # GET /keystores/new

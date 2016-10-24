@@ -6,7 +6,7 @@ class CertificatesController < ApplicationController
 
   # GET /certificates
   def index
-    @certificates = Certificate.all
+    @certificates = Certificate.includes(:certificatetype, :csr)
   end
 
   # GET /certificates/1

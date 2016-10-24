@@ -5,7 +5,7 @@ class CsrsController < ApplicationController
 
   # GET /csrs
   def index
-    @csrs = Csr.all
+    @csrs = Csr.includes(:keypair, :csrtemplate)
   end
 
   # GET /csrs/1
