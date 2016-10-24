@@ -49,7 +49,6 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console'
-  gem 'listen'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
@@ -72,8 +71,6 @@ group :development do
   # Example: 'rake db:seed:dump FILE=db/seed_dump.rb MODELS_EXCLUDE=setting,user'
   gem 'seed_dump'
   
-  gem 'ruby_dep', '1.5.0'
-
   # edit favicon settings in config/favicon.json
   # autogenerate favicons with 'rails generate favicon'
   gem 'rails_real_favicon'
