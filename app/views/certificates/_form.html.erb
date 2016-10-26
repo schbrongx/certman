@@ -11,101 +11,94 @@
     </div>
   <% end %>
 
-  <div class="form-horizontal col-sm-12">
+  <div class="form-horizontal">
 
-    <div class="form-group col-sm-12">
-      <%= f.label :name, class:"col-sm-2 control-label" %>
+    <div class="form-group">
+      <%= f.label :name, class:"control-label col-sm-3" %>
       <div class="col-sm-8">
         <%= f.text_field :name, class:"form-control", id:'name' %>
       </div>
-    </div>
+    </div><!-- form-group -->
 
-    <div class="form-group col-sm-12">
-      <%= f.label :certificatetype_id, class:"col-sm-2 control-label" %>
+    <div class="form-group">
+      <%= f.label 'Type', class:"control-label col-sm-3" %>
       <div class="col-sm-8">
         <%= f.select "certificatetype_id", options_from_collection_for_select(@certificatetypes, "id", "name", f.object.certificatetype_id), { include_blank:'Chose a certificate-type' }, { class:"form-control" } %>
       </div>
-    </div>
+    </div><!-- form-group -->
 
-    <button class="btn btn-xs btn-info col-sm-offset-3 col-sm-6" type="button" data-toggle="collapse" data-target="#collapseDecoded" aria-expanded="false" aria-controls="collapseDecoded">
-      Sign CSR to create certificate content: <span class="glyphicon glyphicon-triangle-bottom"></span>
-    </button>
+    <div class="form-group">
+      <button class="btn btn-xs btn-info col-sm-offset-3 col-sm-8" type="button" data-toggle="collapse" data-target="#collapseDecoded" aria-expanded="false" aria-controls="collapseDecoded">
+        Sign CSR to create certificate content: <span class="glyphicon glyphicon-triangle-bottom"></span>
+      </button>
+    </div><!-- form-group -->
 
-    <row><div class="col-sm-12">&nbsp;</div></row>
-
-    <div class="collapse col-sm-12" id="collapseDecoded">
-      <div class="bg-info col-sm-offset-2 col-sm-8">
-        <div class="form-group">
-          <%= f.label "CSR to sign", class:"col-sm-3 control-label text-uppercase" %>
-          <div class="col-sm-5">
-            <%= f.select "csr_id", options_from_collection_for_select(@csrs, "id", "name", f.object.csr_id), { include_blank:'Select CSR to sign' }, { id:'csr_id', class: 'form-control' } %>
-          </div>
+    <div class="collapse bg-info" id="collapseDecoded">
+      <div class="form-group">
+        <%= f.label "CSR to sign", class:"col-sm-3 control-label text-uppercase" %>
+        <div class="col-sm-8">
+          <%= f.select "csr_id", options_from_collection_for_select(@csrs, "id", "name", f.object.csr_id), { include_blank:'Select CSR to sign' }, { id:'csr_id', class: 'form-control' } %>
         </div>
-    
-        <div class="form-group">
-          <%= f.label "CA certificate", class:"col-sm-3 control-label text-uppercase" %>
-          <div class="col-sm-5">
-            <%= select_tag 'ca_certificate', options_from_collection_for_select(@ca_certificates, 'id', 'name'), { include_blank:'Select CA certificate, dont touch to self-sign', id:'ca_certificate_id', class: 'form-control' } %>
-          </div>
+      </div><!-- form-group -->
+      
+      <div class="form-group">
+        <%= f.label "CA certificate", class:"col-sm-3 control-label text-uppercase" %>
+        <div class="col-sm-8">
+          <%= select_tag 'ca_certificate', options_from_collection_for_select(@ca_certificates, 'id', 'name'), { include_blank:'Select CA certificate, dont touch to self-sign', id:'ca_certificate_id', class: 'form-control' } %>
         </div>
-    
-        <div class="form-group">
-          <%= f.label "CA keypair", class:"col-sm-3 control-label text-uppercase" %>
-          <div class="col-sm-5">
-            <%= select_tag 'ca_keypair', options_from_collection_for_select(@ca_keypairs, 'id', 'name'), { include_blank:'Select CA keypair, dont touch to self-sign', id:'ca_keypair_id', class: 'form-control' } %>
-          </div>
+      </div><!-- form-group -->
+      
+      <div class="form-group">
+        <%= f.label "CA keypair", class:"col-sm-3 control-label text-uppercase" %>
+        <div class="col-sm-8">
+          <%= select_tag 'ca_keypair', options_from_collection_for_select(@ca_keypairs, 'id', 'name'), { include_blank:'Select CA keypair, dont touch to self-sign', id:'ca_keypair_id', class: 'form-control' } %>
         </div>
-    
-        <div class="form-group">
-          <div class="checkbox col-sm-offset-3 col-sm-5">
-            <label>
-              <input type="checkbox" value="" id="add_cacert_extensions">
-                Mark this to make this certificate a CA
-            </label>
-          </div>
+      </div><!-- form-group -->
+      
+      <div class="form-group">
+        <div class="col-sm-offset-3">
+        <div class="checkbox">
+          <label><input type="checkbox" value="" id="add_cacert_extensions">Add CA extensions</label>
         </div>
-        
-        <% # AJAX call for generating a certificate %>
-        <div class="form-group">
-          <div class="col-sm-offset-3 col-sm-5">
-            <%= link_to "Sign CSR and create certificate content", sign_certificates_path, method: :post, remote:true, id:"sign_button", class:"btn btn-info btn-xs btn-block" %>
-            <%# catch onclick event for above link and submit selected template id to sign.js.erb via AJAX %>
-            <script>
-             $("#sign_button").on("click", function(event) {
-                event.preventDefault();
-                event.stopPropagation();
-                $('#sign_button').text("Processing ...");
-                $("#sign_button").addClass("disabled");
-                $.ajax({
-                  type:'post',
-                  url: '/certificates/sign',
-                  dataType: 'script',
-                  data: {
-                    csr_id: $("#csr_id").val(),
-                    ca_certificate_id: $("#ca_certificate_id").val(),
-                    ca_keypair_id: $("#ca_keypair_id").val(),
-                    add_cacert_extensions: $("#add_cacert_extensions").prop('checked'),
-                  },
-                  success: function(msg){
-                    $("#sign_button").text("Sign CSR and create certificate content");
-                    $("#sign_button").removeClass("disabled");
-                  },
-                  error: function(xhr, status){
-                    $("#sign_button").text("Error. Try again?");
-                    $("#sign_button").removeClass("disabled");
-                  }
-                })
-              });
-            </script>
-          </div>
         </div>
+      </div><!-- form-group -->
+      
+      <% # AJAX call for generating a certificate %>
+      <div class="form-group">
+        <%= link_to "Sign", sign_certificates_path, method: :post, remote:true, id:"sign_button", class:"btn btn-warning btn-xs col-sm-offset-3 col-sm-8" %>
+        <%# catch onclick event for above link and submit selected template id to sign.js.erb via AJAX %>
       </div>
-      <row><div class="col-sm-12">&nbsp;</div></row>
-    </div>
+      <script>
+        $("#sign_button").on("click", function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          $('#sign_button').text("Processing ...");
+          $("#sign_button").addClass("disabled");
+          $.ajax({
+            type:'post',
+            url: '/certificates/sign',
+            dataType: 'script',
+            data: {
+              csr_id: $("#csr_id").val(),
+              ca_certificate_id: $("#ca_certificate_id").val(),
+              ca_keypair_id: $("#ca_keypair_id").val(),
+              add_cacert_extensions: $("#add_cacert_extensions").prop('checked'),
+            },
+            success: function(msg){
+              $("#sign_button").text("Sign CSR and create certificate content");
+              $("#sign_button").removeClass("disabled");
+            },
+            error: function(xhr, status){
+              $("#sign_button").text("Error. Try again?");
+              $("#sign_button").removeClass("disabled");
+            }
+          })
+        });
+      </script>
+    </div><!-- collapse -->
 
-
-    <div class="form-group col-sm-12">
-      <%= f.label :content, class:"col-sm-2 control-label" %>
+    <div class="form-group">
+      <%= f.label :content, class:"control-label col-sm-3" %>
       <div class="col-sm-8">
         <small>
           <%= f.text_area :content, class:"form-control", rows: 10, class:"form-control pre", id:'content' %>
@@ -113,8 +106,8 @@
       </div>
     </div>
 
-  <div class="col-sm-offset-2 col-sm-8">
-      <div class="actions">
+    <div class="form-group">
+      <div class="actions col-sm-offset-3 col-sm-8">
         <%= f.button :submit, name: "commit", value: "commit", class:"btn btn-xs btn-success" do %>
           <span class="glyphicon glyphicon-ok"></span> Submit
         <% end %>

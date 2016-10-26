@@ -26,24 +26,15 @@
     <div class="form-group">
     <%= f.label :keypair_id, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-           <%= f.select "keypair_id", options_from_collection_for_select(@keypairs, "id", "name", f.object.keypair_id), class:"form-control", include_blank: "Select a keypair" %>
+           <%= f.select "keypair_id", options_from_collection_for_select(@keypairs, "id", "name", f.object.keypair_id), { include_blank: "Select a keypair" }, { class:"form-control" }  %>
       </div>
     </div>
     
-    <div class="form-group">
+    <div class="form-group bg-info">
     <%= f.label :csrtemplate_id, class:"col-sm-2 control-label" %>
       <div class="col-sm-8">
-           <%= f.select "csrtemplate_id",
-		         options_from_collection_for_select(@csrtemplates, "id", "name", f.object.csrtemplate_id),
-				 class:"form-control",
-				 include_blank: "Select a CSR template" %>
-		   <%= link_to "Fill CSR with template values",
-		       templatefiller_csrs_path,
-			   method: :post,
-			   remote:true,
-			   id:"templatefiller_button",
-			   class:"btn btn-warning btn-xs"
-		   %>
+           <%= f.select "csrtemplate_id", options_from_collection_for_select(@csrtemplates, "id", "name", f.object.csrtemplate_id), { include_blank: "Select a CSR template" }, { class:"form-control" } %>
+		   <%= link_to "Fill CSR with template values", templatefiller_csrs_path, method: :post, remote:true, id:"templatefiller_button", class:"btn btn-info btn-xs btn-block" %>
                <%#catch onclick event for above link and submit selected template id to templatefiller.js.erb via AJAX %>
                <script>
                 $("#templatefiller_button").on("click", function(event) {
@@ -113,15 +104,8 @@
 	<%# AJAX call for generating a new CSR %>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-8">
-	    <%= link_to 'Generate CSR',
-		    autogenerate_csrs_path,
-			method:"POST",
-			remote:true,
-			id:"autogenerate_button",
-			data: { confirm: 'Are you sure?' },
-			class:"btn btn-warning btn-xs btn-block"
-		%>
-        <%#catch onclick event for above link and submit selected template id to templatefiller.js.erb via AJAX %>
+	    <%= link_to 'Generate CSR', autogenerate_csrs_path, method:"POST", remote:true, id:"autogenerate_button", data: { confirm: 'Are you sure?' }, class:"btn btn-warning btn-xs btn-block" %>
+        <%# catch onclick event for above link and submit selected template id to templatefiller.js.erb via AJAX %>
         <script>
          $("#autogenerate_button").on("click", function(event) {
         	event.preventDefault();
