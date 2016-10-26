@@ -24,7 +24,7 @@
                 C=<%= csrtemplate.c %></br>
                 Email=<%= csrtemplate.email %></td>
             <td>
-              <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_csrtemplate_path(csrtemplate), class:"btn btn-xs btn-default" %>
+              <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_csrtemplate_path(csrtemplate), class:"btn btn-xs btn-default btn-show-modal", remote:true %>
               <%= link_to '<span class="glyphicon glyphicon-trash"></span> Delete'.html_safe, csrtemplate, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-xs btn-danger" %>
             </td>
           </tr>
@@ -35,8 +35,4 @@
   </div>
 <% end %>
 
-<a class="btn btn-xs btn-default" href="<%=new_csrtemplate_path%>" role="button">
-  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-  Add CSR Template
-</a>
-
+<%= link_to '<span class="glyphicon glyphicon-plus-sign"></span> Add CSR Template'.html_safe, new_csrtemplate_path, class:"btn btn-xs btn-default btn-show-modal", remote:true %>

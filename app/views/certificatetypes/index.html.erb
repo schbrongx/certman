@@ -17,7 +17,7 @@
           <td><%= certificatetype.name %></td>
 		<% if current_user.id == 1  # only user with id=1 can edit/delete %>
           <td>
-            <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_certificatetype_path(certificatetype), class:"btn btn-xs btn-default" %>
+            <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_certificatetype_path(certificatetype), class:'btn btn-xs btn-default btn-show-modal', remote:true %>
             <%= link_to '<span class="glyphicon glyphicon-trash"></span> Delete'.html_safe, certificatetype, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-xs btn-danger" %>
           </td>
         <% end  # if %>
@@ -25,11 +25,9 @@
       <% end  # each %>
     </tbody>
   </table>
+  <%= render 'layouts/modal' %>
 </div>
 
 <% if current_user.id == 1  # only user with id=1 can add %>
-  <a class="btn btn-xs btn-default" href="<%=new_certificatetype_path%>" role="button">
-    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-    Add Certificate Type
-  </a>
+  <%= link_to '<span class="glyphicon glyphicon-plus-sign"></span> Add Certificate Type'.html_safe, new_certificatetype_path, class:'btn btn-xs btn-default btn-show-modal', remote:true %>
 <% end  # if %>

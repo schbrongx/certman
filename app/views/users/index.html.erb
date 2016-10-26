@@ -17,7 +17,7 @@
           <td><%= user.email%></td>
           <td>
             <% if (current_user.id == 1) || !(user.id == 1)  # display edit button if: current_user is admin -> always, or on every row except admins row for rest of users %>
-              <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_user_path(user), class:"btn btn-xs btn-default" %>
+              <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_user_path(user), class:"btn btn-xs btn-default btn-show-modal", remote:true %>
             <% end  #if %>
             <% unless user.id == 1  # dont display the delete-button on the adminuser's row (id=1) %>
               <%= link_to '<span class="glyphicon glyphicon-trash"></span> Delete'.html_safe, user, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-xs btn-danger" %>
@@ -27,13 +27,8 @@
       <% end %>
     </tbody>
   </table>
+  <%= render 'layouts/modal' %>
 </div>
 
-<a class="btn btn-xs btn-default" href="<%=new_user_path%>" role="button">
-  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-  Add User
-</a>
-<a class="btn btn-xs btn-default" href="<%=new_user_invitation_path%>" role="button">
-  <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-  Invite new user
-</a>
+<%= link_to '<span class="glyphicon glyphicon-edit"></span> Add User'.html_safe, new_user_path, class:"btn btn-xs btn-default btn-show-modal", remote:true %>
+<%= link_to '<span class="glyphicon glyphicon-envelope"></span> Invite new user'.html_safe, new_user_invitation_path, class:"btn btn-xs btn-default btn-show-modal", remote:true %>
