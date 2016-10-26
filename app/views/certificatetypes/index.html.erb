@@ -17,8 +17,8 @@
           <td><%= certificatetype.name %></td>
 		<% if current_user.id == 1  # only user with id=1 can edit/delete %>
           <td>
-            <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_certificatetype_path(certificatetype), class:"btn btn-sm btn-default" %>
-            <%= link_to '<span class="glyphicon glyphicon-trash"></span> Delete'.html_safe, certificatetype, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger" %>
+            <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_certificatetype_path(certificatetype), class:"btn btn-xs btn-default" %>
+            <%= link_to '<span class="glyphicon glyphicon-trash"></span> Delete'.html_safe, certificatetype, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-xs btn-danger" %>
           </td>
         <% end  # if %>
         </tr>
@@ -28,7 +28,7 @@
 </div>
 
 <% if current_user.id == 1  # only user with id=1 can add %>
-  <a class="btn btn-sm btn-default" href="<%=new_certificatetype_path%>" role="button">
+  <a class="btn btn-xs btn-default" href="<%=new_certificatetype_path%>" role="button">
     <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
     Add Certificate Type
   </a>

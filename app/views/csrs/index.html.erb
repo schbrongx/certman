@@ -24,9 +24,9 @@
               <% end  # if %>
             </td>
             <td>
-              <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span> View'.html_safe, csr_path(csr), class: 'btn btn-sm btn-default btn-show-modal', remote: true %>
-              <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_csr_path(csr), class:"btn btn-sm btn-default" %>
-              <%= link_to '<span class="glyphicon glyphicon-trash"></span> Delete'.html_safe, csr, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger" %>
+              <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span> View'.html_safe, csr_path(csr), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
+              <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_csr_path(csr), class:"btn btn-xs btn-default" %>
+              <%= link_to '<span class="glyphicon glyphicon-trash"></span> Delete'.html_safe, csr, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-xs btn-danger" %>
              </td>
           </tr>
         <% end %>
@@ -36,7 +36,7 @@
   </div>
 <% end %>
 
-<a class="btn btn-sm btn-default" href="<%=new_csr_path%>" role="button">
+<a class="btn btn-xs btn-default" href="<%=new_csr_path%>" role="button">
   <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
   Add CSR 
 </a>

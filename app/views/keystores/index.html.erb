@@ -40,14 +40,15 @@
 		      <% end  # unless %>
         </td>
         <td>
+          <%# disable the export-button if there are not exportable items in the keystore %>
           <% if (keystore.keypair.nil? && keystore.csr.nil? && keystore.certificate.nil?)
             @keystore_exportbutton_status = "disabled"
           else
             @keystore_exportbutton_status = ""
           end  # if %>
-          <%= link_to '<span class="glyphicon glyphicon-export"></span> Export'.html_safe, export_keystore_path(keystore), class:"btn btn-sm btn-default #{@keystore_exportbutton_status}", target: '_blank' %>
-          <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_keystore_path(keystore), class:'btn btn-sm btn-default btn-show-modal', remote: true %>
-          <%= link_to '<span class="glyphicon glyphicon-trash"></span> Delete'.html_safe, keystore, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-sm btn-danger' %>
+          <%= link_to '<span class="glyphicon glyphicon-export"></span> Export'.html_safe, export_keystore_path(keystore), class:"btn btn-xs btn-default #{@keystore_exportbutton_status}", target: '_blank' %>
+          <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_keystore_path(keystore), class:'btn btn-xs btn-default btn-show-modal', remote: true %>
+          <%= link_to '<span class="glyphicon glyphicon-trash"></span> Delete'.html_safe, keystore, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-xs btn-danger' %>
     	  </td>
         </tr>
       <% end %>
@@ -57,4 +58,4 @@
   </div>
 <% end %>
 
-<%= link_to '<span class="glyphicon glyphicon-plus-sign"></span> Add Keystore'.html_safe, new_keystore_path, class:'btn btn-sm btn-default btn-show-modal', remote: true %>
+<%= link_to '<span class="glyphicon glyphicon-plus-sign"></span> Add Keystore'.html_safe, new_keystore_path, class:'btn btn-xs btn-default btn-show-modal', remote: true %>
