@@ -7,7 +7,7 @@ puts "  Start seeding seeds.db".green
 # after using devises User.create
 puts "    User.create: username: admin".green
 User.create!([
-  {username: 'admin', email: 'admin@certman.com', password: 'default', password_confirmation: 'default'}
+  {username: 'Admin', email: 'admin@certman.com', password: 'default', password_confirmation: 'default'}
 ])
 
 # force the initial encrypted password to match our original encrypted version
