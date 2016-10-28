@@ -21,3 +21,6 @@ Gemfile.lock
 
 # Ignore RubyMine ideas
 /.idea
+
+# Ignore application configuration
+/config/application.yml

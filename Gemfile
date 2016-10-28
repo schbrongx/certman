@@ -38,6 +38,14 @@ gem 'cookies_eu'
 # js library clipboard.js integration via gem
 gem 'clipboard-rails'
 
+# use gmail to send invitation emails
+gem 'gmail'
+
+# use figaro to configure environment-specific settings
+# config can be found at config/application.yml, which will NOT be checked into git
+# TODO : put figaro config into README.md
+gem 'figaro'
+
 group :production do
   gem 'therubyracer'
 end
