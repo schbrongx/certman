@@ -9,17 +9,17 @@ Certman is an SSL-keystore management software. You can manage and generate: key
   * Needs curl, libcurl3, libcurl3-gnutls and libcurl4-openssl-dev installed on the server
 
 * Installation
-  * Create a local directory: 'mkdir certman'
-  * Change into the new directory: 'cd certman'
-  * Download certman's code from git: 'git clone https://github.com/schbrongx/certman.git'
-  * Create config/application.yml, look below for details
-  * Alter config/boot.rb, look below for details
-  * Alter config/boot.rb: set Host-IP and port at default_options_bk.merge
-  * Run bundle install
-  * Run db:migrate db:seed (seeding is mandatory, the application's default settings are stored in the DB)
-  * Run the server with rails s (remember, host and port are already set in boot.rb)
+  * Create a local directory: `mkdir certman`
+  * Change into the new directory: `cd certman`
+  * Download certman's code from git: `git clone https://github.com/schbrongx/certman.git`
+  * Create **config/application.yml**, look below for details
+  * Alter **config/boot.rb**, look below for details
+  * Alter **config/boot.rb**: set Host-IP and port at `default_options_bk.merge!`
+  * Run `bundle install`
+  * Run `db:migrate db:seed --trace` (seeding is mandatory, the application's default settings are stored in the DB)
+  * Run the server with `rails s` or your preferred webserver (remember, host and port are already set in boot.rb)
 
-* config/application.yml
+* **config/application.yml**
 ```yaml
 # username and password for gem 'gmail'
 GMAIL_USERNAME: "USERNAME@gmail.com"
@@ -55,7 +55,7 @@ ADMIN_PASSWORD: "PASSWORD"
 SECRET_KEY_BASE: "01234567890abcdefghijklmnopqrstuvwxyz01234567890abcdefghijklmnopqrstuvwxyz01234567890abcdefghijklmnopqrstuvwxyz01234567890abcdef"
 ```
 
-* config/boot.rb
+* **config/boot.rb**
 change `default_options_bk`  to:
 ```
 default_options_bk.merge!(Host: '0.0.0.0', Port: 3000)
