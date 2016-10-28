@@ -56,7 +56,7 @@ SECRET_KEY_BASE: "01234567890abcdefghijklmnopqrstuvwxyz01234567890abcdefghijklmn
 ```
 
 * config/boot.rb
-change default_options_bk to:
+change `default_options_bk`  to:
 ```
 default_options_bk.merge!(Host: '0.0.0.0', Port: 3000)
 ```
