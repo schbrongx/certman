@@ -10,7 +10,7 @@ Certman is an SSL-keystore management software. You can manage and generate: key
 
 * Installation
   * Create a local directory: 'mkdir certman'
-  * Change into the new directore: 'cd certman'
+  * Change into the new directory: 'cd certman'
   * Download certman's code from git: 'git clone https://github.com/schbrongx/certman.git'
   * Create config/application.yml, look below for details
   * Alter config/boot.rb, look below for details
@@ -60,3 +60,4 @@ change default_options_bk to:
 ```
 default_options_bk.merge!(Host: '0.0.0.0', Port: 3000)
 ```
+
