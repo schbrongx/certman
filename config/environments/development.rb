@@ -20,11 +20,29 @@ puts "  Loading config/development.rb".green
   config.action_mailer.raise_delivery_errors = false
   
   # setting delivery-method for gem 'letter_opener'
-  config.action_mailer.delivery_method = :letter_opener
-  
-  # mailer default url goes here
-  config.action_mailer.default_url_options = { host: ENV["ACTION_MAILER_DEFAULT_URL_OPTION_HOST"], port: ENV["ACTION_MAILER_DEFAULT_URL_OPTION_PORT"] }
+  # temporarily disabled, testing gmail
+  # config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :smtp
 
+  @smtp_hostname  = ENV["SMTP_HOSTNAME"]
+  @smtp_port      = ENV["SMTP_PORT"].to_i
+  @smtp_username  = ENV["SMTP_USERNAME"]
+  @smtp_password  = ENV["SMTP_PASSWORD"]
+
+  # default url and port of server running certman. this is used for generating links in invitation emails
+  config.action_mailer.default_url_options = { host: ENV["ACTION_MAILER_DEFAULT_URL_OPTION_HOST"], port: ENV["ACTION_MAILER_DEFAULT_URL_OPTION_PORT"].to_i }
+  puts "    config.action_mailer.default_url_options: #{config.action_mailer.default_url_options.to_s}".yellow
+  
+  # define actionmailer smtp settings with values loaded from DB above
+  config.action_mailer.smtp_settings = {
+    :address        => @smtp_hostname,
+	:port           => @smtp_port,
+	:user_name      => @smtp_username,
+	:password       => @smtp_password,
+	:authentication => 'plain',
+	:enable_starttls_auto => true
+  }
+  
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

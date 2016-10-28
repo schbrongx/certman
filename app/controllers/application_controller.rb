@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def load_application_name
     @application_name = (Setting.find_by name: "application_name").value.to_s
   end
-
+  
   # Force users to log in
   before_action :authenticate_user!
   
