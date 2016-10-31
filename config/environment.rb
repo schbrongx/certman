@@ -1,4 +1,4 @@
-puts "  Loading config/environment.rb".green
+puts "  Loading config/environment.rb"
 
 # Load the Rails application.
 require File.expand_path('../application', __FILE__)

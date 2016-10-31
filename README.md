@@ -11,9 +11,8 @@ Certman is an SSL-keystore management software. You can manage and generate: key
 * Needs curl, libcurl3, libcurl3-gnutls and libcurl4-openssl-dev installed on the server
 
 ## Installation
-* Create a local directory: `mkdir certman`
-* Change into the new directory: `cd certman`
 * Download certman's code from git: `git clone https://github.com/schbrongx/certman.git`
+* Change into the new directory: `cd certman`
 * Create **config/application.yml**, look below for details
 * Alter **config/boot.rb**, look below for details
 * Alter **config/boot.rb**: set Host-IP and port at `default_options_bk.merge!`
