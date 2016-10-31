@@ -18,8 +18,8 @@ Certman is an SSL-keystore management software. You can manage and generate: key
 * Alter **config/boot.rb**, look below for details
 * Alter **config/boot.rb**: set Host-IP and port at `default_options_bk.merge!`
 * Run `bundle install`
-* Run `db:migrate db:seed --trace` (seeding is mandatory, the application's default settings are stored in the DB)
-* Run ` RAILS_ENV=production rake assets:precompile` to create the "public"-directory
+* Run `RAILS_ENV=production rake db:migrate db:seed --trace` (seeding is mandatory, the application's default settings are stored in the DB)
+* Run `RAILS_ENV=production rake assets:precompile` to create the "public"-directory
 * Run the server with `rails s` or your preferred webserver (remember, host and port are already set in boot.rb)
 
 ## Files

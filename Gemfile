@@ -43,6 +43,9 @@ gem 'clipboard-rails'
 # TODO : put figaro config into README.md
 gem 'figaro'
 
+# colorize logger output
+gem 'colorize'
+
 group :production do
   gem 'therubyracer'
 end
@@ -84,9 +87,6 @@ group :development do
   # autogenerate favicons with 'rails generate favicon'
   gem 'rails_real_favicon'
 
-  # colorize logger output in development
-  gem 'colorize'
-  
   # https://github.com/flyerhzm/bullet
   # analyze queries
   gem 'bullet'
