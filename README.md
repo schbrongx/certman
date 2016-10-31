@@ -11,11 +11,11 @@ Certman is an SSL-keystore management software. You can manage and generate: key
 * Needs curl, libcurl3, libcurl3-gnutls and libcurl4-openssl-dev installed on the server
 
 ## Installation
-* Download certman's code from git: `git clone https://github.com/schbrongx/certman.git`
+* Clone certman: `git clone https://github.com/schbrongx/certman.git`
 * Change into the new directory: `cd certman`
+* _OPTIONAL: Remove all traces from git: `rm -rf .git && rm .gitignore`_
 * Create **config/application.yml**, look below for details
 * Alter **config/boot.rb**, look below for details
-* Alter **config/boot.rb**: set Host-IP and port at `default_options_bk.merge!`
 * Run `bundle install`
 * Run `RAILS_ENV=production rake db:migrate db:seed --trace` (seeding is mandatory, the application's default settings are stored in the DB)
 * Run `RAILS_ENV=production rake assets:precompile` to create the "public"-directory
