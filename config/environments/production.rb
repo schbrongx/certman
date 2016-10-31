@@ -66,9 +66,24 @@ puts "  Loading config/production.rb".green
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
-  # mailer default url goes here
-  # host should be the FQDN of the production server
-  config.action_mailer.default_url_options = { host: ENV["ACTION_MAILER_DEFAULT_URL_OPTION_HOST"], port: ENV["ACTION_MAILER_DEFAULT_URL_OPTION_PORT"] }
+  # set delivery_method to :letter_opener to use the letter_opener gem and dont send real emails
+  # or set it to :smtp to send real emails. SMTP_* settings are set in application.yml. refer to
+  # README.md for more information
+  # config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :smtp
+  # define actionmailer smtp settings
+  config.action_mailer.smtp_settings = {
+    :address        => ENV["SMTP_HOSTNAME"],
+	  :port           => ENV["SMTP_PORT"].to_i,
+	  :user_name      => ENV["SMTP_USERNAME"],
+	  :password       => ENV["SMTP_PASSWORD"],
+	  :authentication => 'plain',
+	  :enable_starttls_auto => true
+  }
+
+  # default url and port of server running certman. this is used for generating links in invitation emails
+  config.action_mailer.default_url_options = { host: ENV["ACTION_MAILER_DEFAULT_URL_OPTION_HOST"], port: ENV["ACTION_MAILER_DEFAULT_URL_OPTION_PORT"].to_i }
+  puts "    config.action_mailer.default_url_options: #{config.action_mailer.default_url_options.to_s}".yellow
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

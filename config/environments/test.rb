@@ -32,8 +32,24 @@ puts "  Loading config/test.rb".green
   # ActionMailer::Base.deliveries array.
   #config.action_mailer.delivery_method = :test
 
-  # setting delivery-method for gem 'letter_opener'
-  config.action_mailer.delivery_method = :letter_opener  
+  # set delivery_method to :letter_opener to use the letter_opener gem and dont send real emails
+  # or set it to :smtp to send real emails. SMTP_* settings are set in application.yml. refer to
+  # README.md for more information
+  config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.delivery_method = :smtp
+  # define actionmailer smtp settings
+  config.action_mailer.smtp_settings = {
+    :address        => ENV["SMTP_HOSTNAME"],
+	  :port           => ENV["SMTP_PORT"].to_i,
+	  :user_name      => ENV["SMTP_USERNAME"],
+	  :password       => ENV["SMTP_PASSWORD"],
+	  :authentication => 'plain',
+	  :enable_starttls_auto => true
+  }
+
+  # default url and port of server running certman. this is used for generating links in invitation emails
+  config.action_mailer.default_url_options = { host: ENV["ACTION_MAILER_DEFAULT_URL_OPTION_HOST"], port: ENV["ACTION_MAILER_DEFAULT_URL_OPTION_PORT"].to_i }
+  puts "    config.action_mailer.default_url_options: #{config.action_mailer.default_url_options.to_s}".yellow
 
   # Randomize the order test cases are executed.
   config.active_support.test_order = :random
