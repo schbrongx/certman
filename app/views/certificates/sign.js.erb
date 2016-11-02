@@ -43,7 +43,7 @@ else
   
 
   # sign csr
-  csr_cert.sign ca_key, OpenSSL::Digest::SHA1.new 
+  csr_cert.sign ca_key, OpenSSL::Digest::SHA512.new 
   
   form_content = csr_cert.to_pem
 end
