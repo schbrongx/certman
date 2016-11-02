@@ -5,7 +5,7 @@ Certman is an SSL-keystore management software. You can manage and generate: key
 ## Built with
 * ruby 2.3.1p112 (2016-04-26) [x86_64-linux-gnu]
 * Rails 4.2.7.1
-* Making heavy use of [bootstrap](http://www.bootstrap.com "Link to bootstrap.com") and [glyphicon halflings](http://glyphicons.com "Link to glyphicons.com")
+* Making heavy use of [bootstrap](http://www.bootstrap.com "Link to http://getbootstrap.com/") and [glyphicon halflings](http://glyphicons.com "Link to http://glyphicons.com")
 
 ## Prerequesites:
 * Needs curl, libcurl3, libcurl3-gnutls and libcurl4-openssl-dev installed on the server
