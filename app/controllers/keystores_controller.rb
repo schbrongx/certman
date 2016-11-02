@@ -25,7 +25,7 @@ class KeystoresController < ApplicationController
   # controller action to download zip
   def export
     require 'zip'
-    compressed_filestream = Zip::OutputStream.write_buffer(::StringIO.new(''), Zip::TraditionalEncrypter.new('password')) do |zos|
+    compressed_filestream = Zip::OutputStream.write_buffer(::StringIO.new('')) do |zos|
       if !@keystore.keypair.nil?
         # private key
         zos.put_next_entry 'privatekey.pem'
