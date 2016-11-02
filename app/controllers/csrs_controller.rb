@@ -76,13 +76,11 @@ class CsrsController < ApplicationController
     end
     
     # AJAX call for templatefiller posts csr template id, try to find corresponding template
-    #TODO error handling for empty csrtemplate_id
     def set_csrtemplate
       @csrtemplate = Csrtemplate.find(params[:csrtemplate_id])
     end
 
     # AJAX call for autogenerate will post "keypair_id", try to find corresponding keypair
-    #TODO error handling for empty keypair_id
     def set_keypair
       params.require(:keypair_id)
       @keypair = Keypair.find(params[:keypair_id])
