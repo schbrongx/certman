@@ -7,6 +7,7 @@
           <th>Name</th>
           <th>Type</th>
           <th>CSR</th>
+          <th>Days until expiring</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -21,6 +22,9 @@
           <% else %>
             No CSR assigned.
           <% end  # unless %>
+        <td>
+          <%= ((OpenSSL::X509::Certificate.new certificate.content).not_after.to_i - Time.now.to_i)/1.day %>
+        </td>
         </td>
             <td>
               <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span> View'.html_safe, certificate_path(certificate), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
