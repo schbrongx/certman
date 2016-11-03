@@ -56,6 +56,7 @@ group :development, :test do
   # open mails in browser instead of sending them (only in test and dev)
   gem 'letter_opener'
   gem 'letter_opener_web'
+  gem 'awesome_print'
 end
 
 group :development do
