@@ -11,6 +11,7 @@ else
     logger.info ("  Selfsigning certificate".green)
     csr_cert.issuer = request.subject
     extension_factory.issuer_certificate = csr_cert
+    # TODO : ca_key should be loaded, not generated
     ca_key = key = OpenSSL::PKey::RSA.new @keysize.value.to_i
   else
     logger.info ("  NOT selfsigning certificate, using certificate '#{@ca_certificate.name}' and keypair '#{@ca_keypair.name}'".green)
@@ -32,7 +33,7 @@ else
   csr_cert.serial = 0
   csr_cert.version = 2
   csr_cert.not_before = Time.now
-  csr_cert.not_after = Time.now + (60 * 60 * 24 * 365 * 2)  # 2 years
+  csr_cert.not_after = Time.now + (60 * 60 * 24 * @certificate_duration)  # loaded from settings into form and submitted there
 
   csr_cert.subject = request.subject
   csr_cert.public_key = request.public_key

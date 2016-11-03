@@ -3,6 +3,7 @@ class CertificatesController < ApplicationController
   before_action :set_csr, only: [:sign]
   before_action :set_ca, only: [:sign]
   before_action :set_add_cacert_extensions, only: [:sign]
+  before_action :set_certificate_duration, only: [:sign]
 
   # GET /certificates
   def index
@@ -98,9 +99,13 @@ class CertificatesController < ApplicationController
       params.require(:add_cacert_extensions)
       @add_cacert_extensions = params[:add_cacert_extensions]
     end
+    def set_certificate_duration
+      params.require(:certificate_duration)
+      @certificate_duration = (params[:certificate_duration]).to_i
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def certificate_params
-      params.require(:certificate).permit(:name, :certificatetype_id, :ca_certificate_id, :ca_keypair_id, :csr_id, :content, :add_cacert_extensions)
+      params.require(:certificate).permit(:name, :certificatetype_id, :ca_certificate_id, :ca_keypair_id, :csr_id, :content, :add_cacert_extensions, :certificate_duration)
     end
 end

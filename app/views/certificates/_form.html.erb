@@ -56,6 +56,13 @@
       </div><!-- form-group -->
       
       <div class="form-group">
+        <%= f.label "Duration (days)", class:"col-sm-3 control-label text-uppercase" %>
+        <div class="col-sm-8">
+          <%= text_field_tag 'certificate_duration', "#{(Setting.find_by name:'defaultCertificateDuration').value}", {id:'certificate_duration', class: 'form-control'} %>
+        </div>
+      </div><!-- form-group defaultCertificateDuration -->
+      
+      <div class="form-group">
         <div class="col-sm-offset-3">
         <div class="checkbox">
           <label><input type="checkbox" value="" id="add_cacert_extensions">Add CA extensions</label>
@@ -83,6 +90,7 @@
               ca_certificate_id: $("#ca_certificate_id").val(),
               ca_keypair_id: $("#ca_keypair_id").val(),
               add_cacert_extensions: $("#add_cacert_extensions").prop('checked'),
+              certificate_duration: $("#certificate_duration").val(),
             },
             success: function(msg){
               $("#sign_button").text("Sign CSR and create certificate content");
