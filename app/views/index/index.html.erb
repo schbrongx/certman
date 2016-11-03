@@ -2,53 +2,43 @@
 <!-- index#index -->
 <% if user_signed_in? %>
   <h1>Welcome, <%= current_user.username.capitalize %>!</h1>
-
-    <h2>Things to do</h2>
+  <h2>Things to do</h2>
+  <p>
+    <ul>
+      <li><%= link_to 'Create a new keystore', keystores_path %> for your a keypair + CSR + certificate</li>
+      <li>Create a new <%= link_to 'keypair', keypairs_path %> or <%= link_to 'CSR', csrs_path %></li>
+      <li>Submit your CSR to a certificate-authority (CA) like Thawte or VeriSign or sign it yourself and create a <%= link_to 'certificate', certificates_path %></li>
+    </ul>
+  </p>
+  <% if @notifications > 0 %>
+    <h2>Notifications</h2>
     <p>
       <ul>
-        <li><%= link_to 'Create a new keystore', keystores_path %> for your a keypair + CSR + certificate</li>
-        <li>Create a new <%= link_to 'keypair', keypairs_path %> or <%= link_to 'CSR', csrs_path %></li>
-        <li>Submit your CSR to a certificate-authority (CA) like Thawte or VeriSign or sign it yourself and create a <%= link_to 'certificate', certificates_path %></li>
-      </ul>
-    </p>
-
-  <h2>Notifications <span class="badge"><%=  @notifications != 0 ? @notifications : "" %></span></h2>
-    <p>
-      <ul>
         <li>
-          Keystores with missing items: <%= @keystores_missing_items %>
+          Keystores with missing items: <span class="badge"><%= @keystores_missing_items > 0 ? @keystores_missing_items : "" %></span>
         </li>
         <li>
-          Unsigned CSRs: <%= @csrs_unsigned %>
+          Unsigned CSRs: <span class="badge"><%= @csrs_unsigned > 0 ? @csrs_unsigned : 'none' %></span>
         </li>
         <li>
-          Certificates expiring soon: <%= @certificates_expiring_soon %>
+          Certificates expiring soon: <span class="badge"><%= @certificates_expiring_soon > 0 ? @certificates_expiring_soon : 'none' %></span>
         </li>
       </ul>
     </p>
-  </div>
-  
-  
-  
-  
-  
+  <% end  # if @notifications %>
 <% else %>
   <div class="jumbotron">
-  <h1>Welcome!</h1>
-  <p>
-    Please sign in to use this application.
-  </p>
-  <%= link_to "Sign in", new_user_session_path, class:"btn btn-xs btn-success" %>
-  </div>
+    <h1>Welcome!</h1>
+    <p>
+      Please sign in to use this application.
+    </p>
+    <%= link_to "Sign in", new_user_session_path, class:"btn btn-xs btn-success" %>
+  </div> <!-- jumbotron -->
 <% end #if user_signed_in?%>
 
-<% if Rails.env.development? %>
-  <hr> <!-- ----- ----- ----- ----- -----  -->
-  <h4>Git-commit</h4>
-  <p>
-    <%= GIT_COMMIT %><br />
-    (<%= GIT_COMMIT_TIMESTAMP %>)
-  </p>
-  <hr> <!-- ----- ----- ----- ----- -----  -->
+<% if Rails.env.development?  # display git info in development environment %>
+  <h2>Git-info</h2>
+  <pre><%= GIT_COMMIT %></pre>
 <% end  # if Rails.env.development? %>
+
 <!-- end index#index -->
