@@ -21,7 +21,7 @@
           Unsigned CSRs: <span class="badge"><%= @csrs_unsigned > 0 ? @csrs_unsigned : 'none' %></span>
         </li>
         <li>
-          Certificates expiring soon: <span class="badge"><%= @certificates_expiring_soon > 0 ? @certificates_expiring_soon : 'none' %></span>
+          Certificates expiring in <%=@expiryWarningDays%> days: <span class="badge"><%= @certificates_expiring_soon > 0 ? @certificates_expiring_soon : 'none' %></span>
         </li>
       </ul>
     </p>

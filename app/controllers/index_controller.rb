@@ -27,10 +27,14 @@ class IndexController < ApplicationController
     
     # TODO : count soon expiring certificates
     # TODO : define Setting.expiryWarningDays
-    @expiryWarningDays = 60
+    @expiryWarningDays = 729  # get this from Setting
     @certificates.each do |c|
-      logger.debug "  index_controller.rb: @certificates.each, c.id = #{c.id.to_s}".yellow
-      cert = OpenSSL::X509::Certificate.new c.content
+      # calculate days until certificate will expire
+      expires = ((OpenSSL::X509::Certificate.new c.content).not_after.to_i - Time.now.to_i)/1.day
+      logger.debug "\t#{c.name} (id=#{c.id.to_s}) expires in: #{expires} days".yellow
+      if expires < @expiryWarningDays
+        @certificates_expiring_soon += 1
+      end  # if
     end  #do
     
     
