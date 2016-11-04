@@ -7,6 +7,7 @@
           <th>Name</th>
           <th>Keypair</th>
           <th>CSR Template</th>
+          <th>Signed</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -19,9 +20,12 @@
             <td>
               <% if !csr.csrtemplate.nil? %>
                 <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + truncate(csr.csrtemplate.name, length: 12), csrtemplate_path(csr.csrtemplate), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
-			  <% else %>
-			    No template
+			        <% else %>
+			          No template
               <% end  # if %>
+            </td>
+            <td>
+              <span class="glyphicon glyphicon-ok"></span>
             </td>
             <td>
               <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span> View'.html_safe, csr_path(csr), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
