@@ -25,7 +25,8 @@
               <% end  # if %>
             </td>
             <td>
-              <span class="glyphicon glyphicon-ok"></span>
+              <% Certificate.find_by_csr_id(csr.id) ? @csr_signed_class="glyphicon glyphicon-ok text-success" : @csr_signed_class="glyphicon glyphicon-minus text-danger" %>
+              <span class="<%=@csr_signed_class%>"></span>
             </td>
             <td>
               <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span> View'.html_safe, csr_path(csr), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
