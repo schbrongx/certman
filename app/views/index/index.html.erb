@@ -14,15 +14,24 @@
     <h2>Notifications</h2>
     <p>
       <ul>
-        <li>
-          Keystores with missing items: <span class="badge"><%= @keystores_missing_items > 0 ? @keystores_missing_items : "" %></span>
-        </li>
-        <li>
-          Unsigned CSRs: <span class="badge"><%= @csrs_unsigned > 0 ? @csrs_unsigned : 'none' %></span>
-        </li>
-        <li>
-          Certificates expiring the next <%=@expiryWarningDays%> days: <span class="badge"><%= @certificates_expiring_soon > 0 ? @certificates_expiring_soon : 'none' %></span>
-        </li>
+        <% if  @keystores_missing_items > 0 %>
+          <li>
+            Keystores with missing items: <span class="badge"><%= @keystores_missing_items %></span>
+            <%= link_to '<span class="glyphicon glyphicon-arrow-right"></span> go there'.html_safe, keystores_path %>
+          </li>
+        <% end  # if %>
+        <% if @csrs_unsigned > 0 %>
+          <li>
+            Unsigned CSRs: <span class="badge"><%= @csrs_unsigned %></span>
+            <%= link_to '<span class="glyphicon glyphicon-arrow-right"></span> go there'.html_safe, csrs_path %>
+          </li>
+        <% end  # if %>
+        <% if @certificates_expiring_soon > 0 %>
+          <li>
+            Certificates expiring the next <%=@expiryWarningDays%> days: <span class="badge"><%= @certificates_expiring_soon %></span>
+             <%= link_to '<span class="glyphicon glyphicon-arrow-right"></span> go there'.html_safe, certificates_path %>
+          </li>
+        <% end  # if %>
       </ul>
     </p>
   <% end  # if @notifications %>
