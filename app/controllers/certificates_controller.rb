@@ -8,6 +8,7 @@ class CertificatesController < ApplicationController
   # GET /certificates
   def index
     @certificates = Certificate.includes(:certificatetype, :csr)
+    @expiryWarningDays = (Setting.find_by name: 'expiryWarningDays').value.to_i  # get this from Setting.expiryWarningDays
   end
 
   # GET /certificates/1

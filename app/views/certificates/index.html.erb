@@ -13,19 +13,22 @@
       </thead>
       <tbody>
         <% @certificates.each do |certificate| %>
-          <tr>
+          <%# calculate validity of certificate in days %>
+          <% @days_until_expiring = ((OpenSSL::X509::Certificate.new certificate.content).not_after.to_i - Time.now.to_i)/1.day %>
+          <%# add contextual css class danger to tr if certificate expires soon %>
+          <tr<%= @days_until_expiring < @expiryWarningDays ? ' class="danger"'.html_safe : "" %>>
             <td><%= certificate.name %></td>
             <td><%= certificate.certificatetype.name %></td>
-        <td>
-          <% unless certificate.csr.nil? %>
-            <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + truncate(certificate.csr.name, length: 12), csr_path(certificate.csr), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
-          <% else %>
-            No CSR assigned.
-          <% end  # unless %>
-        <td>
-          <%= ((OpenSSL::X509::Certificate.new certificate.content).not_after.to_i - Time.now.to_i)/1.day %>
-        </td>
-        </td>
+            <td>
+              <% unless certificate.csr.nil?  # show button to view csr if csr is present %>
+                <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span>'.html_safe + ' ' + truncate(certificate.csr.name, length: 12), csr_path(certificate.csr), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
+              <% else %>
+                No CSR assigned.
+              <% end  # unless %>
+            </td>
+            <td>
+              <%= @days_until_expiring %>
+            </td>
             <td>
               <%= link_to '<span class="glyphicon glyphicon-zoom-in"></span> View'.html_safe, certificate_path(certificate), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
               <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_certificate_path(certificate), class: 'btn btn-xs btn-default btn-show-modal', remote: true %>
