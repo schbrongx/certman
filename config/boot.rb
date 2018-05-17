@@ -10,7 +10,7 @@ module Rails
   class Server
     alias :default_options_bk :default_options
     def default_options
-      default_options_bk.merge!(Host: '0.0.0.0', Port: 3000)
+      default_options_bk.merge!(Host: '0.0.0.0', Port: 9000)
     end
   end
 end
