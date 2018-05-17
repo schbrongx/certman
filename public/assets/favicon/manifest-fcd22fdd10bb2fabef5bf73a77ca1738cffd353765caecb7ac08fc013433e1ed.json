@@ -1,0 +1,17 @@
+{
+	"name": "Certman",
+	"icons": [
+		{
+			"src": "/assets/favicon/android-chrome-192x192-dedcd69c6ebcf9f597b684d7038fe2d32f369f5c1d697ba9ab884f235dac8248.png",
+			"sizes": "192x192",
+			"type": "image\/png"
+		},
+		{
+			"src": "/assets/favicon/android-chrome-512x512-e39a0cc957f3342ea3d4712ca1bc78a61f344609c641d3891a52cfd350f25fcd.png",
+			"sizes": "512x512",
+			"type": "image\/png"
+		}
+	],
+	"theme_color": "#000000",
+	"display": "standalone"
+}
