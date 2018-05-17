@@ -10,14 +10,16 @@ else
   if @selfsign
     logger.info ("  Selfsigning certificate".green)
     csr_cert.issuer = request.subject
+      logger.debug ("    csr_cert.issuer: #{csr_cert.issuer.to_s}".yellow)
     extension_factory.issuer_certificate = csr_cert
-    # TODO : ca_key should be loaded, not generated
-    ca_key = key = OpenSSL::PKey::RSA.new @keysize.value.to_i
+    # load private key from csr into ca_key for selfsigning
+    ca_key = key = OpenSSL::PKey::RSA.new @csr.keypair.privatekey
   else
     logger.info ("  NOT selfsigning certificate, using certificate '#{@ca_certificate.name}' and keypair '#{@ca_keypair.name}'".green)
     ca_cert = OpenSSL::X509::Certificate.new @ca_certificate.content
     csr_cert.issuer = ca_cert.subject
     extension_factory.issuer_certificate = ca_cert
+    # load private key from submitted CA into ca_key for ca-signing
     ca_key = key = OpenSSL::PKey::RSA.new @ca_keypair.privatekey
   end
   

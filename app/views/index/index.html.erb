@@ -37,11 +37,12 @@
   <% end  # if @notifications %>
 <% else %>
   <div class="jumbotron">
+    <%= image_tag "icon_certman_512x512.png", size: "64", class:"thumbnail" %>
     <h1>Welcome!</h1>
     <p>
       Please sign in to use this application.
     </p>
-    <%= link_to "Sign in", new_user_session_path, class:"btn btn-xs btn-success" %>
+    <%= link_to "Sign in", new_user_session_path, class:"btn btn-success" %>
   </div> <!-- jumbotron -->
 <% end #if user_signed_in?%>
 
